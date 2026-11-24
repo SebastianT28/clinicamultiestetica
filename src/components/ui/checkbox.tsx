@@ -29,7 +29,7 @@ function Checkbox({
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        "peer h-4 w-4 shrink-0 rounded-sm border border-border ring-offset-background [backdrop-filter:var(--glass-blur)] [-webkit-backdrop-filter:var(--glass-blur)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-checked:border-transparent data-checked:bg-[var(--glass-strong)] data-checked:text-foreground/90 data-checked:shadow-[inset_0_0.0938rem_0_oklch(1_0_0_/_0.75),inset_0_-0.0938rem_0_oklch(1_0_0_/_0.25),0_0.0625rem_0.125rem_oklch(0_0_0_/_0.06),0_0.25rem_0.625rem_oklch(0_0_0_/_0.08)]",
+        "peer h-4 w-4 shrink-0 rounded-sm border border-border bg-background ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-checked:border-primary data-checked:bg-primary data-checked:text-primary-foreground",
         className
       )}
       checked={isChecked}
@@ -40,6 +40,7 @@ function Checkbox({
       nativeButton
       render={
         <motion.button
+          type="button"
           className="flex items-center justify-center p-0"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}

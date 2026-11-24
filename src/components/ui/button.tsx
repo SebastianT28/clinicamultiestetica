@@ -106,10 +106,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     // the anchor nests inside the button instead of replacing it, which stacks
     // the icon above the label and puts a link inside a button.
     if (asChild && React.isValidElement(props.children)) {
-      const { children, ...rest } = props
+      const { children, nativeButton, ...rest } = props
+      const isNativeButtonChild =
+        typeof children.type === "string" && children.type === "button"
       return (
         <ButtonPrimitive
           ref={ref}
+          nativeButton={nativeButton ?? isNativeButtonChild}
           className={cn(buttonVariants({ variant, size, className }))}
           {...rest}
           // After the spread, so an explicit asChild child wins over a stray

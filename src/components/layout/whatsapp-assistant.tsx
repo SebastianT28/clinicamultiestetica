@@ -53,6 +53,15 @@ export function WhatsAppAssistant() {
 
   return (
     <>
+      <datalist id="cm-procedures-datalist">
+        {CLINIC_SERVICES.map((svc) => (
+          <option
+            key={svc.slug}
+            value={locale === "es" ? svc.nameEs : svc.nameEn}
+          />
+        ))}
+      </datalist>
+
       {!mobileMenuOpen && !waModalOpen && (
         <Button
           type="button"
@@ -133,14 +142,6 @@ export function WhatsAppAssistant() {
                 placeholder={dict.procedurePlaceholder}
                 className="h-11 rounded-xl border border-border bg-background"
               />
-              <datalist id="cm-procedures-datalist">
-                {CLINIC_SERVICES.map((svc) => (
-                  <option
-                    key={svc.slug}
-                    value={locale === "es" ? svc.nameEs : svc.nameEn}
-                  />
-                ))}
-              </datalist>
             </div>
 
             <Label

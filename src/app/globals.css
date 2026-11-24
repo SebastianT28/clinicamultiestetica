@@ -132,6 +132,15 @@ body {
 h1,
 h2,
 h3,
+h4,
+dd,
+.font-serif {
+  font-variant-numeric: lining-nums proportional-nums;
+}
+
+h1,
+h2,
+h3,
 .cm-balance {
   text-wrap: balance;
 }

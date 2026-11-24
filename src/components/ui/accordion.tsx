@@ -58,8 +58,8 @@ function AccordionContent({
       className="text-sm"
       {...props}
       render={(propsWithHidden, state) => {
-        const panelProps = { ...propsWithHidden }
-        delete panelProps.hidden
+        const { hidden, ...panelProps } = propsWithHidden
+        void hidden
         return (
         // hidden is stripped so the close spring can play, but the kept-mounted
         // closed panel must not stay reachable: inert removes it from tab order

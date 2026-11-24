@@ -3,9 +3,8 @@ import { CLINIC_SERVICES, SITE_CONFIG } from "@/config/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
-  const now = new Date();
 
-  const staticRoutes = [
+  const staticRoutes: MetadataRoute.Sitemap = [
     "",
     "/nosotros",
     "/procedimientos",
@@ -13,16 +12,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/preguntas-frecuentes",
     "/contacto",
   ].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: now,
-    changeFrequency: "weekly" as const,
-    priority: route === "" ? 1 : 0.85,
+    url: `${baseUrl}${route || "/"}`,
+    changeFrequency: "weekly",
+    priority: route === "" ? 1.0 : 0.85,
   }));
 
-  const serviceRoutes = CLINIC_SERVICES.map((service) => ({
+  const serviceRoutes: MetadataRoute.Sitemap = CLINIC_SERVICES.map((service) => ({
     url: `${baseUrl}/procedimientos/${service.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
+    changeFrequency: "monthly",
     priority: 0.8,
   }));
 

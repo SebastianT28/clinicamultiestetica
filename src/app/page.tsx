@@ -2,7 +2,8 @@ import { HomeView } from "@/components/home/home-view";
 import { CLINIC_SERVICES, SITE_CONFIG } from "@/config/site";
 import { HOME_CONTENT } from "@/data/home-content";
 
-export default function HomePage() {
+export default async function HomePage() {
+  "use cache";
   const faqEntities = HOME_CONTENT.es.faqSection.items.map((faq) => ({
     "@type": "Question",
     name: faq.question,
