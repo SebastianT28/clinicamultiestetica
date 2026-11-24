@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/*
+ * Sistema de Diseño Base — Clínica Multiestética & Dra. Gabriela Delgado Silva
+ * Referencia estructural UI/UX: Clínica Diana Dussan (clinicadianadussan.com)
+ * Dirección cromática propuesta: Lujo Médico Cálido (Marfil Seda + Azul Zafiro Profundo + Dorado Champagne)
+ */
+
+:root {
+  /* ─── Tokens Semánticos Base (OKLCH / WCAG AA) ─── */
+  --background: oklch(0.985 0.006 85);          /* #FAF8F4 Marfil Seda Cálido */
+  --foreground: oklch(0.225 0.038 252);         /* #132238 Azul Noche Clínico (Lectura cálida de alto contraste) */
+  --card: oklch(1 0 0);                         /* #FFFFFF Blanco Puro */
+  --card-foreground: oklch(0.225 0.038 252);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.225 0.038 252);
+  --primary: oklch(0.295 0.068 252);            /* #1B365D Azul Zafiro Real (Autoridad Médica) */
+  --primary-foreground: oklch(0.99 0.004 85);   /* #FDFCFA Texto claro sobre botón primario */
+  --secondary: oklch(0.956 0.014 82);           /* #F3EFE6 Crema Arena Suave */
+  --secondary-foreground: oklch(0.245 0.045 252);
+  --muted: oklch(0.962 0.008 85);               /* #F5F2EC Superficie secundaria suave */
+  --muted-foreground: oklch(0.46 0.025 252);    /* #526075 Gris Azulado Medio */
+  --accent: oklch(0.765 0.095 82);              /* #C8A45D Dorado Champagne Suave */
+  --accent-foreground: oklch(0.205 0.038 252);
+  --destructive: oklch(0.58 0.19 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.905 0.014 82);              /* #E6E0D4 Línea cálida sutil */
+  --input: oklch(0.915 0.012 82);
+  --ring: oklch(0.765 0.095 82);                /* Foco accesible en Dorado Champagne */
+  --radius: 0.875rem;                           /* 14px armónico con referencia */
+
+  /* ─── Paleta de Marca Clínica Multiestética (Hex Directos) ─── */
+  --cm-ivory: #FAF8F4;
+  --cm-pearl: #F3EFE6;
+  --cm-white: #FFFFFF;
+  --cm-navy-deep: #132238;
+  --cm-sapphire: #1B365D;
+  --cm-sapphire-soft: #2B4C7E;
+  --cm-sapphire-tint: #EDF2F8;
+  --cm-gold: #C8A45D;
+  --cm-gold-dark: #9A7836;
+  --cm-gold-tint: #F9F4E8;
+  --cm-muted: #526075;
+  --cm-line: #E6E0D4;
+
+  /* ─── Escala y Elevación inspirada en clinicadianadussan.com ─── */
+  --cm-maxw: 1240px;
+  --cm-radius-btn: 12px;
+  --cm-radius-card: 20px;
+  --cm-shadow-soft: 0 14px 36px rgba(19, 34, 56, 0.06);
+  --cm-shadow-elevated: 0 18px 44px rgba(19, 34, 56, 0.12);
+}
+
+@theme inline {
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-heading: var(--font-cormorant), Georgia, serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--cm-ivory);
+  color: var(--cm-navy-deep);
+  font-family: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
