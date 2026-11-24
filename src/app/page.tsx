@@ -1,18 +1,67 @@
-import { SITE_CONFIG } from "@/config/site";
+import { HomeView } from "@/components/home/home-view";
+import { CLINIC_SERVICES, SITE_CONFIG } from "@/config/site";
+import { HOME_CONTENT } from "@/data/home-content";
 
 export default function HomePage() {
+  const faqEntities = HOME_CONTENT.es.faqSection.items.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  }));
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MedicalClinic",
+        "@id": `${SITE_CONFIG.url}/#clinic`,
+        name: SITE_CONFIG.brandName,
+        url: SITE_CONFIG.url,
+        telephone: SITE_CONFIG.whatsappDisplay,
+        email: SITE_CONFIG.contactEmail,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: SITE_CONFIG.address.street,
+          addressLocality: SITE_CONFIG.address.district,
+          addressRegion: SITE_CONFIG.address.city,
+          addressCountry: SITE_CONFIG.address.countryCode,
+        },
+        medicalSpecialty: ["PlasticSurgery", "Maxillofacial"],
+        availableService: CLINIC_SERVICES.map((svc) => ({
+          "@type": "MedicalProcedure",
+          name: svc.nameEs,
+        })),
+        founder: {
+          "@id": `${SITE_CONFIG.url}/#founder`,
+        },
+      },
+      {
+        "@type": "Physician",
+        "@id": `${SITE_CONFIG.url}/#founder`,
+        name: SITE_CONFIG.founderName,
+        jobTitle: SITE_CONFIG.founderRoleEs,
+        worksFor: {
+          "@id": `${SITE_CONFIG.url}/#clinic`,
+        },
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${SITE_CONFIG.url}/#faq`,
+        mainEntity: faqEntities,
+      },
+    ],
+  };
+
   return (
-    <main className="mx-auto flex min-h-screen max-w-3xl flex-col items-start justify-center px-6 py-20">
-      <p className="text-sm font-medium tracking-widest uppercase text-[var(--cm-gold-dark)]">
-        {SITE_CONFIG.brandName} · {SITE_CONFIG.address.city}, {SITE_CONFIG.address.country}
-      </p>
-      <h1 className="mt-3 font-serif text-4xl font-medium tracking-tight text-[var(--cm-navy-deep)] sm:text-5xl">
-        {SITE_CONFIG.founderName}
-      </h1>
-      <p className="mt-4 max-w-xl text-base text-[var(--cm-muted)]">
-        Base del proyecto inicializada en Next.js 16 + React 19 + TypeScript + Tailwind CSS v4.
-        Pendiente de aprobación del Plan UI/UX para iniciar la maquetación completa.
-      </p>
-    </main>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <HomeView />
+    </>
   );
 }
