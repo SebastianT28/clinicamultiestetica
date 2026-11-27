@@ -320,6 +320,25 @@ export function CalendarCheckIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+export function SearchIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <circle cx="11" cy="11" r="6.75" />
+      <path d="m16 16 4.25 4.25" />
+    </svg>
+  );
+}
+
 export function HarmonyNodesWatermark(props: SVGProps<SVGSVGElement>) {
   return (
     <svg

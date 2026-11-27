@@ -322,22 +322,29 @@ p {
   position: relative;
   display: inline-flex;
   align-items: center;
-  min-height: 2.75rem;
-  padding-inline: 0.375rem;
+  min-height: 2.5rem;
+  padding-inline: 0.75rem;
+  border-radius: 9999rem;
   color: var(--cm-navy-deep);
   font-family: var(--font-outfit), system-ui, sans-serif;
   font-size: 0.9375rem;
   font-weight: 500;
   text-decoration: none;
-  transition: opacity 200ms ease, color 200ms ease;
+  transition: opacity 200ms ease, color 200ms ease, background-color 200ms ease;
+}
+
+.cm-nav-link[data-active="true"] {
+  background-color: oklch(0.35 0.095 256 / 0.11);
+  color: var(--cm-sapphire);
+  font-weight: 600;
 }
 
 .cm-nav-link::after {
   content: "";
   position: absolute;
-  left: 0.375rem;
-  right: 0.375rem;
-  bottom: 0.5rem;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.375rem;
   height: 0.125rem;
   background-color: var(--cm-sapphire);
   transform: scaleX(0);
@@ -347,13 +354,13 @@ p {
 
 @media (hover: hover) and (pointer: fine) {
   .cm-nav-list:hover .cm-nav-link {
-    opacity: 0.58;
+    opacity: 0.62;
   }
   .cm-nav-list:hover .cm-nav-link:hover {
     opacity: 1;
     color: var(--cm-sapphire);
   }
-  .cm-nav-link:hover::after {
+  .cm-nav-link:not([data-active="true"]):hover::after {
     transform: scaleX(1);
   }
 }
@@ -415,6 +422,12 @@ p {
   font-size: 1rem;
   font-weight: 500;
   text-decoration: none;
+}
+
+.cm-mobile-nav-link[data-active="true"] {
+  background-color: var(--cm-champagne-soft);
+  color: var(--cm-sapphire);
+  font-weight: 600;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -1150,6 +1163,156 @@ p {
 
 .cm-grey-placeholder[data-circle="true"] {
   border-radius: 9999rem;
+}
+
+/* ─── PÁGINA /SERVICIOS (REFERENCIA UI/UX: CLINICADIANADUSSAN.COM/TREATMENTS/) ─── */
+.cm-services-hero {
+  background-color: var(--cm-hero-canvas);
+  border-bottom: 0.0625rem solid var(--cm-line-cool);
+  border-radius: 0 0 1.875rem 1.875rem;
+  padding-block: 3.25rem 3.75rem;
+}
+
+@media (min-width: 1024px) {
+  .cm-services-hero {
+    padding-block: 4.5rem 5rem;
+  }
+}
+
+.cm-search-pill-form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 39rem;
+  padding: 0.375rem 0.375rem 0.375rem 1rem;
+  border-radius: 9999rem;
+  background-color: var(--cm-white);
+  border: 0.0625rem solid var(--cm-line-cool);
+  box-shadow: 0 0.75rem 2rem oklch(0.24 0.048 254 / 0.07);
+}
+
+@media (min-width: 640px) {
+  .cm-search-pill-form {
+    padding-left: 1.375rem;
+  }
+}
+
+.cm-goal-chip {
+  min-height: 2.75rem;
+  padding-inline: 1rem;
+  border-radius: 9999rem;
+  background-color: var(--cm-white);
+  border: 0.0625rem solid var(--cm-line);
+  color: var(--cm-navy-deep);
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.cm-goal-chip[data-active="true"] {
+  background-color: var(--cm-sapphire);
+  border-color: var(--cm-sapphire);
+  color: var(--cm-white);
+  font-weight: 600;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cm-goal-chip:not([data-active="true"]):hover {
+    background-color: var(--cm-champagne-soft);
+    border-color: var(--cm-champagne-border);
+  }
+}
+
+.cm-search-results-box {
+  width: 100%;
+  max-width: 56rem;
+  border-radius: 1.5rem;
+  background-color: var(--cm-white);
+  border: 0.0625rem solid var(--cm-line);
+  padding: 1.5rem;
+  box-shadow: 0 1rem 2.5rem oklch(0.24 0.048 254 / 0.08);
+}
+
+@media (min-width: 768px) {
+  .cm-search-results-box {
+    padding: 2rem;
+  }
+}
+
+/* Bloques editoriales alternados "Explora cada especialidad" (como treatments.css de Diana Dussan) */
+.cm-specialty-showcase {
+  border-radius: 1.5rem;
+  background-color: var(--cm-white);
+  border: 0.0625rem solid var(--cm-line);
+  overflow: hidden;
+  box-shadow: 0 1.25rem 3.25rem -1.5rem oklch(0.24 0.048 254 / 0.12);
+}
+
+.cm-specialty-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.75rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .cm-specialty-content {
+    padding: 2.75rem 2.75rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cm-specialty-content {
+    padding: 3.25rem 3.25rem;
+  }
+}
+
+.cm-treatment-mini-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding-inline: 0.75rem;
+  border-radius: 9999rem;
+  background-color: var(--cm-champagne-soft);
+  color: var(--cm-navy-deep);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+}
+
+/* Ficha detallada de cada uno de los 16 procedimientos */
+.cm-procedure-detail-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 1.25rem;
+  background-color: var(--cm-white);
+  border: 0.0625rem solid var(--cm-line);
+  padding: 1.25rem;
+  transition: border-color 240ms ease, box-shadow 240ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cm-procedure-detail-card:hover {
+    border-color: var(--cm-champagne-border);
+    box-shadow: 0 1rem 2.25rem oklch(0.24 0.048 254 / 0.08);
+  }
+}
+
+.cm-guidance-banner {
+  border-radius: 1.75rem;
+  background-color: var(--cm-champagne-soft);
+  border: 0.0625rem solid var(--cm-champagne-border);
+  padding: 2.25rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .cm-guidance-banner {
+    padding: 3.5rem 3.25rem;
+  }
 }
 
 /* ─── Footer Champagne Seda (Referencia UI: clinicadianadussan.com) ─── */

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { BrandLogo } from "@/components/layout/brand-logo";
 import { CloseIcon, MenuBarsIcon } from "@/components/icons/clinic-icons";
@@ -9,6 +10,7 @@ import { HOME_CONTENT } from "@/data/home-content";
 import { useAppInteraction } from "@/lib/i18n-context";
 
 export function SiteHeader() {
+  const pathname = usePathname();
   const {
     locale,
     setLocale,
@@ -30,11 +32,15 @@ export function SiteHeader() {
   }, []);
 
   const navItems = [
-    { href: "#inicio", label: dict.home },
-    { href: "#servicios", label: dict.services },
-    { href: "#testimonios", label: dict.reviews },
-    { href: "#quien-soy", label: dict.about },
-    { href: "#por-que-dra-gabriela", label: dict.blog },
+    { href: "/", label: dict.home, active: pathname === "/" },
+    {
+      href: "/servicios",
+      label: dict.services,
+      active: pathname === "/servicios" || pathname.startsWith("/servicios/"),
+    },
+    { href: "/#testimonios", label: dict.reviews, active: false },
+    { href: "/#quien-soy", label: dict.about, active: false },
+    { href: "/#por-que-dra-gabriela", label: dict.blog, active: false },
   ];
 
   return (
@@ -49,12 +55,17 @@ export function SiteHeader() {
 
           <nav
             aria-label={locale === "es" ? "Navegación principal" : "Primary navigation"}
-            className="hidden items-center gap-5 lg:flex"
+            className="hidden items-center gap-4 lg:flex xl:gap-5"
           >
-            <ul className="cm-nav-list m-0 flex list-none items-center gap-4 p-0 xl:gap-5">
+            <ul className="cm-nav-list m-0 flex list-none items-center gap-1.5 p-0 xl:gap-2.5">
               {navItems.map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className="cm-nav-link">
+                  <Link
+                    href={item.href}
+                    aria-current={item.active ? "page" : undefined}
+                    data-active={item.active ? "true" : "false"}
+                    className="cm-nav-link"
+                  >
                     {item.label}
                   </Link>
                 </li>
@@ -163,6 +174,8 @@ export function SiteHeader() {
                 <li key={item.label}>
                   <Link
                     href={item.href}
+                    aria-current={item.active ? "page" : undefined}
+                    data-active={item.active ? "true" : "false"}
                     onClick={() => setMobileMenuOpen(false)}
                     className="cm-mobile-nav-link"
                   >

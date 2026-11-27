@@ -242,7 +242,7 @@ export function HomeView() {
                         </Button>
                       ) : (
                         <Button asChild className="cm-btn-cavadas">
-                          <Link href="#servicios">
+                          <Link href="/servicios">
                             <span>{activeHero.ctaLabel}</span>
                             <span className="cm-btn-cavadas-box" aria-hidden="true">
                               <ArrowRightIcon className="cm-btn-cavadas-arrow" />

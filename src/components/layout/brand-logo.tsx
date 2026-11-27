@@ -17,7 +17,7 @@ export function BrandLogo({
 
   return (
     <Link
-      href="#inicio"
+      href="/"
       className={cn(
         "inline-flex min-h-11 items-center text-left no-underline rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
         className

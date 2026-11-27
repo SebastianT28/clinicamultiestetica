@@ -52,8 +52,10 @@ export function AppInteractionProvider({ children }: { children: React.ReactNode
       const target = document.getElementById("reserva-cita");
       if (target) {
         target.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
       }
     }
+    setWaModalOpen(true);
   }, []);
 
   const value = useMemo(

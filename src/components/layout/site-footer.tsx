@@ -46,72 +46,72 @@ export function SiteFooter() {
             <h2 className="cm-footer-heading">{dict.footer.exploreHeading}</h2>
             <ul className="m-0 flex list-none flex-col p-0">
               <li>
-                <Link href="#inicio" className="cm-footer-link">
+                <Link href="/" className="cm-footer-link">
                   {dict.nav.home}
                 </Link>
               </li>
               <li>
-                <Link href="#servicios" className="cm-footer-link">
+                <Link href="/servicios" className="cm-footer-link">
                   {dict.nav.services}
                 </Link>
               </li>
               <li>
-                <Link href="#testimonios" className="cm-footer-link">
+                <Link href="/#testimonios" className="cm-footer-link">
                   {dict.nav.reviews}
                 </Link>
               </li>
               <li>
-                <Link href="#quien-soy" className="cm-footer-link">
+                <Link href="/#quien-soy" className="cm-footer-link">
                   {dict.nav.about}
                 </Link>
               </li>
               <li>
-                <Link href="#por-que-dra-gabriela" className="cm-footer-link">
+                <Link href="/#por-que-dra-gabriela" className="cm-footer-link">
                   {dict.nav.blog}
                 </Link>
               </li>
               <li>
-                <Link href="#reserva-cita" className="cm-footer-link">
+                <Link href="/#reserva-cita" className="cm-footer-link">
                   {dict.nav.contactCta}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Columna 3: Servicios Destacados */}
+          {/* Columna 3: Servicios Destacados -> Página /servicios */}
           <div className="lg:col-span-3">
             <h2 className="cm-footer-heading">{dict.footer.specialtiesHeading}</h2>
             <ul className="m-0 flex list-none flex-col p-0">
               <li>
-                <Link href="#servicios" className="cm-footer-link">
+                <Link href="/servicios#armonizacion-inyectables" className="cm-footer-link">
                   {locale === "es"
                     ? "Armonización con ácido hialurónico"
                     : "Hyaluronic acid harmonization"}
                 </Link>
               </li>
               <li>
-                <Link href="#servicios" className="cm-footer-link">
+                <Link href="/servicios#armonizacion-inyectables" className="cm-footer-link">
                   {locale === "es"
                     ? "Toxina botulínica y colágeno"
                     : "Botulinum toxin & collagen"}
                 </Link>
               </li>
               <li>
-                <Link href="#servicios" className="cm-footer-link">
+                <Link href="/servicios#cirugia-maxilofacial" className="cm-footer-link">
                   {locale === "es"
                     ? "Lifting facial y blefaroplastia"
                     : "Facelift & blepharoplasty"}
                 </Link>
               </li>
               <li>
-                <Link href="#servicios" className="cm-footer-link">
+                <Link href="/servicios#cirugia-maxilofacial" className="cm-footer-link">
                   {locale === "es"
                     ? "Lipopapada y marcación mandibular"
                     : "Chin lipo & jawline contouring"}
                 </Link>
               </li>
               <li>
-                <Link href="#servicios" className="cm-footer-link">
+                <Link href="/servicios#cirugia-corporal" className="cm-footer-link">
                   {locale === "es"
                     ? "Cirugía estética corporal"
                     : "Aesthetic body surgery"}
@@ -125,38 +125,38 @@ export function SiteFooter() {
             <h2 className="cm-footer-heading">{dict.footer.patientCareHeading}</h2>
             <ul className="m-0 flex list-none flex-col p-0">
               <li>
-                <Link href="#reserva-cita" className="cm-footer-link">
+                <Link href="/#reserva-cita" className="cm-footer-link">
                   {dict.footer.claimsBook}
                 </Link>
               </li>
               <li>
-                <Link href="#reserva-cita" className="cm-footer-link">
+                <Link href="/#reserva-cita" className="cm-footer-link">
                   {dict.footer.privacyPolicy}
                 </Link>
               </li>
               <li>
-                <Link href="#reserva-cita" className="cm-footer-link">
+                <Link href="/#reserva-cita" className="cm-footer-link">
                   {dict.footer.termsConditions}
                 </Link>
               </li>
               <li>
-                <Link href="#reserva-cita" className="cm-footer-link">
+                <Link href="/servicios#orientacion-medica" className="cm-footer-link">
                   {dict.footer.valuationTerms}
                 </Link>
               </li>
             </ul>
 
             <div className="mt-4 flex flex-wrap gap-3 text-sm">
-              <Link href="#reserva-cita" className="cm-footer-link">
+              <Link href="/#reserva-cita" className="cm-footer-link">
                 Instagram
               </Link>
-              <Link href="#reserva-cita" className="cm-footer-link">
+              <Link href="/#reserva-cita" className="cm-footer-link">
                 Facebook
               </Link>
-              <Link href="#reserva-cita" className="cm-footer-link">
+              <Link href="/#reserva-cita" className="cm-footer-link">
                 TikTok
               </Link>
-              <Link href="#reserva-cita" className="cm-footer-link">
+              <Link href="/#reserva-cita" className="cm-footer-link">
                 YouTube
               </Link>
             </div>
