@@ -31,7 +31,10 @@ export function AboutView() {
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-14">
             <div className="lg:col-span-6">
               <h1 className="m-0 text-3xl leading-tight tracking-tight text-foreground sm:text-5xl">
-                {dict.hero.title}
+                {dict.hero.titleLead}
+                <span className="cm-accent-sapphire">
+                  {dict.hero.titleAccent}
+                </span>
               </h1>
 
               <p className="mt-4 mb-0 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -42,7 +45,7 @@ export function AboutView() {
                 <Button
                   type="button"
                   onClick={() => openWhatsAppModal()}
-                  className="cm-btn-sapphire h-12 rounded-full px-7 text-sm"
+                  className="cm-btn-gold h-12 rounded-full px-7 text-sm"
                 >
                   <span>{dict.hero.ctaLabel}</span>
                   <ArrowRightIcon className="icon-cap" />
@@ -166,12 +169,15 @@ export function AboutView() {
                 id="mi-especializacion-heading"
                 className="m-0 text-3xl leading-tight tracking-tight text-foreground sm:text-4xl"
               >
-                {dict.specialization.heading}
+                {dict.specialization.headingLead}
+                <span className="cm-accent-sapphire">
+                  {dict.specialization.headingAccent}
+                </span>
               </h2>
 
               <div
                 role="group"
-                aria-label={dict.specialization.heading}
+                aria-label={`${dict.specialization.headingLead}${dict.specialization.headingAccent}`}
                 className="mt-8 flex flex-col gap-3"
               >
                 {dict.specialization.items.map((item) => {
@@ -222,7 +228,7 @@ export function AboutView() {
               <div className="mt-8">
                 <Button
                   asChild
-                  className="cm-btn-sapphire h-12 rounded-full px-7 text-sm"
+                  className="cm-btn-gold h-12 rounded-full px-7 text-sm no-underline"
                 >
                   <Link href="/servicios">
                     <span>{dict.specialization.exploreAllCta}</span>
@@ -275,7 +281,7 @@ export function AboutView() {
                 <Button
                   type="button"
                   onClick={() => openWhatsAppModal()}
-                  className="cm-btn-sapphire h-12 w-full rounded-full px-7 text-sm sm:w-auto"
+                  className="cm-btn-gold h-12 w-full rounded-full px-7 text-sm sm:w-auto"
                 >
                   <span>{dict.closing.primaryCta}</span>
                   <ArrowRightIcon className="icon-cap" />

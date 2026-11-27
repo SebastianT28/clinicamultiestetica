@@ -26,7 +26,8 @@ export interface AboutPillarItem {
 
 export interface AboutPageDictionary {
   hero: {
-    title: string;
+    titleLead: string;
+    titleAccent: string;
     subtitle: string;
     ctaLabel: string;
     portraitPlaceholder: string;
@@ -39,7 +40,8 @@ export interface AboutPageDictionary {
     metrics: AboutMetricItem[];
   };
   specialization: {
-    heading: string;
+    headingLead: string;
+    headingAccent: string;
     exploreAllCta: string;
     items: AboutSpecializationItem[];
   };
@@ -57,7 +59,8 @@ export interface AboutPageDictionary {
 export const ABOUT_PAGE_CONTENT: Record<Locale, AboutPageDictionary> = {
   es: {
     hero: {
-      title: "Dra. Gabriela Delgado Silva",
+      titleLead: "Dra. ",
+      titleAccent: "Gabriela Delgado Silva",
       subtitle:
         "Más de 18 años dedicados a la armonización facial y cirugía maxilofacial con precisión anatómica, ética médica y calidez humana.",
       ctaLabel: "Agendar cita",
@@ -89,7 +92,8 @@ export const ABOUT_PAGE_CONTENT: Record<Locale, AboutPageDictionary> = {
       ],
     },
     specialization: {
-      heading: "Mi Especialización",
+      headingLead: "Mi ",
+      headingAccent: "Especialización",
       exploreAllCta: "Explorar servicios",
       items: [
         {
@@ -166,7 +170,8 @@ export const ABOUT_PAGE_CONTENT: Record<Locale, AboutPageDictionary> = {
   },
   en: {
     hero: {
-      title: "Dr. Gabriela Delgado Silva",
+      titleLead: "Dr. ",
+      titleAccent: "Gabriela Delgado Silva",
       subtitle:
         "Over 18 years dedicated to facial harmonization and maxillofacial surgery with anatomical precision, medical ethics, and human warmth.",
       ctaLabel: "Book appointment",
@@ -198,7 +203,8 @@ export const ABOUT_PAGE_CONTENT: Record<Locale, AboutPageDictionary> = {
       ],
     },
     specialization: {
-      heading: "My Specialization",
+      headingLead: "My ",
+      headingAccent: "Specialization",
       exploreAllCta: "Explore services",
       items: [
         {

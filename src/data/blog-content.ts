@@ -47,7 +47,8 @@ export interface SpecialistEntityRow {
 export interface BlogUiDictionary {
   breadcrumbHome: string;
   breadcrumbBlog: string;
-  indexHeroTitle: string;
+  indexHeroTitleLead: string;
+  indexHeroTitleAccent: string;
   indexHeroSubtitle: string;
   readArticleCta: string;
   indexClosingTitle: string;
@@ -93,7 +94,8 @@ export const BLOG_UI_CONTENT: Record<Locale, BlogUiDictionary> = {
   es: {
     breadcrumbHome: "Inicio",
     breadcrumbBlog: "Blog",
-    indexHeroTitle: "Belleza natural, confianza que se nota",
+    indexHeroTitleLead: "Belleza natural, ",
+    indexHeroTitleAccent: "confianza que se nota",
     indexHeroSubtitle:
       "Guías médicas escritas desde la experiencia de la Dra. Gabriela Delgado y el equipo de Clínica Multiestética para ayudarte a decidir con calma, criterio y seguridad.",
     readArticleCta: "Leer artículo",
@@ -162,7 +164,8 @@ export const BLOG_UI_CONTENT: Record<Locale, BlogUiDictionary> = {
   en: {
     breadcrumbHome: "Home",
     breadcrumbBlog: "Blog",
-    indexHeroTitle: "Natural harmony, confidence that shows",
+    indexHeroTitleLead: "Natural harmony, ",
+    indexHeroTitleAccent: "confidence that shows",
     indexHeroSubtitle:
       "Medical guides written from the clinical experience of Dr. Gabriela Delgado and the Clínica Multiestética team to help you make informed, confident decisions.",
     readArticleCta: "Read article",

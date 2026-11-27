@@ -26,7 +26,8 @@ export interface DetailedServiceFicha {
 
 export interface ServicesPageDictionary {
   hero: {
-    title: string;
+    titleLead: string;
+    titleAccent: string;
     subtitle: string;
     searchLabel: string;
     searchPlaceholder: string;
@@ -37,11 +38,13 @@ export interface ServicesPageDictionary {
     noResultsCta: string;
   };
   specialtiesSection: {
-    title: string;
+    titleLead: string;
+    titleAccent: string;
     units: SpecialtyUnitBlock[];
   };
   catalogSection: {
-    title: string;
+    titleLead: string;
+    titleAccent: string;
     filterAll: string;
     filterHarmonization: string;
     filterMaxillofacial: string;
@@ -60,7 +63,8 @@ export interface ServicesPageDictionary {
 export const SERVICES_PAGE_CONTENT: Record<Locale, ServicesPageDictionary> = {
   es: {
     hero: {
-      title: "Nuestros Servicios",
+      titleLead: "Nuestros ",
+      titleAccent: "Servicios",
       subtitle:
         "Cuéntanos qué te gustaría mejorar y te orientamos hacia el tratamiento ideal dentro de nuestro portafolio.",
       searchLabel: "¿Qué te gustaría mejorar?",
@@ -73,7 +77,8 @@ export const SERVICES_PAGE_CONTENT: Record<Locale, ServicesPageDictionary> = {
       noResultsCta: "Agendar cita",
     },
     specialtiesSection: {
-      title: "Explora cada especialidad",
+      titleLead: "Explora cada ",
+      titleAccent: "especialidad",
       units: [
         {
           id: "armonizacion-inyectables",
@@ -114,7 +119,8 @@ export const SERVICES_PAGE_CONTENT: Record<Locale, ServicesPageDictionary> = {
       ],
     },
     catalogSection: {
-      title: "Tratamientos por especialidad",
+      titleLead: "Tratamientos por ",
+      titleAccent: "especialidad",
       filterAll: "Todos",
       filterHarmonization: "Armonización facial",
       filterMaxillofacial: "Cirugía facial",
@@ -132,7 +138,8 @@ export const SERVICES_PAGE_CONTENT: Record<Locale, ServicesPageDictionary> = {
   },
   en: {
     hero: {
-      title: "Our Services",
+      titleLead: "Our ",
+      titleAccent: "Services",
       subtitle:
         "Tell us what you would like to enhance and we will guide you toward the ideal treatment in our portfolio.",
       searchLabel: "What would you like to improve?",
@@ -145,7 +152,8 @@ export const SERVICES_PAGE_CONTENT: Record<Locale, ServicesPageDictionary> = {
       noResultsCta: "Book appointment",
     },
     specialtiesSection: {
-      title: "Explore each specialty",
+      titleLead: "Explore each ",
+      titleAccent: "specialty",
       units: [
         {
           id: "armonizacion-inyectables",
@@ -186,7 +194,8 @@ export const SERVICES_PAGE_CONTENT: Record<Locale, ServicesPageDictionary> = {
       ],
     },
     catalogSection: {
-      title: "Treatments by specialty",
+      titleLead: "Treatments by ",
+      titleAccent: "specialty",
       filterAll: "All",
       filterHarmonization: "Facial harmonization",
       filterMaxillofacial: "Facial surgery",

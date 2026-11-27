@@ -38,7 +38,10 @@ export function BlogIndexView() {
 
           <div className="mx-auto mt-8 flex max-w-2xl flex-col items-center text-center sm:mt-10">
             <h1 className="m-0 text-3xl leading-tight tracking-tight text-foreground sm:text-5xl">
-              {ui.indexHeroTitle}
+              {ui.indexHeroTitleLead}
+              <span className="cm-accent-sapphire">
+                {ui.indexHeroTitleAccent}
+              </span>
             </h1>
 
             <p className="mt-4 mb-0 max-w-xl text-base leading-relaxed text-muted-foreground">
@@ -112,7 +115,7 @@ export function BlogIndexView() {
                 <Button
                   type="button"
                   onClick={() => openWhatsAppModal()}
-                  className="cm-btn-sapphire h-12 w-full rounded-full px-7 text-sm sm:w-auto"
+                  className="cm-btn-gold h-12 w-full rounded-full px-7 text-sm sm:w-auto"
                 >
                   <span>{ui.primaryConsultCta}</span>
                   <ArrowRightIcon className="icon-cap" />

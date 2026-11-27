@@ -142,7 +142,7 @@ export function BlogArticleView({ slug }: BlogArticleViewProps) {
                     onClick={() =>
                       openWhatsAppModal(article.relatedServiceName)
                     }
-                    className="cm-btn-sapphire h-10 rounded-full px-5 text-xs"
+                    className="cm-btn-gold h-10 rounded-full px-5 text-xs"
                   >
                     {ui.inlineCalloutBookLink}
                   </Button>
@@ -306,7 +306,7 @@ export function BlogArticleView({ slug }: BlogArticleViewProps) {
                     onClick={() =>
                       openWhatsAppModal(article.relatedServiceName)
                     }
-                    className="cm-btn-sapphire h-11 w-full rounded-xl text-sm"
+                    className="cm-btn-gold h-11 w-full rounded-xl text-sm"
                   >
                     {ui.specialistCard.ctaLabel}
                   </Button>
@@ -334,7 +334,7 @@ export function BlogArticleView({ slug }: BlogArticleViewProps) {
                 <Button
                   type="button"
                   onClick={() => openWhatsAppModal(article.relatedServiceName)}
-                  className="cm-btn-sapphire h-12 w-full rounded-full px-7 text-sm sm:w-auto"
+                  className="cm-btn-gold h-12 w-full rounded-full px-7 text-sm sm:w-auto"
                 >
                   <span>{ui.specialistCard.ctaLabel}</span>
                   <ArrowRightIcon className="icon-cap" />

@@ -11,24 +11,24 @@
 
 :root {
   --background: oklch(1 0 0);
-  --foreground: oklch(0.24 0.048 254);
+  --foreground: oklch(0.185 0.02 260);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.24 0.048 254);
+  --card-foreground: oklch(0.185 0.02 260);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.24 0.048 254);
-  --primary: oklch(0.35 0.095 256);
+  --popover-foreground: oklch(0.185 0.02 260);
+  --primary: oklch(0.35 0.098 256);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.968 0.014 84);
-  --secondary-foreground: oklch(0.24 0.048 254);
+  --secondary: oklch(0.964 0.032 85);
+  --secondary-foreground: oklch(0.185 0.02 260);
   --muted: oklch(0.974 0.008 254);
-  --muted-foreground: oklch(0.44 0.028 254);
-  --accent: oklch(0.935 0.028 84);
-  --accent-foreground: oklch(0.24 0.048 254);
+  --muted-foreground: oklch(0.42 0.024 256);
+  --accent: oklch(0.964 0.032 85);
+  --accent-foreground: oklch(0.185 0.02 260);
   --destructive: oklch(0.58 0.19 25);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.91 0.02 84);
-  --input: oklch(0.968 0.008 84);
-  --ring: oklch(0.35 0.095 256);
+  --border: oklch(0.885 0.052 84);
+  --input: oklch(0.972 0.012 84);
+  --ring: oklch(0.762 0.124 83);
   --radius: 0.875rem;
 
   /* Tokens cromáticos Propuesta 1 (Cavadas Azul Imperial + Blanco + Oro Real) */
@@ -48,29 +48,29 @@
   --cm-gold-border-soft: oklch(0.885 0.052 84);
   --cm-gold-surface: oklch(0.964 0.032 85);
 
-  --cm-champagne-header: #EADBC0;
+  --cm-champagne-header: oklch(0.89 0.042 84);
   --cm-champagne-header-glass: oklch(0.89 0.042 84 / 0.94);
-  --cm-champagne-footer: #E4D2B0;
-  --cm-champagne-border: #D5C09B;
-  --cm-champagne-soft: #F7F1E5;
-  --cm-champagne-editorial: oklch(0.946 0.017 82);
-  --cm-champagne-ink: oklch(0.46 0.072 78);
-  --cm-case-after-bg: oklch(0.922 0.01 254);
-  --cm-case-before-bg: oklch(0.835 0.016 254);
-  --cm-case-tag-bg: oklch(1 0 0 / 0.94);
-  --cm-case-badge-after: oklch(0.34 0.092 256 / 0.92);
-  --cm-case-badge-before: oklch(0.22 0.036 254 / 0.88);
-  --cm-white: #FFFFFF;
-  --cm-hero-canvas: #F3F5F8;
-  --cm-navy-deep: #10233E;
-  --cm-sapphire: #1B3B6F;
-  --cm-sapphire-hover: #132B52;
-  --cm-sapphire-tint: #EDF2FA;
-  --cm-gold-star: #C4973B;
-  --cm-muted: #4A5568;
-  --cm-footer-muted: #334763;
-  --cm-line: #EAE2D3;
-  --cm-line-cool: #E2E7F0;
+  --cm-champagne-footer: oklch(0.86 0.052 83);
+  --cm-champagne-border: oklch(0.815 0.086 83);
+  --cm-champagne-soft: oklch(0.964 0.032 85);
+  --cm-champagne-editorial: oklch(0.964 0.032 85);
+  --cm-champagne-ink: oklch(0.585 0.118 80);
+  --cm-case-after-bg: oklch(0.935 0.01 256);
+  --cm-case-before-bg: oklch(0.855 0.016 256);
+  --cm-case-tag-bg: oklch(1 0 0 / 0.96);
+  --cm-case-badge-after: oklch(0.208 0.068 262 / 0.94);
+  --cm-case-badge-before: oklch(0.762 0.124 83 / 0.96);
+  --cm-white: oklch(1 0 0);
+  --cm-hero-canvas: oklch(1 0 0);
+  --cm-navy-deep: oklch(0.185 0.02 260);
+  --cm-sapphire: oklch(0.35 0.098 256);
+  --cm-sapphire-hover: oklch(0.28 0.088 256);
+  --cm-sapphire-tint: oklch(0.964 0.032 85);
+  --cm-gold-star: oklch(0.762 0.124 83);
+  --cm-muted: oklch(0.42 0.024 256);
+  --cm-footer-muted: oklch(0.845 0.02 256);
+  --cm-line: oklch(0.885 0.052 84);
+  --cm-line-cool: oklch(0.885 0.052 84);
   --cm-grey-box: #E3E6EC;
   --cm-grey-box-alt: #D7DCE5;
   --cm-grey-border: #C5CCD8;
@@ -593,8 +593,8 @@ p {
 
 .cm-btn-outline-clean {
   background-color: var(--cm-white);
-  color: var(--cm-navy-deep);
-  border: 0.0625rem solid var(--cm-line);
+  color: var(--cm-ink-black);
+  border: 0.0625rem solid var(--cm-gold-border);
   font-family: var(--font-outfit), system-ui, sans-serif;
   font-weight: 500;
   backdrop-filter: none;
@@ -604,9 +604,9 @@ p {
 
 @media (hover: hover) and (pointer: fine) {
   .cm-btn-outline-clean:hover {
-    background-color: var(--cm-champagne-soft);
-    border-color: var(--cm-champagne-border);
-    color: var(--cm-navy-deep);
+    background-color: var(--cm-gold-surface);
+    border-color: var(--cm-gold);
+    color: var(--cm-ink-black);
     box-shadow: none;
   }
 }
@@ -1006,7 +1006,7 @@ p {
   min-height: 2.75rem;
   padding-inline: 1.125rem;
   border-radius: 9999rem;
-  border: 0.0625rem solid var(--cm-line);
+  border: 0.0625rem solid var(--cm-gold-border);
   background-color: var(--cm-white);
   color: var(--cm-muted);
   font-family: var(--font-outfit), system-ui, sans-serif;
@@ -1016,10 +1016,18 @@ p {
   backdrop-filter: none;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .cm-filter-pill:not([data-active="true"]):hover {
+    background-color: var(--cm-gold-surface);
+    border-color: var(--cm-gold);
+    color: var(--cm-ink-black);
+  }
+}
+
 .cm-filter-pill[data-active="true"] {
-  background-color: var(--cm-sapphire);
-  border-color: var(--cm-sapphire);
-  color: var(--cm-white);
+  background-color: var(--cm-gold);
+  border-color: var(--cm-gold);
+  color: var(--cm-ink-on-gold);
   font-weight: 600;
 }
 
@@ -1282,10 +1290,10 @@ p {
   border-color: var(--cm-line);
 }
 
-/* ─── PÁGINA /SERVICIOS (MINIMALISTA Y LIMPIA — REF: DIANA DUSSAN /TREATMENTS/) ─── */
+/* ─── PÁGINA /SERVICIOS (MINIMALISTA Y LIMPIA — PALETA PROPUESTA 1) ─── */
 .cm-services-hero {
-  background-color: var(--cm-hero-canvas);
-  border-bottom: 0.0625rem solid var(--cm-line-cool);
+  background-color: var(--cm-white);
+  border-bottom: 0.0625rem solid var(--cm-gold-border-soft);
   border-radius: 0 0 1.875rem 1.875rem;
   padding-block: 3.75rem 4rem;
 }
@@ -1305,8 +1313,8 @@ p {
   padding: 0.375rem 0.375rem 0.375rem 1rem;
   border-radius: 9999rem;
   background-color: var(--cm-white);
-  border: 0.0625rem solid var(--cm-line-cool);
-  box-shadow: 0 0.75rem 2rem oklch(0.24 0.048 254 / 0.06);
+  border: 0.0625rem solid var(--cm-gold-border);
+  box-shadow: 0 0.75rem 2rem oklch(0.2 0.04 82 / 0.08);
 }
 
 @media (min-width: 640px) {
@@ -1320,9 +1328,9 @@ p {
   max-width: 48rem;
   border-radius: 1.25rem;
   background-color: var(--cm-white);
-  border: 0.0625rem solid var(--cm-line);
+  border: 0.0625rem solid var(--cm-gold-border);
   padding: 1.25rem;
-  box-shadow: 0 0.75rem 2rem oklch(0.24 0.048 254 / 0.06);
+  box-shadow: 0 0.75rem 2rem oklch(0.2 0.04 82 / 0.08);
 }
 
 @media (min-width: 768px) {
@@ -1348,18 +1356,19 @@ p {
   z-index: 2;
   margin-top: -1.5rem;
   margin-inline: 0.75rem;
-  background-color: var(--cm-champagne-editorial);
+  background-color: var(--cm-gold-surface);
+  border: 0.0625rem solid var(--cm-gold-border);
   border-radius: 0;
   padding: 1.75rem 1.5rem;
-  box-shadow: 0 1.875rem 4.375rem -1.875rem oklch(0.24 0.048 254 / 0.24);
+  box-shadow: 0 1.875rem 4.375rem -1.875rem oklch(0.2 0.04 82 / 0.2);
 }
 
 .cm-specialty-order {
   display: block;
   font-family: var(--font-outfit), system-ui, sans-serif;
   font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--cm-champagne-ink);
+  font-weight: 600;
+  color: var(--cm-gold-icon);
 }
 
 .cm-specialty-rule {
@@ -1367,7 +1376,7 @@ p {
   width: 2rem;
   height: 0.0938rem;
   margin-top: 0.5rem;
-  background-color: var(--cm-champagne-ink);
+  background-color: var(--cm-gold);
 }
 
 .cm-specialty-card-btn {
@@ -1425,22 +1434,42 @@ p {
   height: 100%;
   border-radius: 1.25rem;
   background-color: var(--cm-white);
-  border: 0.0625rem solid var(--cm-line);
+  border: 0.0625rem solid var(--cm-gold-border);
   padding: 1.125rem;
-  transition: border-color 220ms ease;
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .cm-procedure-detail-card:hover {
-    border-color: var(--cm-champagne-border);
+    border-color: var(--cm-gold);
+    box-shadow: 0 0.875rem 2rem oklch(0.2 0.04 82 / 0.1);
   }
 }
 
 .cm-guidance-banner {
+  --foreground: var(--cm-white);
+  --muted-foreground: var(--cm-navy-muted-text);
   border-radius: 1.5rem;
-  background-color: var(--cm-champagne-soft);
-  border: 0.0625rem solid var(--cm-champagne-border);
+  background-color: var(--cm-cavadas-navy);
+  border: 0.0625rem solid var(--cm-gold);
+  color: var(--cm-white);
   padding: 2.5rem 1.5rem;
+}
+
+.cm-guidance-banner .cm-btn-outline-clean {
+  background-color: transparent;
+  color: var(--cm-white);
+  border-color: var(--cm-gold-border);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cm-guidance-banner .cm-btn-outline-clean:hover {
+    background-color: var(--cm-nav-pill-active);
+    border-color: var(--cm-gold);
+    color: var(--cm-gold);
+  }
 }
 
 @media (min-width: 768px) {
@@ -1466,7 +1495,8 @@ p {
   border-radius: 0.875rem;
   overflow: hidden;
   background-color: var(--cm-case-after-bg);
-  box-shadow: 0 0.5rem 1.375rem oklch(0.24 0.048 254 / 0.08);
+  border: 0.0625rem solid var(--cm-gold-border);
+  box-shadow: 0 0.5rem 1.375rem oklch(0.2 0.04 82 / 0.08);
 }
 
 .cm-case-trigger {
@@ -1497,7 +1527,7 @@ p {
 }
 
 .cm-case-trigger:focus-visible {
-  outline: 0.125rem solid var(--cm-sapphire);
+  outline: 0.125rem solid var(--cm-gold);
   outline-offset: -0.125rem;
 }
 
@@ -1605,7 +1635,8 @@ p {
   padding: 0.3125rem 0.5625rem;
   border-radius: 0.625rem;
   background-color: var(--cm-case-tag-bg);
-  color: var(--cm-navy-deep);
+  border: 0.0625rem solid var(--cm-gold-border-soft);
+  color: var(--cm-ink-black);
   font-family: var(--font-outfit), system-ui, sans-serif;
   font-size: 0.6875rem;
   font-weight: 500;
@@ -1640,11 +1671,14 @@ p {
 
 .cm-case-badge[data-phase="before"] {
   background-color: var(--cm-case-badge-before);
+  color: var(--cm-ink-on-gold);
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .cm-case-badge {
-    transition: background-color 420ms ease;
+    transition:
+      background-color 420ms ease,
+      color 420ms ease;
   }
 }
 
@@ -1659,9 +1693,13 @@ p {
   width: 0.375rem;
   height: 0.375rem;
   border-radius: 9999rem;
-  background-color: var(--cm-champagne-header);
+  background-color: var(--cm-gold);
   opacity: 0;
   flex-shrink: 0;
+}
+
+.cm-case-badge[data-phase="before"] .cm-case-badge-dot {
+  background-color: var(--cm-ink-on-gold);
 }
 
 .cm-case-badge[data-looping="true"] .cm-case-badge-dot {
@@ -1707,7 +1745,7 @@ p {
   height: 100%;
   border-radius: 1rem;
   background-color: var(--cm-white);
-  border: 0.0625rem solid var(--cm-line);
+  border: 0.0625rem solid var(--cm-gold-border);
   overflow: hidden;
   box-shadow: none;
   backdrop-filter: none;
@@ -1725,7 +1763,8 @@ p {
   padding: 0.3125rem 0.625rem;
   border-radius: 0.625rem;
   background-color: var(--cm-case-tag-bg);
-  color: var(--cm-navy-deep);
+  border: 0.0625rem solid var(--cm-gold-border-soft);
+  color: var(--cm-ink-black);
   font-family: var(--font-outfit), system-ui, sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
@@ -1739,7 +1778,7 @@ p {
   font-family: var(--font-outfit), system-ui, sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--cm-navy-deep);
+  color: var(--cm-ink-black);
   transition: color 200ms ease;
 }
 
@@ -1750,8 +1789,8 @@ p {
 @media (hover: hover) and (pointer: fine) {
   .cm-blog-card-link:hover .cm-blog-card,
   .cm-blog-card-link:hover .cm-related-card {
-    border-color: var(--cm-champagne-border);
-    box-shadow: 0 0.875rem 2rem oklch(0.24 0.048 254 / 0.07);
+    border-color: var(--cm-gold);
+    box-shadow: 0 0.875rem 2rem oklch(0.2 0.04 82 / 0.1);
   }
 
   .cm-blog-card-link:hover .cm-blog-card-title,
@@ -1795,8 +1834,8 @@ p {
 
 .cm-article-callout {
   border-radius: 1rem;
-  background-color: var(--cm-champagne-soft);
-  border: 0.0625rem solid var(--cm-champagne-border);
+  background-color: var(--cm-gold-surface);
+  border: 0.0625rem solid var(--cm-gold-border);
   padding: 1.5rem;
   box-shadow: none;
   backdrop-filter: none;
@@ -1823,7 +1862,7 @@ p {
   padding: 0.3125rem 0.5625rem;
   border-radius: 0.5rem;
   background-color: var(--cm-case-badge-before);
-  color: var(--cm-white);
+  color: var(--cm-ink-on-gold);
   font-family: var(--font-outfit), system-ui, sans-serif;
   font-size: 0.6875rem;
   font-weight: 600;
@@ -1832,18 +1871,19 @@ p {
 
 .cm-article-case-pill--after {
   background-color: var(--cm-case-badge-after);
+  color: var(--cm-white);
 }
 
 .cm-faq-card {
   border-radius: 0.875rem;
   background-color: var(--cm-white);
-  border: 0.0625rem solid var(--cm-line);
+  border: 0.0625rem solid var(--cm-gold-border);
 }
 
 .cm-specialist-card {
   border-radius: 1rem;
   background-color: var(--cm-white);
-  border: 0.0625rem solid var(--cm-line);
+  border: 0.0625rem solid var(--cm-gold-border);
   overflow: hidden;
   box-shadow: none;
   backdrop-filter: none;
@@ -1851,11 +1891,14 @@ p {
 }
 
 .cm-specialist-header {
+  --foreground: var(--cm-white);
   display: flex;
   align-items: center;
   gap: 1rem;
   padding: 1.25rem 1.25rem 1.125rem;
-  border-bottom: 0.125rem solid var(--cm-navy-deep);
+  background-color: var(--cm-cavadas-navy);
+  color: var(--cm-white);
+  border-bottom: 0.125rem solid var(--cm-gold);
 }
 
 @media (min-width: 640px) {
@@ -1873,7 +1916,7 @@ p {
 }
 
 .cm-specialist-row[data-striped="true"] {
-  background-color: var(--cm-champagne-soft);
+  background-color: var(--cm-gold-surface);
 }
 
 .cm-specialist-dt {
@@ -1881,7 +1924,7 @@ p {
   font-family: var(--font-outfit), system-ui, sans-serif;
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--cm-navy-deep);
+  color: var(--cm-ink-black);
 }
 
 .cm-specialist-dd {
@@ -1898,7 +1941,7 @@ p {
   height: 100%;
   border-radius: 0.875rem;
   background-color: var(--cm-white);
-  border: 0.0625rem solid var(--cm-line);
+  border: 0.0625rem solid var(--cm-gold-border);
   overflow: hidden;
   box-shadow: none;
   backdrop-filter: none;
@@ -1921,9 +1964,12 @@ p {
 }
 
 .cm-about-story-band {
-  background-color: var(--cm-champagne-soft);
-  border-top: 0.0625rem solid var(--cm-line);
-  border-bottom: 0.0625rem solid var(--cm-line);
+  --foreground: var(--cm-white);
+  --muted-foreground: var(--cm-navy-muted-text);
+  background-color: var(--cm-cavadas-navy);
+  color: var(--cm-white);
+  border-top: 0.0625rem solid var(--cm-gold);
+  border-bottom: 0.0625rem solid var(--cm-gold);
   padding-block: 4rem;
 }
 
@@ -1937,7 +1983,7 @@ p {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
-  border-top: 0.0625rem solid var(--cm-champagne-border);
+  border-top: 0.0625rem solid var(--cm-navy-line);
 }
 
 @media (min-width: 640px) {
@@ -1952,7 +1998,7 @@ p {
   font-size: clamp(1.875rem, 3.2vw, 2.5rem);
   font-weight: 600;
   line-height: 1.1;
-  color: var(--cm-navy-deep);
+  color: var(--cm-gold);
 }
 
 /* Escenario e indicador vertical interactivo estilo Peachy Studio */
@@ -1960,8 +2006,8 @@ p {
   position: relative;
   border-radius: 1.5rem;
   overflow: hidden;
-  background-color: var(--cm-champagne-editorial);
-  border: 0.0625rem solid var(--cm-line);
+  background-color: var(--cm-gold-surface);
+  border: 0.0625rem solid var(--cm-gold-border);
 }
 
 .cm-peachy-brackets {
@@ -2028,12 +2074,12 @@ p {
 .cm-peachy-rail-indicator {
   width: 0.1875rem;
   border-radius: 9999rem;
-  background-color: var(--cm-line-cool);
+  background-color: var(--cm-gold-border-soft);
   flex-shrink: 0;
 }
 
 .cm-peachy-rail-indicator[data-active="true"] {
-  background-color: var(--cm-sapphire);
+  background-color: var(--cm-gold-rich);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -2106,7 +2152,8 @@ p {
   height: 100%;
   border-radius: 1.25rem;
   background-color: var(--cm-white);
-  border: 0.0625rem solid var(--cm-line);
+  border: 0.0625rem solid var(--cm-gold-border);
+  border-bottom: 0.125rem solid var(--cm-gold);
   padding: 1.75rem 1.625rem;
   text-align: center;
   box-shadow: none;

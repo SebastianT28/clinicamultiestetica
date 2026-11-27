@@ -89,7 +89,8 @@ export function ServicesView() {
         <div className="cm-container">
           <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
             <h1 className="m-0 text-3xl leading-tight tracking-tight text-foreground sm:text-5xl">
-              {dict.hero.title}
+              {dict.hero.titleLead}
+              <span className="cm-accent-sapphire">{dict.hero.titleAccent}</span>
             </h1>
 
             <p className="mt-4 mb-0 max-w-xl text-base leading-relaxed text-muted-foreground">
@@ -114,7 +115,7 @@ export function ServicesView() {
               />
               <Button
                 type="submit"
-                className="cm-btn-sapphire h-11 shrink-0 rounded-full px-6 text-sm"
+                className="cm-btn-gold h-11 shrink-0 rounded-full px-6 text-sm"
               >
                 <SearchIcon className="size-4" />
                 <span>{dict.hero.searchBtn}</span>
@@ -161,7 +162,7 @@ export function ServicesView() {
                           type="button"
                           size="sm"
                           onClick={() => openWhatsAppModal(match.title)}
-                          className="cm-btn-sapphire h-9 shrink-0 rounded-full px-4 text-xs"
+                          className="cm-btn-gold h-9 shrink-0 rounded-full px-4 text-xs"
                         >
                           {dict.catalogSection.consultBtn}
                         </Button>
@@ -176,7 +177,7 @@ export function ServicesView() {
                     <Button
                       type="button"
                       onClick={() => openWhatsAppModal(submittedQuery)}
-                      className="cm-btn-sapphire h-10 shrink-0 rounded-full px-5 text-xs"
+                      className="cm-btn-gold h-10 shrink-0 rounded-full px-5 text-xs"
                     >
                       {dict.hero.noResultsCta}
                     </Button>
@@ -192,7 +193,10 @@ export function ServicesView() {
       <section id="especialidades" className="cm-section">
         <div className="cm-container">
           <h2 className="m-0 text-center text-3xl leading-tight tracking-tight text-foreground sm:text-5xl">
-            {dict.specialtiesSection.title}
+            {dict.specialtiesSection.titleLead}
+            <span className="cm-accent-sapphire">
+              {dict.specialtiesSection.titleAccent}
+            </span>
           </h2>
 
           <div className="mt-12 flex flex-col gap-16 lg:mt-16 lg:gap-24">
@@ -232,7 +236,7 @@ export function ServicesView() {
                       <Button
                         type="button"
                         onClick={() => jumpToSpecialtyCatalog(unit.id)}
-                        className="cm-btn-sapphire cm-specialty-card-btn"
+                        className="cm-btn-gold cm-specialty-card-btn"
                       >
                         {unit.exploreCta}
                       </Button>
@@ -253,12 +257,15 @@ export function ServicesView() {
         <div className="cm-container">
           <div className="flex flex-col items-center text-center">
             <h2 className="m-0 text-3xl leading-tight tracking-tight text-foreground sm:text-4xl">
-              {dict.catalogSection.title}
+              {dict.catalogSection.titleLead}
+              <span className="cm-accent-sapphire">
+                {dict.catalogSection.titleAccent}
+              </span>
             </h2>
 
             <div
               role="group"
-              aria-label={dict.catalogSection.title}
+              aria-label={`${dict.catalogSection.titleLead}${dict.catalogSection.titleAccent}`}
               className="mt-7 flex flex-wrap items-center justify-center gap-2"
             >
               {(
@@ -350,7 +357,7 @@ export function ServicesView() {
                 <Button
                   type="button"
                   onClick={() => openWhatsAppModal()}
-                  className="cm-btn-sapphire h-12 w-full rounded-full px-7 text-sm sm:w-auto"
+                  className="cm-btn-gold h-12 w-full rounded-full px-7 text-sm sm:w-auto"
                 >
                   <span>{dict.guidanceBanner.primaryCta}</span>
                   <ArrowRightIcon className="icon-cap" />
