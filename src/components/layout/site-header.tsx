@@ -44,7 +44,11 @@ export function SiteHeader() {
       active:
         pathname === "/testimonios" || pathname.startsWith("/testimonios/"),
     },
-    { href: "/#quien-soy", label: dict.about, active: false },
+    {
+      href: "/quien-soy",
+      label: dict.about,
+      active: pathname === "/quien-soy" || pathname.startsWith("/quien-soy/"),
+    },
     {
       href: "/blog",
       label: dict.blog,
