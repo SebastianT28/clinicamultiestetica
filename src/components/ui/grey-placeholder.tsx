@@ -8,6 +8,7 @@ interface GreyPlaceholderProps {
   className?: string;
   isVideo?: boolean;
   afterState?: boolean;
+  circle?: boolean;
 }
 
 export function GreyPlaceholder({
@@ -17,15 +18,17 @@ export function GreyPlaceholder({
   className,
   isVideo = false,
   afterState = false,
+  circle = false,
 }: GreyPlaceholderProps) {
   return (
     <div
       data-after={afterState ? "true" : "false"}
+      data-circle={circle ? "true" : "false"}
       className={cn("cm-grey-placeholder", aspectClassName, className)}
     >
       {isVideo && (
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-card text-foreground">
-          <PlaySolidIcon className="h-5 w-5" />
+        <span className="flex size-12 items-center justify-center rounded-full bg-card text-foreground">
+          <PlaySolidIcon className="size-5" />
         </span>
       )}
       <span className="max-w-[24ch] font-sans text-sm font-medium leading-snug text-foreground/75">

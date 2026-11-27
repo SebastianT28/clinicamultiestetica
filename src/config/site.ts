@@ -14,13 +14,14 @@ export interface ClinicServiceItem {
 }
 
 export const SITE_CONFIG = {
-  brandName: "Clínica Multiestética",
+  brandName: "Dra. Gabriela Delgado",
+  secondaryBrandName: "Clínica Multiestética",
   founderName: "Dra. Gabriela Delgado Silva",
   founderRoleEs: "Cirujana Maxilofacial y Especialista en Armonización Facial",
   founderRoleEn: "Maxillofacial Surgeon & Facial Harmonization Specialist",
   yearsExperience: "+18",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://clinicamultiestetica.pe",
-  secondaryDomain: "https://clinicamultiestetica.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://dragabydelgado.com",
+  secondaryDomain: "https://clinicamultiestetica.pe",
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "51960928384",
   whatsappDisplay: "+51 960 928 384",
   contactEmail: "gads1989.28@gmail.com",

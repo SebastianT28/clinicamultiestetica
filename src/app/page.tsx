@@ -1,28 +1,25 @@
 import { HomeView } from "@/components/home/home-view";
 import { CLINIC_SERVICES, SITE_CONFIG } from "@/config/site";
-import { HOME_CONTENT } from "@/data/home-content";
 
 export default async function HomePage() {
   "use cache";
-  const faqEntities = HOME_CONTENT.es.faqSection.items.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  }));
 
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "MedicalClinic",
-        "@id": `${SITE_CONFIG.url}/#clinic`,
-        name: SITE_CONFIG.brandName,
+        "@type": "Physician",
+        "@id": `${SITE_CONFIG.url}/#doctora`,
+        name: SITE_CONFIG.founderName,
+        alternateName: SITE_CONFIG.brandName,
         url: SITE_CONFIG.url,
+        jobTitle: SITE_CONFIG.founderRoleEs,
         telephone: SITE_CONFIG.whatsappDisplay,
         email: SITE_CONFIG.contactEmail,
+        medicalSpecialty: ["Maxillofacial", "PlasticSurgery"],
+        worksFor: {
+          "@id": `${SITE_CONFIG.url}/#clinic`,
+        },
         address: {
           "@type": "PostalAddress",
           streetAddress: SITE_CONFIG.address.street,
@@ -30,28 +27,28 @@ export default async function HomePage() {
           addressRegion: SITE_CONFIG.address.city,
           addressCountry: SITE_CONFIG.address.countryCode,
         },
-        medicalSpecialty: ["PlasticSurgery", "Maxillofacial"],
+      },
+      {
+        "@type": "MedicalClinic",
+        "@id": `${SITE_CONFIG.url}/#clinic`,
+        name: SITE_CONFIG.secondaryBrandName,
+        url: SITE_CONFIG.url,
+        telephone: SITE_CONFIG.whatsappDisplay,
+        email: SITE_CONFIG.contactEmail,
+        founder: {
+          "@id": `${SITE_CONFIG.url}/#doctora`,
+        },
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: SITE_CONFIG.address.street,
+          addressLocality: SITE_CONFIG.address.district,
+          addressRegion: SITE_CONFIG.address.city,
+          addressCountry: SITE_CONFIG.address.countryCode,
+        },
         availableService: CLINIC_SERVICES.map((svc) => ({
           "@type": "MedicalProcedure",
           name: svc.nameEs,
         })),
-        founder: {
-          "@id": `${SITE_CONFIG.url}/#founder`,
-        },
-      },
-      {
-        "@type": "Physician",
-        "@id": `${SITE_CONFIG.url}/#founder`,
-        name: SITE_CONFIG.founderName,
-        jobTitle: SITE_CONFIG.founderRoleEs,
-        worksFor: {
-          "@id": `${SITE_CONFIG.url}/#clinic`,
-        },
-      },
-      {
-        "@type": "FAQPage",
-        "@id": `${SITE_CONFIG.url}/#faq`,
-        mainEntity: faqEntities,
       },
     ],
   };

@@ -12,7 +12,7 @@ export function SiteHeader() {
   const {
     locale,
     setLocale,
-    openWhatsAppModal,
+    scrollToBookingForm,
     mobileMenuOpen,
     setMobileMenuOpen,
   } = useAppInteraction();
@@ -30,11 +30,11 @@ export function SiteHeader() {
   }, []);
 
   const navItems = [
-    { href: "#casos-destacados", label: dict.cases },
-    { href: "#procedimientos", label: dict.procedures },
-    { href: "#nosotros", label: dict.clinic },
+    { href: "#inicio", label: dict.home },
+    { href: "#servicios", label: dict.services },
     { href: "#testimonios", label: dict.reviews },
-    { href: "#preguntas", label: dict.faq },
+    { href: "#quien-soy", label: dict.about },
+    { href: "#por-que-dra-gabriela", label: dict.blog },
   ];
 
   return (
@@ -45,15 +45,15 @@ export function SiteHeader() {
     >
       <div className="cm-container">
         <div className="cm-header-bar">
-          <BrandLogo />
+          <BrandLogo className="min-w-0" />
 
           <nav
             aria-label={locale === "es" ? "Navegación principal" : "Primary navigation"}
-            className="hidden items-center gap-6 lg:flex"
+            className="hidden items-center gap-5 lg:flex"
           >
-            <ul className="cm-nav-list flex items-center gap-5 list-none m-0 p-0">
+            <ul className="cm-nav-list m-0 flex list-none items-center gap-4 p-0 xl:gap-5">
               {navItems.map((item) => (
-                <li key={item.href}>
+                <li key={item.label}>
                   <Link href={item.href} className="cm-nav-link">
                     {item.label}
                   </Link>
@@ -63,16 +63,16 @@ export function SiteHeader() {
 
             <Button
               type="button"
-              onClick={() => openWhatsAppModal()}
-              className="cm-btn-sapphire h-11 px-6 text-sm"
+              onClick={() => scrollToBookingForm()}
+              className="cm-btn-sapphire h-11 rounded-full px-6 text-sm"
             >
-              {dict.bookCta}
+              {dict.contactCta}
             </Button>
 
             <div
               role="group"
               aria-label={locale === "es" ? "Selector de idioma" : "Language selector"}
-              className="flex items-center border-l border-border pl-3"
+              className="cm-header-divider flex items-center pl-3"
             >
               <Button
                 type="button"
@@ -101,11 +101,11 @@ export function SiteHeader() {
             </div>
           </nav>
 
-          <div className="flex items-center gap-1 lg:hidden">
+          <div className="flex shrink-0 items-center gap-1.5 lg:hidden">
             <div
               role="group"
               aria-label={locale === "es" ? "Selector de idioma" : "Language selector"}
-              className="flex items-center"
+              className="hidden items-center sm:flex"
             >
               <Button
                 type="button"
@@ -141,12 +141,12 @@ export function SiteHeader() {
               aria-controls="cm-mobile-nav-panel"
               aria-label={mobileMenuOpen ? dict.closeMenuLabel : dict.menuLabel}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="cm-btn-outline-warm h-11 w-11"
+              className="cm-btn-outline-clean size-11 rounded-full"
             >
               {mobileMenuOpen ? (
-                <CloseIcon className="h-5 w-5" />
+                <CloseIcon className="size-5" />
               ) : (
-                <MenuBarsIcon className="h-5 w-5" />
+                <MenuBarsIcon className="size-5" />
               )}
             </Button>
           </div>
@@ -158,26 +158,63 @@ export function SiteHeader() {
             aria-label={locale === "es" ? "Menú móvil" : "Mobile menu"}
             className="cm-mobile-dropdown lg:hidden"
           >
-            <ul className="flex flex-col divide-y divide-border list-none m-0 p-0">
+            <ul className="m-0 flex list-none flex-col gap-1 p-0">
               {navItems.map((item) => (
-                <li key={item.href}>
+                <li key={item.label}>
                   <Link
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex min-h-12 items-center justify-between py-2 text-base font-medium text-foreground no-underline"
+                    className="cm-mobile-nav-link"
                   >
                     <span>{item.label}</span>
                   </Link>
                 </li>
               ))}
             </ul>
-            <div className="mt-4 pt-2">
+
+            <div
+              role="group"
+              aria-label={locale === "es" ? "Selector de idioma" : "Language selector"}
+              className="mt-3 flex items-center justify-between border-t border-border pt-3 sm:hidden"
+            >
+              <span className="text-xs text-muted-foreground">
+                {locale === "es" ? "Idioma" : "Language"}
+              </span>
+              <div className="flex items-center gap-1">
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  data-active={locale === "es" ? "true" : "false"}
+                  onClick={() => setLocale("es")}
+                  aria-pressed={locale === "es"}
+                  aria-label="Español"
+                  className="cm-lang-btn rounded-lg shadow-none"
+                >
+                  ES
+                </Button>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  data-active={locale === "en" ? "true" : "false"}
+                  onClick={() => setLocale("en")}
+                  aria-pressed={locale === "en"}
+                  aria-label="English"
+                  className="cm-lang-btn rounded-lg shadow-none"
+                >
+                  EN
+                </Button>
+              </div>
+            </div>
+
+            <div className="mt-4">
               <Button
                 type="button"
-                onClick={() => openWhatsAppModal()}
-                className="cm-btn-sapphire h-12 w-full text-base"
+                onClick={() => scrollToBookingForm()}
+                className="cm-btn-sapphire h-12 w-full rounded-full text-base"
               >
-                {dict.bookCta}
+                {dict.contactCta}
               </Button>
             </div>
           </nav>

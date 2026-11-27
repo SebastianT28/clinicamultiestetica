@@ -17,12 +17,11 @@ import { cn } from "@/lib/utils"
 const buttonVariants = cva(
   [
     "relative inline-flex items-center justify-center gap-2 whitespace-nowrap",
-    "font-sans font-medium tracking-[-0.005em]",
-    "outline-none transition-all duration-base ease-out",
+    "font-heading font-medium tracking-[-0.005em]",
+    "outline-none transition-colors duration-200 ease-out",
     "[backdrop-filter:var(--glass-blur)] [-webkit-backdrop-filter:var(--glass-blur)]",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
     "disabled:pointer-events-none disabled:opacity-50",
-    "active:scale-[0.98]",
   ].join(" "),
   {
     variants: {
@@ -34,7 +33,6 @@ const buttonVariants = cva(
           "shadow-[inset_0_0.0938rem_0_oklch(1_0_0_/_0.75),inset_0_-0.0938rem_0_oklch(1_0_0_/_0.25),0_0.0625rem_0.125rem_oklch(0_0_0_/_0.06),0_0.25rem_0.625rem_oklch(0_0_0_/_0.08)]",
           "hover:bg-[var(--glass-hover-strong)]",
           "hover:shadow-[inset_0_0.0938rem_0_oklch(1_0_0_/_0.85),inset_0_-0.0938rem_0_oklch(1_0_0_/_0.28),0_0.125rem_0.25rem_oklch(0_0_0_/_0.08),0_0.375rem_0.875rem_oklch(0_0_0_/_0.10)]",
-          "hover:-translate-y-px",
         ].join(" "),
 
         // Secondary — mid translucent tier.

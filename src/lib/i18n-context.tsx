@@ -11,6 +11,7 @@ interface AppInteractionContextValue {
   selectedProcedure: string;
   setSelectedProcedure: (proc: string) => void;
   openWhatsAppModal: (procedure?: string) => void;
+  scrollToBookingForm: (procedure?: string) => void;
   mobileMenuOpen: boolean;
   setMobileMenuOpen: (open: boolean) => void;
 }
@@ -42,6 +43,19 @@ export function AppInteractionProvider({ children }: { children: React.ReactNode
     setWaModalOpen(true);
   }, []);
 
+  const scrollToBookingForm = useCallback((procedure?: string) => {
+    if (procedure) {
+      setSelectedProcedure(procedure);
+    }
+    setMobileMenuOpen(false);
+    if (typeof document !== "undefined") {
+      const target = document.getElementById("reserva-cita");
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }, []);
+
   const value = useMemo(
     () => ({
       locale,
@@ -51,10 +65,19 @@ export function AppInteractionProvider({ children }: { children: React.ReactNode
       selectedProcedure,
       setSelectedProcedure,
       openWhatsAppModal,
+      scrollToBookingForm,
       mobileMenuOpen,
       setMobileMenuOpen,
     }),
-    [locale, setLocale, waModalOpen, selectedProcedure, openWhatsAppModal, mobileMenuOpen]
+    [
+      locale,
+      setLocale,
+      waModalOpen,
+      selectedProcedure,
+      openWhatsAppModal,
+      scrollToBookingForm,
+      mobileMenuOpen,
+    ]
   );
 
   return (

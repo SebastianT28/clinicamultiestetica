@@ -6,11 +6,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes: MetadataRoute.Sitemap = [
     "",
-    "/nosotros",
-    "/procedimientos",
-    "/casos-reales",
-    "/preguntas-frecuentes",
-    "/contacto",
+    "/servicios",
+    "/testimonios",
+    "/quien-soy",
+    "/blog",
+    "/contactame",
   ].map((route) => ({
     url: `${baseUrl}${route || "/"}`,
     changeFrequency: "weekly",
@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const serviceRoutes: MetadataRoute.Sitemap = CLINIC_SERVICES.map((service) => ({
-    url: `${baseUrl}/procedimientos/${service.slug}`,
+    url: `${baseUrl}/servicios/${service.slug}`,
     changeFrequency: "monthly",
     priority: 0.8,
   }));

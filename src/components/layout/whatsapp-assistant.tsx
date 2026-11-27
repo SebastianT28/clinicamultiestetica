@@ -32,10 +32,15 @@ export function WhatsAppAssistant() {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [acceptedPrivacy, setAcceptedPrivacy] = useState(true);
+  const [privacyError, setPrivacyError] = useState(false);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!acceptedPrivacy) return;
+    if (!acceptedPrivacy) {
+      setPrivacyError(true);
+      return;
+    }
+    setPrivacyError(false);
 
     const cleanName = name.trim();
     const cleanAge = age.trim();
@@ -43,8 +48,8 @@ export function WhatsAppAssistant() {
 
     const message =
       locale === "es"
-        ? `Hola Dra. Gabriela y equipo de Clínica Multiestética. Soy ${cleanName || "paciente"} (${cleanAge ? `${cleanAge} años` : "mayor de 18 años"}) y deseo agendar una valoración médica para: ${cleanProc || "evaluación personalizada"}.`
-        : `Hello Dr. Gabriela and Clínica Multiestética team. My name is ${cleanName || "a prospective patient"} (${cleanAge ? `age ${cleanAge}` : "18+"}) and I would like to book a consultation for: ${cleanProc || "a personalized assessment"}.`;
+        ? `Hola Dra. Gabriela Delgado y equipo de Clínica Multiestética. Soy ${cleanName || "paciente"} (${cleanAge ? `${cleanAge} años` : "mayor de 18 años"}) y deseo agendar una valoración médica para: ${cleanProc || "evaluación personalizada"}.`
+        : `Hello Dr. Gabriela Delgado and Clínica Multiestética team. My name is ${cleanName || "a prospective patient"} (${cleanAge ? `age ${cleanAge}` : "18+"}) and I would like to book a consultation for: ${cleanProc || "a personalized assessment"}.`;
 
     const url = buildWhatsAppUrl(message);
     window.open(url, "_blank", "noopener,noreferrer");
@@ -70,7 +75,7 @@ export function WhatsAppAssistant() {
           onClick={() => openWhatsAppModal()}
           className="cm-wa-fab"
         >
-          <WhatsAppIcon className="h-7 w-7" />
+          <WhatsAppIcon className="size-7" />
           <span className="cm-wa-fab-badge" aria-hidden="true" />
         </Button>
       )}
@@ -78,7 +83,7 @@ export function WhatsAppAssistant() {
       <Dialog open={waModalOpen} onOpenChange={setWaModalOpen}>
         <DialogContent className="max-w-md rounded-3xl border border-border bg-card p-6 sm:p-7">
           <DialogHeader className="text-left">
-            <DialogTitle className="font-serif text-2xl font-semibold text-foreground">
+            <DialogTitle className="font-heading text-2xl font-medium text-foreground">
               {dict.title}
             </DialogTitle>
             <DialogDescription className="mt-1 text-sm text-muted-foreground">
@@ -114,9 +119,8 @@ export function WhatsAppAssistant() {
               </Label>
               <Input
                 id="wa-modal-age"
-                type="number"
-                min={18}
-                max={99}
+                type="text"
+                inputMode="numeric"
                 required
                 value={age}
                 onChange={(e) => setAge(e.target.value)}
@@ -151,15 +155,24 @@ export function WhatsAppAssistant() {
               <Checkbox
                 id="wa-modal-privacy"
                 checked={acceptedPrivacy}
-                onCheckedChange={(val) => setAcceptedPrivacy(Boolean(val))}
+                onCheckedChange={(val) => {
+                  const checked = Boolean(val);
+                  setAcceptedPrivacy(checked);
+                  if (checked) setPrivacyError(false);
+                }}
               />
               <span>{dict.privacyAccept}</span>
             </Label>
 
+            {privacyError && (
+              <p role="alert" className="m-0 text-xs text-destructive">
+                {dict.privacyError}
+              </p>
+            )}
+
             <Button
               type="submit"
-              disabled={!acceptedPrivacy}
-              className="cm-btn-whatsapp h-12 w-full rounded-xl text-base font-semibold"
+              className="cm-btn-sapphire h-12 w-full rounded-xl text-base"
             >
               {dict.submitBtn}
             </Button>

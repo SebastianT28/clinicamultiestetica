@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { SITE_CONFIG } from "@/config/site";
 import { AppInteractionProvider } from "@/lib/i18n-context";
@@ -7,18 +7,18 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { WhatsAppAssistant } from "@/components/layout/whatsapp-assistant";
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "600"],
   display: "swap",
   preload: true,
 });
 
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500"],
   display: "swap",
   preload: true,
 });
@@ -26,24 +26,25 @@ const jakarta = Plus_Jakarta_Sans({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#FAF8F4",
+  themeColor: "#EADBC0",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   title: {
     default:
-      "Clínica Multiestética & Dra. Gabriela Delgado | Cirugía Estética y Armonización Facial en Arequipa",
-    template: "%s | Clínica Multiestética",
+      "Dra. Gabriela Delgado | Cirujana Maxilofacial y Armonización Facial en Arequipa",
+    template: "%s | Dra. Gabriela Delgado",
   },
   description:
-    "Clínica Multiestética en Arequipa liderada por la Dra. Gabriela Delgado Silva (+18 años de experiencia profesional). Especialistas en armonización facial, cirugía maxilofacial y cirugía estética corporal con resultados naturales.",
+    "Dra. Gabriela Delgado Silva (+18 años de experiencia profesional), Cirujana Maxilofacial y Especialista en Armonización Facial en Arequipa. Directora de Clínica Multiestética: resultados armónicos, seguros y naturales.",
   keywords: [
-    "Clínica Multiestética Arequipa",
+    "Dra. Gabriela Delgado",
     "Dra. Gabriela Delgado Silva",
+    "dragabydelgado.com",
+    "Clínica Multiestética Arequipa",
     "armonización facial Arequipa",
     "cirujana maxilofacial Arequipa",
-    "cirugía estética facial y corporal Arequipa",
     "blefaroplastia Arequipa",
     "lifting facial Arequipa",
     "lipopapada y marcación mandibular Arequipa",
@@ -51,9 +52,7 @@ export const metadata: Metadata = {
     "ácido hialurónico Arequipa",
     "toxina botulínica Arequipa",
     "bioestimulador de colágeno Arequipa",
-    "liposucción 360 Arequipa",
-    "abdominoplastia Arequipa",
-    "implantes de mamas Arequipa",
+    "cirugía estética corporal Arequipa",
   ],
   alternates: {
     canonical: "/",
@@ -73,7 +72,7 @@ export default function RootLayout({
     <html
       lang="es"
       data-scroll-behavior="smooth"
-      className={`${cormorant.variable} ${jakarta.variable} h-full antialiased`}
+      className={`${outfit.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col font-sans">
         <AppInteractionProvider>

@@ -7,7 +7,7 @@ export function ArrowRightIcon(props: SVGProps<SVGSVGElement>) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.6"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
@@ -26,7 +26,7 @@ export function ChevronLeftIcon(props: SVGProps<SVGSVGElement>) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.6"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
@@ -44,32 +44,13 @@ export function ChevronRightIcon(props: SVGProps<SVGSVGElement>) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.6"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
       {...props}
     >
       <path d="m9 6 6 6-6 6" />
-    </svg>
-  );
-}
-
-export function ContrastHalfIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <circle cx="12" cy="12" r="8.5" />
-      <path d="M12 3.5v17a8.5 8.5 0 0 0 0-17Z" fill="currentColor" stroke="none" />
     </svg>
   );
 }
@@ -114,7 +95,7 @@ export function MapPinIcon(props: SVGProps<SVGSVGElement>) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.6"
+      strokeWidth="1.65"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
@@ -133,7 +114,7 @@ export function ShieldCheckIcon(props: SVGProps<SVGSVGElement>) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.6"
+      strokeWidth="1.65"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
@@ -166,7 +147,7 @@ export function MenuBarsIcon(props: SVGProps<SVGSVGElement>) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.65"
+      strokeWidth="1.75"
       strokeLinecap="round"
       aria-hidden="true"
       {...props}
@@ -185,13 +166,180 @@ export function CloseIcon(props: SVGProps<SVGSVGElement>) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.65"
+      strokeWidth="1.75"
       strokeLinecap="round"
       aria-hidden="true"
       {...props}
     >
       <path d="m6.5 6.5 11 11" />
       <path d="m17.5 6.5-11 11" />
+    </svg>
+  );
+}
+
+/* Íconos médicos finos para Servicios de Excelencia y ¿Por qué la Dra. Gabriela? */
+export function FacialHarmonyIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M12 3.5c-4.2 0-7 3.2-7 7.6 0 4.8 3.2 9.4 7 9.4s7-4.6 7-9.4c0-4.4-2.8-7.6-7-7.6Z" />
+      <path d="M12 3.5v17" strokeDasharray="2 2" />
+      <path d="M6 11h12" strokeDasharray="2 2" />
+      <path d="M9.5 15.2c.8.6 1.6.9 2.5.9s1.7-.3 2.5-.9" />
+    </svg>
+  );
+}
+
+export function MaxillofacialIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M6.5 5.5c0 6.5 1.8 11.2 5.5 14 3.7-2.8 5.5-7.5 5.5-14" />
+      <path d="M4.5 9.5h3" />
+      <path d="M16.5 9.5h3" />
+      <circle cx="12" cy="9.5" r="2.25" />
+    </svg>
+  );
+}
+
+export function CollagenDropIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M12 3.5S6.5 9.8 6.5 14a5.5 5.5 0 0 0 11 0c0-4.2-5.5-10.5-5.5-10.5Z" />
+      <path d="M9.75 14.5a2.5 2.5 0 0 0 2.5 2.25" />
+    </svg>
+  );
+}
+
+export function BodyContourIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M8 4c1 2.2.8 4.6-.4 6.6-1.1 1.8-1.1 4.4.4 6.9.6 1 1 2 1.2 3" />
+      <path d="M16 4c-1 2.2-.8 4.6.4 6.6 1.1 1.8 1.1 4.4-.4 6.9-.6 1-1 2-1.2 3" />
+      <path d="M12 4v16" strokeDasharray="2 2" />
+    </svg>
+  );
+}
+
+export function GlobeTrainingIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M3.8 12h16.4" />
+      <path d="M12 3.5c2.3 2.4 3.6 5.4 3.6 8.5s-1.3 6.1-3.6 8.5c-2.3-2.4-3.6-5.4-3.6-8.5s1.3-6.1 3.6-8.5Z" />
+    </svg>
+  );
+}
+
+export function HeartCareIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M12 19.8s-7-4.35-7-9.6A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 7 3.2c0 5.25-7 9.6-7 9.6Z" />
+      <path d="M9.5 12.2h1.6l.9-1.8 1.1 3.2.9-1.4h1.5" />
+    </svg>
+  );
+}
+
+export function CalendarCheckIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <rect x="3.5" y="5" width="17" height="15.5" rx="2.5" />
+      <path d="M8 3.25v3.5" />
+      <path d="M16 3.25v3.5" />
+      <path d="M3.5 9.5h17" />
+      <path d="m9.25 14.5 2 2 3.75-3.75" />
+    </svg>
+  );
+}
+
+export function HarmonyNodesWatermark(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 220 220"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      aria-hidden="true"
+      {...props}
+    >
+      <circle cx="104" cy="112" r="28" />
+      <circle cx="44" cy="56" r="16" />
+      <circle cx="174" cy="78" r="14" />
+      <circle cx="52" cy="172" r="18" />
+      <circle cx="156" cy="166" r="11" />
+      <path d="M56 67 84 93" />
+      <path d="m130 101 31-17" />
+      <path d="m86 134-21 24" />
+      <path d="m125 131 23 26" />
     </svg>
   );
 }
