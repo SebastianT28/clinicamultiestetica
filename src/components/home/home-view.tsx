@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -25,20 +24,13 @@ import {
   StarSolidIcon,
   WhatsAppIcon,
 } from "@/components/icons/clinic-icons";
-import {
-  buildWhatsAppUrl,
-  SITE_CONFIG,
-  type ServiceCategorySlug,
-} from "@/config/site";
+import { buildWhatsAppUrl, SITE_CONFIG } from "@/config/site";
 import {
   HOME_CONTENT,
   type ServiceIconKind,
   type WhyIconKind,
 } from "@/data/home-content";
 import { useAppInteraction } from "@/lib/i18n-context";
-
-type ServiceFilter = "featured" | "all" | ServiceCategorySlug;
-type BookingModality = "presencial" | "virtual";
 
 function renderServiceIcon(kind: ServiceIconKind) {
   switch (kind) {
@@ -76,69 +68,43 @@ export function HomeView() {
 
   const dict = HOME_CONTENT[locale];
 
-  // Apartado 1: Portada principal de 2 diapositivas (estilo Clínica Cavadas)
+  // Apartado 1: Portada principal minimalista (2 diapositivas)
   const [heroIndex, setHeroIndex] = useState(0);
   const heroSlides = dict.hero.slides;
   const activeHero = heroSlides[heroIndex] ?? heroSlides[0];
 
-  // Apartado 3: Servicios de Excelencia (carrusel de 4 tarjetas en Desktop / 1 en Móvil + filtro)
-  const [serviceFilter, setServiceFilter] = useState<ServiceFilter>("featured");
+  // Apartado 3: Servicios de Excelencia (carrusel limpio de 4 tarjetas)
   const [servicePage, setServicePage] = useState(0);
-
-  // Apartado 7: Formulario limpio de reserva de citas web
-  const [modality, setModality] = useState<BookingModality>("presencial");
-  const [patientName, setPatientName] = useState("");
-  const [patientPhone, setPatientPhone] = useState("");
-  const [patientEmail, setPatientEmail] = useState("");
-  const [preferredDate, setPreferredDate] = useState("");
-  const [notes, setNotes] = useState("");
-  const [privacyAccepted, setPrivacyAccepted] = useState(true);
-  const [privacyError, setPrivacyError] = useState(false);
-  const [bookingConfirmed, setBookingConfirmed] = useState(false);
-
-  const filteredServices = dict.servicesSection.items.filter((item) => {
-    if (serviceFilter === "featured") return item.featured;
-    if (serviceFilter === "all") return true;
-    return item.category === serviceFilter;
-  });
-
   const cardsPerPage = 4;
   const totalServicePages = Math.max(
     1,
-    Math.ceil(filteredServices.length / cardsPerPage)
+    Math.ceil(dict.servicesSection.items.length / cardsPerPage)
   );
   const safeServicePage = Math.min(servicePage, totalServicePages - 1);
-  const visibleServices = filteredServices.slice(
+  const visibleServices = dict.servicesSection.items.slice(
     safeServicePage * cardsPerPage,
     safeServicePage * cardsPerPage + cardsPerPage
   );
 
-  const handleFilterChange = (nextFilter: ServiceFilter) => {
-    setServiceFilter(nextFilter);
-    setServicePage(0);
-  };
+  // Apartado 7: Formulario minimalista de reserva de citas web
+  const [patientName, setPatientName] = useState("");
+  const [patientPhone, setPatientPhone] = useState("");
+  const [patientEmail, setPatientEmail] = useState("");
+  const [privacyAccepted, setPrivacyAccepted] = useState(true);
+  const [privacyError, setPrivacyError] = useState(false);
+  const [bookingConfirmed, setBookingConfirmed] = useState(false);
 
   const buildBookingWhatsAppMessage = () => {
     const cleanName = patientName.trim();
     const cleanPhone = patientPhone.trim();
     const cleanEmail = patientEmail.trim();
     const cleanProc = selectedProcedure.trim();
-    const cleanDate = preferredDate.trim();
-    const cleanNotes = notes.trim();
 
     if (locale === "es") {
-      const modalityText =
-        modality === "presencial"
-          ? "Presencial en Arequipa"
-          : "Orientación virtual previa";
-      return `Hola Dra. Gabriela Delgado y Clínica Multiestética. Solicito reservar una cita desde dragabydelgado.com: Nombre: ${cleanName} · Teléfono: ${cleanPhone} · Correo: ${cleanEmail} · Modalidad: ${modalityText} · Servicio: ${cleanProc}${cleanDate ? ` · Fecha tentativa: ${cleanDate}` : ""}${cleanNotes ? ` · Comentario: ${cleanNotes}` : ""}.`;
+      return `Hola Dra. Gabriela Delgado y Clínica Multiestética. Solicito reservar una cita desde dragabydelgado.com: Nombre: ${cleanName} · Teléfono: ${cleanPhone} · Correo: ${cleanEmail} · Servicio: ${cleanProc}.`;
     }
 
-    const modalityText =
-      modality === "presencial"
-        ? "In-person in Arequipa"
-        : "Initial virtual guidance";
-    return `Hello Dr. Gabriela Delgado and Clínica Multiestética. I would like to book an appointment via dragabydelgado.com: Name: ${cleanName} · Phone: ${cleanPhone} · Email: ${cleanEmail} · Modality: ${modalityText} · Service: ${cleanProc}${cleanDate ? ` · Preferred date: ${cleanDate}` : ""}${cleanNotes ? ` · Goal: ${cleanNotes}` : ""}.`;
+    return `Hello Dr. Gabriela Delgado and Clínica Multiestética. I would like to book an appointment via dragabydelgado.com: Name: ${cleanName} · Phone: ${cleanPhone} · Email: ${cleanEmail} · Service: ${cleanProc}.`;
   };
 
   const handleBookingSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -153,23 +119,17 @@ export function HomeView() {
 
   return (
     <main id="inicio">
-      {/* ─── APARTADO 1: PORTADA PRINCIPAL (HERO MARCA PERSONAL ESTILO CLÍNICA CAVADAS) ─── */}
+      {/* ─── APARTADO 1: PORTADA PRINCIPAL MINIMALISTA ─── */}
       <section className="cm-hero-outer">
         <div className="cm-hero-stage">
           <div className="cm-container">
-            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10">
-              {/* Columna Izquierda: Insignia + H1 Outfit 600 + Controles de Diapositiva */}
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
               <div className="flex flex-col items-start lg:col-span-6">
-                <div className="cm-hero-badge-bar">
-                  <span className="cm-hero-badge-solid">{activeHero.badgeTag}</span>
-                  <span className="cm-hero-badge-text">{activeHero.badgeText}</span>
-                </div>
-
-                <h1 className="mt-5 mb-0 text-3xl leading-tight tracking-tight text-foreground sm:text-5xl xl:text-[3.375rem] xl:leading-[1.12]">
+                <h1 className="m-0 text-3xl leading-tight tracking-tight text-foreground sm:text-5xl xl:text-[3.375rem] xl:leading-[1.12]">
                   {activeHero.title}
                 </h1>
 
-                <div className="mt-7 flex items-center gap-3">
+                <div className="mt-8 flex items-center gap-3">
                   <div
                     role="group"
                     aria-label={
@@ -212,14 +172,12 @@ export function HomeView() {
                 </div>
               </div>
 
-              {/* Columna Derecha: Retrato/Video de la Dra. Gabriela + Tarjeta Blanca Biselada (45°) */}
               <div className="relative lg:col-span-6 lg:pb-6">
                 <div className="lg:pr-8">
                   <GreyPlaceholder
                     isVideo={Boolean(activeHero.isVideo)}
                     aspectClassName="aspect-[4/5] sm:aspect-[16/11] lg:aspect-[5/4]"
                     title={activeHero.portraitTitle}
-                    subtitle={activeHero.portraitSubtitle}
                   />
                 </div>
 
@@ -259,19 +217,11 @@ export function HomeView() {
         </div>
       </section>
 
-      {/* ─── APARTADO 2: MARCA PERSONAL Y ESPECIALIZACIÓN (ESTILO "ATENCIÓN QUIRÚRGICA ESPECIALIZADA") ─── */}
+      {/* ─── APARTADO 2: ESPECIALIZACIÓN Y MARCA PERSONAL ─── */}
       <section id="especializacion" className="cm-section">
         <div className="cm-container">
-          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-12">
-            {/* Columna Izquierda (~58%): Título en dos tonos + Retrato con Burbuja de Cita */}
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-14">
             <div className="lg:col-span-7">
-              <div className="mb-4">
-                <span className="cm-pill-tag">
-                  <span className="cm-pill-dot" aria-hidden="true" />
-                  <span>{dict.specialization.pill}</span>
-                </span>
-              </div>
-
               <h2 className="m-0 text-3xl leading-tight tracking-tight text-foreground sm:text-4xl xl:text-[2.875rem] xl:leading-[1.15]">
                 {dict.specialization.titleLead}
                 <span className="cm-accent-sapphire">
@@ -284,11 +234,10 @@ export function HomeView() {
                   <GreyPlaceholder
                     aspectClassName="aspect-[4/3]"
                     title={dict.specialization.portraitTitle}
-                    subtitle={dict.specialization.portraitSubtitle}
                   />
                 </div>
 
-                <div className="md:col-span-4 md:-ml-12 md:mb-4 z-10">
+                <div className="z-10 md:col-span-4 md:-ml-12 md:mb-4">
                   <blockquote className="cm-quote-bubble m-0">
                     <p className="m-0 text-sm leading-relaxed text-primary-foreground">
                       {dict.specialization.quote}
@@ -301,35 +250,17 @@ export function HomeView() {
               </div>
             </div>
 
-            {/* Columna Derecha (~42%): Indicador Monumental 18+ + Avatares de Confianza + CTA */}
-            <div className="flex flex-col items-start lg:col-span-5 lg:pt-8">
+            <div className="flex flex-col items-start lg:col-span-5">
               <div className="flex flex-col">
-                <span className="cm-giant-stat">{dict.specialization.statNumber}</span>
+                <span className="cm-giant-stat">
+                  {dict.specialization.statNumber}
+                </span>
                 <span className="mt-2 font-heading text-base font-medium text-foreground">
                   {dict.specialization.statCaption}
                 </span>
               </div>
 
-              <div className="mt-7 flex items-center gap-4">
-                <div className="flex items-center" aria-hidden="true">
-                  <span className="cm-avatar-circle bg-card p-1">
-                    <Image
-                      src="/brand/isotipo-dra-gabriela.png"
-                      alt=""
-                      width={64}
-                      height={64}
-                      className="size-9 object-contain"
-                    />
-                  </span>
-                  <span className="cm-avatar-circle">CM</span>
-                  <span className="cm-avatar-circle">COP</span>
-                </div>
-                <h3 className="m-0 text-sm leading-snug text-foreground sm:text-base">
-                  {dict.specialization.trustHeading}
-                </h3>
-              </div>
-
-              <p className="mt-5 mb-0 text-base leading-relaxed text-muted-foreground">
+              <p className="mt-6 mb-0 text-base leading-relaxed text-muted-foreground">
                 {dict.specialization.description}
               </p>
 
@@ -350,80 +281,22 @@ export function HomeView() {
         </div>
       </section>
 
-      {/* Cinta divisoria de especialidades estilo Clínica Cavadas */}
-      <div className="cm-specialty-band" aria-hidden="true">
-        <div className="cm-specialty-track">
-          {[...dict.specialization.tickerItems, ...dict.specialization.tickerItems].map(
-            (label, idx) => (
-              <span key={`${label}-${idx}`} className="cm-specialty-item">
-                <span>{label}</span>
-                <span className="cm-specialty-sep" />
-              </span>
-            )
-          )}
-        </div>
-      </div>
-
-      {/* ─── APARTADO 3: SERVICIOS DE EXCELENCIA (CARRUSEL + TARJETA HOVER CLÍNICA CAVADAS) ─── */}
-      <section id="servicios" className="cm-section">
+      {/* ─── APARTADO 3: SERVICIOS DE EXCELENCIA (CARRUSEL LIMPIO DE 4 TARJETAS) ─── */}
+      <section id="servicios" className="cm-section cm-section-bordered">
         <div className="cm-container">
-          <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-            <span className="cm-pill-tag">
-              <span className="cm-pill-dot" aria-hidden="true" />
-              <span>{dict.servicesSection.pill}</span>
-            </span>
-
-            <h2 className="mt-4 mb-0 text-3xl leading-tight tracking-tight text-foreground sm:text-4xl xl:text-[2.875rem]">
+          <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
+            <h2 className="m-0 text-3xl leading-tight tracking-tight text-foreground sm:text-4xl xl:text-[2.875rem]">
               {dict.servicesSection.titleLead}
               <span className="cm-accent-sapphire">
                 {dict.servicesSection.titleAccent}
               </span>
             </h2>
 
-            <p className="mt-3 mb-0 max-w-2xl text-base text-muted-foreground">
+            <p className="mt-3 mb-0 text-base text-muted-foreground">
               {dict.servicesSection.subtitle}
             </p>
           </div>
 
-          {/* Filtros por unidad médica (los 16 servicios del brief organizados) */}
-          <div
-            role="group"
-            aria-label={dict.servicesSection.pill}
-            className="mt-8 flex flex-wrap items-center justify-center gap-2"
-          >
-            {(
-              [
-                { id: "featured", label: dict.servicesSection.filterFeatured },
-                {
-                  id: "cirugia-perfilamiento-facial",
-                  label: dict.servicesSection.filterFacialSurgery,
-                },
-                {
-                  id: "armonizacion-facial-piel",
-                  label: dict.servicesSection.filterHarmonization,
-                },
-                {
-                  id: "cirugia-estetica-corporal",
-                  label: dict.servicesSection.filterBodySurgery,
-                },
-                { id: "all", label: dict.servicesSection.filterAll },
-              ] as const
-            ).map((tab) => (
-              <Button
-                key={tab.id}
-                type="button"
-                variant="outline"
-                aria-pressed={serviceFilter === tab.id}
-                data-active={serviceFilter === tab.id ? "true" : "false"}
-                onClick={() => handleFilterChange(tab.id)}
-                className="cm-filter-pill"
-              >
-                {tab.label}
-              </Button>
-            ))}
-          </div>
-
-          {/* Carrusel de 4 tarjetas (como steps/85 y steps/97 de clinicacavadas.es) */}
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {visibleServices.map((service) => (
               <article key={service.slug} className="cm-service-card">
@@ -444,28 +317,22 @@ export function HomeView() {
 
                 <div className="mt-auto pt-2">
                   <div className="cm-service-divider" />
-                  <div className="flex items-center justify-between gap-2">
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      onClick={() => scrollToBookingForm(service.title)}
-                      className="cm-service-action"
-                    >
-                      <span>{dict.servicesSection.cardActionLabel}</span>
-                      <ArrowRightIcon className="cm-service-action-arrow" />
-                    </Button>
-                    <span className="text-xs text-muted-foreground">
-                      {service.specialistTag}
-                    </span>
-                  </div>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    onClick={() => scrollToBookingForm(service.title)}
+                    className="cm-service-action"
+                  >
+                    <span>{dict.servicesSection.cardActionLabel}</span>
+                    <ArrowRightIcon className="cm-service-action-arrow" />
+                  </Button>
                 </div>
               </article>
             ))}
           </div>
 
-          {/* Controles circulares + puntos de paginación con indicador de posición */}
-          {totalServicePages > 1 && (
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-9 flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-2">
               <Button
                 type="button"
                 size="icon"
@@ -509,34 +376,37 @@ export function HomeView() {
                 <ChevronRightIcon className="size-5" />
               </Button>
             </div>
-          )}
+
+            <Button
+              asChild
+              variant="outline"
+              className="cm-btn-outline-clean h-11 rounded-full px-6 text-sm"
+            >
+              <Link href="/servicios">
+                <span>{dict.servicesSection.viewAllLabel}</span>
+                <ArrowRightIcon className="icon-cap" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* ─── APARTADO 4: HISTORIA PERSONAL DE LA DOCTORA (ESTILO "DESDE 1994. CIRUJANO...") ─── */}
+      {/* ─── APARTADO 4: HISTORIA PERSONAL DE LA DRA. GABRIELA DELGADO ─── */}
       <section id="quien-soy" className="cm-section cm-section-bordered">
         <div className="cm-container">
           <div className="cm-story-shell">
             <div className="grid grid-cols-1 lg:grid-cols-12">
-              {/* Columna Izquierda (~36%): Retrato vertical completo */}
-              <div className="p-4 sm:p-6 lg:col-span-4 lg:p-0">
+              <div className="p-4 sm:p-6 lg:col-span-5 lg:p-0">
                 <GreyPlaceholder
-                  aspectClassName="aspect-[3/4] lg:h-full lg:aspect-auto"
+                  aspectClassName="aspect-[4/5] lg:h-full lg:aspect-auto"
                   className="lg:rounded-none lg:border-0"
                   title={dict.storySection.portraitTitle}
-                  subtitle={dict.storySection.portraitSubtitle}
                 />
               </div>
 
-              {/* Columna Derecha (~64%): Biografía personal, viñetas, cita y contadores */}
-              <div className="flex flex-col justify-between p-6 sm:p-10 lg:col-span-8 lg:p-12">
+              <div className="flex flex-col justify-between p-6 sm:p-10 lg:col-span-7 lg:p-12">
                 <div>
-                  <span className="cm-pill-tag">
-                    <span className="cm-pill-dot" aria-hidden="true" />
-                    <span>{dict.storySection.pill}</span>
-                  </span>
-
-                  <h2 className="mt-4 mb-0 text-3xl leading-tight tracking-tight text-foreground sm:text-4xl xl:text-[2.875rem]">
+                  <h2 className="m-0 text-3xl leading-tight tracking-tight text-foreground sm:text-4xl xl:text-[2.875rem]">
                     {dict.storySection.titleLead}
                     <span className="cm-accent-sapphire">
                       {dict.storySection.titleAccent}
@@ -547,7 +417,7 @@ export function HomeView() {
                     {dict.storySection.openingMotto}
                   </p>
 
-                  <div className="mt-4 flex flex-col gap-3 text-base leading-relaxed text-muted-foreground">
+                  <div className="mt-5 flex flex-col gap-3.5 text-base leading-relaxed text-muted-foreground">
                     {dict.storySection.paragraphs.map((paragraph) => (
                       <p key={paragraph.slice(0, 24)} className="m-0">
                         {paragraph}
@@ -555,17 +425,8 @@ export function HomeView() {
                     ))}
                   </div>
 
-                  <p className="mt-6 mb-2 font-heading text-base font-medium text-foreground">
-                    {dict.storySection.bulletsIntro}
-                  </p>
-                  <ul className="m-0 flex list-disc flex-col gap-1.5 pl-5 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                    {dict.storySection.bullets.map((bullet) => (
-                      <li key={bullet.slice(0, 24)}>{bullet}</li>
-                    ))}
-                  </ul>
-
-                  <blockquote className="mt-6 mb-0 rounded-2xl bg-secondary p-5">
-                    <p className="m-0 font-heading text-base font-medium leading-relaxed text-foreground sm:text-lg">
+                  <blockquote className="mt-7 mb-0 rounded-2xl bg-secondary p-5">
+                    <p className="m-0 font-heading text-base font-medium leading-relaxed text-foreground">
                       {dict.storySection.personalQuote}
                     </p>
                     <footer className="mt-2 text-xs text-muted-foreground">
@@ -574,7 +435,6 @@ export function HomeView() {
                   </blockquote>
                 </div>
 
-                {/* Fila Inferior: CTA + 2 Contadores de Autoridad */}
                 <div className="mt-8 flex flex-col justify-between gap-6 border-t border-border pt-7 sm:flex-row sm:items-center">
                   <Button
                     type="button"
@@ -590,7 +450,7 @@ export function HomeView() {
                   <dl className="m-0 flex flex-wrap items-center gap-8">
                     {dict.storySection.counters.map((counter) => (
                       <div key={counter.label} className="flex flex-col">
-                        <dt className="order-2 mt-1 text-xs text-muted-foreground sm:text-sm">
+                        <dt className="order-2 mt-1 text-xs text-muted-foreground">
                           {counter.label}
                         </dt>
                         <dd className="cm-story-counter order-1 m-0">
@@ -602,34 +462,24 @@ export function HomeView() {
                 </div>
               </div>
             </div>
-
-            {/* Franja inferior Champagne Seda con el slogan de cierre del brief */}
-            <div className="cm-story-ribbon text-center text-sm font-medium">
-              {dict.storySection.ribbonText}
-            </div>
           </div>
         </div>
       </section>
 
-      {/* ─── APARTADO 5: ¿POR QUÉ LA DRA. GABRIELA DELGADO? (GRID 2X2 CLÍNICA CAVADAS) ─── */}
+      {/* ─── APARTADO 5: ¿POR QUÉ LA DRA. GABRIELA DELGADO? ─── */}
       <section id="por-que-dra-gabriela" className="cm-section cm-section-bordered">
         <div className="cm-container">
           <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-12">
-            {/* Columna Izquierda (~33%): Píldora + Marca de agua geométrica sutil */}
-            <div className="flex flex-col justify-between lg:col-span-4 lg:min-h-80">
-              <div>
-                <span className="cm-pill-tag">
-                  <span className="cm-pill-dot" aria-hidden="true" />
-                  <span>{dict.whySection.pill}</span>
-                </span>
-              </div>
+            <div className="flex flex-col justify-between lg:col-span-4 lg:min-h-72">
+              <p className="m-0 font-heading text-base font-medium text-muted-foreground">
+                {dict.whySection.sectionLabel}
+              </p>
 
               <div className="mt-10 hidden lg:block">
-                <HarmonyNodesWatermark className="cm-why-watermark size-48" />
+                <HarmonyNodesWatermark className="cm-why-watermark size-44" />
               </div>
             </div>
 
-            {/* Columna Derecha (~67%): H2 + Grid 2x2 sin bordes recargados */}
             <div className="lg:col-span-8">
               <h2 className="m-0 text-3xl leading-tight tracking-tight text-foreground sm:text-4xl xl:text-[2.875rem]">
                 {dict.whySection.titleLead}
@@ -651,7 +501,7 @@ export function HomeView() {
                       <h3 className="m-0 text-xl leading-snug text-foreground">
                         {item.title}
                       </h3>
-                      <p className="mt-2 mb-0 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                      <p className="mt-2 mb-0 text-sm leading-relaxed text-muted-foreground">
                         {item.description}
                       </p>
                     </div>
@@ -663,16 +513,11 @@ export function HomeView() {
         </div>
       </section>
 
-      {/* ─── APARTADO 6: ¿QUÉ PIENSAN NUESTROS PACIENTES? (6 TARJETAS DIANA DUSSAN + MOVIMIENTO A LA DERECHA CAVADAS) ─── */}
+      {/* ─── APARTADO 6: ¿QUÉ PIENSAN NUESTROS PACIENTES? (6 RESEÑAS MOVIÉNDOSE A LA DERECHA) ─── */}
       <section id="testimonios" className="cm-section cm-section-bordered">
         <div className="cm-container">
           <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
-            <span className="cm-pill-tag">
-              <span className="cm-pill-dot" aria-hidden="true" />
-              <span>{dict.reviewsSection.pill}</span>
-            </span>
-
-            <h2 className="mt-4 mb-0 text-3xl leading-tight tracking-tight text-foreground sm:text-4xl xl:text-[2.875rem]">
+            <h2 className="m-0 text-3xl leading-tight tracking-tight text-foreground sm:text-4xl xl:text-[2.875rem]">
               {dict.reviewsSection.title}
             </h2>
 
@@ -683,7 +528,6 @@ export function HomeView() {
 
           <div className="cm-reviews-marquee mt-10">
             <div className="cm-reviews-track">
-              {/* Serie 1 (accesible para lectores de pantalla: 6 reseñas) */}
               {dict.reviewsSection.reviews.map((rev) => (
                 <article key={rev.id} className="cm-review-card">
                   <div className="cm-review-avatar-wrap">
@@ -722,7 +566,6 @@ export function HomeView() {
                 </article>
               ))}
 
-              {/* Serie 2 duplicada para bucle continuo infinito hacia la derecha */}
               {dict.reviewsSection.reviews.map((rev) => (
                 <article
                   key={`${rev.id}-clone`}
@@ -765,18 +608,12 @@ export function HomeView() {
         </div>
       </section>
 
-      {/* ─── APARTADO 7: FORMULARIO LIMPIO UI/UX PARA RESERVA DE CITAS WEB ─── */}
+      {/* ─── APARTADO 7: RESERVA DE CITAS WEB (MINIMALISTA Y LIMPIO) ─── */}
       <section id="reserva-cita" className="cm-section cm-section-bordered">
         <div className="cm-container">
-          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-12">
-            {/* Columna Izquierda: Datos de Consultorio y Pasos Claros */}
+          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-14">
             <div className="lg:col-span-5">
-              <span className="cm-pill-tag">
-                <span className="cm-pill-dot" aria-hidden="true" />
-                <span>{dict.bookingSection.pill}</span>
-              </span>
-
-              <h2 className="mt-4 mb-0 text-3xl leading-tight tracking-tight text-foreground sm:text-4xl">
+              <h2 className="m-0 text-3xl leading-tight tracking-tight text-foreground sm:text-4xl">
                 {dict.bookingSection.titleLead}
                 <span className="cm-accent-sapphire">
                   {dict.bookingSection.titleAccent}
@@ -787,8 +624,8 @@ export function HomeView() {
                 {dict.bookingSection.subtitle}
               </p>
 
-              <dl className="mt-7 flex flex-col gap-4">
-                <div className="flex items-start gap-3">
+              <dl className="mt-8 flex flex-col gap-5">
+                <div className="flex items-start gap-3.5">
                   <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-full bg-secondary text-foreground">
                     <MapPinIcon className="size-5" />
                   </span>
@@ -802,7 +639,7 @@ export function HomeView() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-3.5">
                   <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-full bg-secondary text-foreground">
                     <WhatsAppIcon className="size-5" />
                   </span>
@@ -816,7 +653,7 @@ export function HomeView() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-3.5">
                   <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-full bg-secondary text-foreground">
                     <CalendarCheckIcon className="size-5" />
                   </span>
@@ -830,75 +667,18 @@ export function HomeView() {
                   </div>
                 </div>
               </dl>
-
-              <div className="mt-8 border-t border-border pt-6">
-                <h3 className="m-0 text-lg text-foreground">
-                  {dict.bookingSection.stepsTitle}
-                </h3>
-                <ol className="mt-4 m-0 flex list-none flex-col gap-3.5 p-0">
-                  {dict.bookingSection.steps.map((step, index) => (
-                    <li key={step.title} className="flex items-start gap-3">
-                      <span className="cm-step-badge" aria-hidden="true">
-                        {index + 1}
-                      </span>
-                      <div>
-                        <p className="m-0 font-heading text-sm font-medium text-foreground">
-                          {step.title}
-                        </p>
-                        <p className="m-0 mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                          {step.detail}
-                        </p>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-              </div>
             </div>
 
-            {/* Columna Derecha: Tarjeta Blanca Limpia de Reserva de Cita */}
             <div className="lg:col-span-7">
               <div className="cm-booking-card">
                 <h3 className="m-0 text-2xl text-foreground">
                   {dict.bookingSection.formTitle}
                 </h3>
-                <p className="mt-1 mb-0 text-sm text-muted-foreground">
-                  {dict.bookingSection.formSubtitle}
-                </p>
 
                 <form
                   onSubmit={handleBookingSubmit}
                   className="mt-6 flex flex-col gap-4"
                 >
-                  {/* Selector limpio de modalidad */}
-                  <fieldset className="m-0 border-0 p-0">
-                    <legend className="mb-2 text-xs font-medium text-foreground">
-                      {dict.bookingSection.modalityLegend}
-                    </legend>
-                    <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-                      <Button
-                        type="button"
-                        variant="outline"
-                        aria-pressed={modality === "presencial"}
-                        data-active={modality === "presencial" ? "true" : "false"}
-                        onClick={() => setModality("presencial")}
-                        className="cm-filter-pill h-11 w-full rounded-xl"
-                      >
-                        {dict.bookingSection.modalityInPerson}
-                      </Button>
-                      <Button
-                        type="button"
-                        variant="outline"
-                        aria-pressed={modality === "virtual"}
-                        data-active={modality === "virtual" ? "true" : "false"}
-                        onClick={() => setModality("virtual")}
-                        className="cm-filter-pill h-11 w-full rounded-xl"
-                      >
-                        {dict.bookingSection.modalityVirtual}
-                      </Button>
-                    </div>
-                  </fieldset>
-
-                  {/* Fila 1: Nombre + WhatsApp */}
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div className="flex flex-col gap-1.5">
                       <Label
@@ -943,7 +723,6 @@ export function HomeView() {
                     </div>
                   </div>
 
-                  {/* Fila 2: Correo + Fecha tentativa */}
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div className="flex flex-col gap-1.5">
                       <Label
@@ -968,69 +747,27 @@ export function HomeView() {
 
                     <div className="flex flex-col gap-1.5">
                       <Label
-                        htmlFor="booking-date"
+                        htmlFor="booking-procedure"
                         className="font-sans text-xs font-medium normal-case tracking-normal text-foreground"
                       >
-                        {dict.bookingSection.dateLabel}
+                        {dict.bookingSection.procedureLabel}
                       </Label>
                       <Input
-                        id="booking-date"
-                        type="date"
-                        value={preferredDate}
+                        id="booking-procedure"
+                        type="text"
+                        list="cm-procedures-datalist"
+                        required
+                        value={selectedProcedure}
                         onChange={(e) => {
-                          setPreferredDate(e.target.value);
+                          setSelectedProcedure(e.target.value);
                           setBookingConfirmed(false);
                         }}
+                        placeholder={dict.bookingSection.procedurePlaceholder}
                         className="h-11 rounded-xl border border-border bg-background"
                       />
                     </div>
                   </div>
 
-                  {/* Fila 3: Procedimiento de interés (conectado con las tarjetas de Servicios) */}
-                  <div className="flex flex-col gap-1.5">
-                    <Label
-                      htmlFor="booking-procedure"
-                      className="font-sans text-xs font-medium normal-case tracking-normal text-foreground"
-                    >
-                      {dict.bookingSection.procedureLabel}
-                    </Label>
-                    <Input
-                      id="booking-procedure"
-                      type="text"
-                      list="cm-procedures-datalist"
-                      required
-                      value={selectedProcedure}
-                      onChange={(e) => {
-                        setSelectedProcedure(e.target.value);
-                        setBookingConfirmed(false);
-                      }}
-                      placeholder={dict.bookingSection.procedurePlaceholder}
-                      className="h-11 rounded-xl border border-border bg-background"
-                    />
-                  </div>
-
-                  {/* Fila 4: Comentario opcional */}
-                  <div className="flex flex-col gap-1.5">
-                    <Label
-                      htmlFor="booking-notes"
-                      className="font-sans text-xs font-medium normal-case tracking-normal text-foreground"
-                    >
-                      {dict.bookingSection.notesLabel}
-                    </Label>
-                    <Input
-                      id="booking-notes"
-                      type="text"
-                      value={notes}
-                      onChange={(e) => {
-                        setNotes(e.target.value);
-                        setBookingConfirmed(false);
-                      }}
-                      placeholder={dict.bookingSection.notesPlaceholder}
-                      className="h-11 rounded-xl border border-border bg-background"
-                    />
-                  </div>
-
-                  {/* Casilla de Privacidad Ley N° 29733 */}
                   <Label
                     htmlFor="booking-privacy"
                     className="flex min-h-11 cursor-pointer items-center gap-3 font-sans text-xs font-normal normal-case tracking-normal text-muted-foreground"
