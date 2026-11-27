@@ -8,7 +8,6 @@ import { Label } from "@/components/ui/label";
 import {
   ArrowRightIcon,
   SearchIcon,
-  ShieldCheckIcon,
   WhatsAppIcon,
 } from "@/components/icons/clinic-icons";
 import { buildWhatsAppUrl } from "@/config/site";
@@ -35,12 +34,8 @@ export function ServicesView() {
   const dict = SERVICES_PAGE_CONTENT[locale];
   const allFichas = SERVICES_FICHAS[locale];
 
-  // Buscador de lenguaje natural (Patrón Hero de clinicadianadussan.com/treatments/)
   const [searchInput, setSearchInput] = useState("");
   const [submittedQuery, setSubmittedQuery] = useState("");
-  const [activeGoalId, setActiveGoalId] = useState<string | null>(null);
-
-  // Filtro del catálogo detallado de los 16 procedimientos
   const [catalogFilter, setCatalogFilter] = useState<CatalogFilter>("all");
 
   const searchMatches = useMemo<DetailedServiceFicha[]>(() => {
@@ -56,7 +51,7 @@ export function ServicesView() {
 
     return allFichas.filter((ficha) => {
       const haystack = normalizeText(
-        `${ficha.title} ${ficha.summary} ${ficha.idealFor} ${ficha.keywords.join(" ")}`
+        `${ficha.title} ${ficha.summary} ${ficha.keywords.join(" ")}`
       );
       return tokens.some((token) => haystack.includes(token));
     });
@@ -69,24 +64,10 @@ export function ServicesView() {
 
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setActiveGoalId(null);
     setSubmittedQuery(searchInput);
   };
 
-  const handleGoalClick = (goalId: string, query: string, label: string) => {
-    if (activeGoalId === goalId) {
-      setActiveGoalId(null);
-      setSearchInput("");
-      setSubmittedQuery("");
-      return;
-    }
-    setActiveGoalId(goalId);
-    setSearchInput(label);
-    setSubmittedQuery(query);
-  };
-
   const handleClearSearch = () => {
-    setActiveGoalId(null);
     setSearchInput("");
     setSubmittedQuery("");
   };
@@ -103,24 +84,18 @@ export function ServicesView() {
 
   return (
     <main id="servicios-top">
-      {/* ─── SECCIÓN 1: HERO EDITORIAL + BUSCADOR DE OBJETIVO CLÍNICO (REF: DIANA DUSSAN /TREATMENTS/) ─── */}
+      {/* ─── SECCIÓN 1: PORTADA MINIMALISTA + BUSCADOR (REF: DIANA DUSSAN /TREATMENTS/) ─── */}
       <section className="cm-services-hero">
         <div className="cm-container">
-          <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-            <span className="cm-pill-tag">
-              <span className="cm-pill-dot" aria-hidden="true" />
-              <span>{dict.hero.pill}</span>
-            </span>
-
-            <h1 className="mt-5 mb-0 text-3xl leading-tight tracking-tight text-foreground sm:text-5xl xl:text-[3.375rem]">
+          <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
+            <h1 className="m-0 text-3xl leading-tight tracking-tight text-foreground sm:text-5xl">
               {dict.hero.title}
             </h1>
 
-            <p className="mt-4 mb-0 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p className="mt-4 mb-0 max-w-xl text-base leading-relaxed text-muted-foreground">
               {dict.hero.subtitle}
             </p>
 
-            {/* Barra de búsqueda en píldora (comparte altura exacta entre Input y Button) */}
             <form
               onSubmit={handleSearchSubmit}
               className="cm-search-pill-form mt-8"
@@ -139,105 +114,69 @@ export function ServicesView() {
               />
               <Button
                 type="submit"
-                className="cm-btn-sapphire h-11 shrink-0 rounded-full px-5 text-sm sm:px-6"
+                className="cm-btn-sapphire h-11 shrink-0 rounded-full px-6 text-sm"
               >
                 <SearchIcon className="size-4" />
                 <span>{dict.hero.searchBtn}</span>
               </Button>
             </form>
 
-            {/* Selección rápida visual de objetivos (Choice starter) */}
-            <div className="mt-5 flex flex-col items-center gap-2.5">
-              <span className="text-xs text-muted-foreground">
-                {dict.hero.quickGoalsPrompt}
-              </span>
-              <div
-                role="group"
-                aria-label={dict.hero.quickGoalsPrompt}
-                className="flex flex-wrap items-center justify-center gap-2"
-              >
-                {dict.hero.quickGoals.map((goal) => (
-                  <Button
-                    key={goal.id}
-                    type="button"
-                    variant="outline"
-                    aria-pressed={activeGoalId === goal.id}
-                    data-active={activeGoalId === goal.id ? "true" : "false"}
-                    onClick={() =>
-                      handleGoalClick(goal.id, goal.query, goal.label)
-                    }
-                    className="cm-goal-chip"
-                  >
-                    {goal.label}
-                  </Button>
-                ))}
-              </div>
-            </div>
-
-            {/* Panel dinámico de orientación cuando el paciente realiza una búsqueda */}
             {submittedQuery.trim().length > 0 && (
               <div
                 role="region"
                 aria-live="polite"
-                className="cm-search-results-box mt-8 text-left"
+                className="cm-search-results-box mt-7 text-left"
               >
-                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border pb-4">
-                  <h2 className="m-0 text-xl text-foreground sm:text-2xl">
-                    {dict.hero.resultsTitlePrefix} ({searchMatches.length})
+                <div className="flex items-center justify-between gap-3 border-b border-border pb-3.5">
+                  <h2 className="m-0 text-lg text-foreground">
+                    {dict.hero.resultsTitle}
                   </h2>
                   <Button
                     type="button"
-                    variant="outline"
+                    variant="ghost"
                     size="sm"
                     onClick={handleClearSearch}
-                    className="cm-btn-outline-clean h-10 rounded-full px-4 text-xs"
+                    className="h-9 px-3 text-xs text-muted-foreground"
                   >
                     {dict.hero.clearBtn}
                   </Button>
                 </div>
 
                 {searchMatches.length > 0 ? (
-                  <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
                     {searchMatches.map((match) => (
                       <article
                         key={`match-${match.slug}`}
-                        className="flex flex-col justify-between rounded-2xl border border-border bg-background p-4"
+                        className="flex items-center justify-between gap-3 rounded-xl border border-border bg-background p-3.5"
                       >
-                        <div>
-                          <div className="flex items-center justify-between gap-2">
-                            <h3 className="m-0 text-lg text-foreground">
-                              {match.title}
-                            </h3>
-                            <span className="text-xs text-muted-foreground">
-                              {match.specialistTag}
-                            </span>
-                          </div>
-                          <p className="mt-2 mb-0 text-sm leading-relaxed text-muted-foreground">
-                            {match.idealFor}
+                        <div className="min-w-0">
+                          <h3 className="m-0 text-base text-foreground">
+                            {match.title}
+                          </h3>
+                          <p className="mt-0.5 mb-0 text-xs text-muted-foreground">
+                            {match.summary}
                           </p>
                         </div>
-                        <div className="mt-4">
-                          <Button
-                            type="button"
-                            onClick={() => openWhatsAppModal(match.title)}
-                            className="cm-btn-sapphire h-11 rounded-full px-5 text-xs"
-                          >
-                            <span>{dict.catalogSection.consultBtn}</span>
-                            <ArrowRightIcon className="icon-cap" />
-                          </Button>
-                        </div>
+                        <Button
+                          type="button"
+                          size="sm"
+                          onClick={() => openWhatsAppModal(match.title)}
+                          className="cm-btn-sapphire h-9 shrink-0 rounded-full px-4 text-xs"
+                        >
+                          {dict.catalogSection.consultBtn}
+                        </Button>
                       </article>
                     ))}
                   </div>
                 ) : (
-                  <div className="mt-5 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-                    <p className="m-0 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                  <div className="mt-4 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <p className="m-0 text-sm text-muted-foreground">
                       {dict.hero.noResultsText}
                     </p>
                     <Button
                       type="button"
                       onClick={() => openWhatsAppModal(submittedQuery)}
-                      className="cm-btn-sapphire h-11 shrink-0 rounded-full px-6 text-sm"
+                      className="cm-btn-sapphire h-10 shrink-0 rounded-full px-5 text-xs"
                     >
                       {dict.hero.noResultsCta}
                     </Button>
@@ -249,30 +188,14 @@ export function ServicesView() {
         </div>
       </section>
 
-      {/* ─── SECCIÓN 2: EXPLORA CADA ESPECIALIDAD (BLOQUES EDITORIALES ALTERNADOS DIANA DUSSAN) ─── */}
+      {/* ─── SECCIÓN 2: EXPLORA CADA ESPECIALIDAD (LIMPIO Y MINIMALISTA) ─── */}
       <section id="especialidades" className="cm-section">
         <div className="cm-container">
-          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-            <div>
-              <span className="cm-pill-tag">
-                <span className="cm-pill-dot" aria-hidden="true" />
-                <span>{dict.specialtiesSection.pill}</span>
-              </span>
+          <h2 className="m-0 text-center text-3xl leading-tight tracking-tight text-foreground sm:text-4xl">
+            {dict.specialtiesSection.title}
+          </h2>
 
-              <h2 className="mt-4 mb-0 text-3xl leading-tight tracking-tight text-foreground sm:text-4xl xl:text-[2.875rem]">
-                {dict.specialtiesSection.titleLead}
-                <span className="cm-accent-sapphire">
-                  {dict.specialtiesSection.titleAccent}
-                </span>
-              </h2>
-            </div>
-
-            <p className="m-0 text-sm text-muted-foreground">
-              {dict.specialtiesSection.countSummary}
-            </p>
-          </div>
-
-          <div className="mt-10 flex flex-col gap-8 lg:gap-12">
+          <div className="mt-12 flex flex-col gap-10 lg:gap-14">
             {dict.specialtiesSection.units.map((unit, index) => {
               const isReversedDesktop = index % 2 === 1;
 
@@ -282,7 +205,7 @@ export function ServicesView() {
                   id={unit.id}
                   className="cm-specialty-showcase scroll-mt-28"
                 >
-                  <div className="grid grid-cols-1 lg:grid-cols-12">
+                  <div className="grid grid-cols-1 items-center lg:grid-cols-12">
                     <div
                       className={
                         isReversedDesktop
@@ -291,9 +214,8 @@ export function ServicesView() {
                       }
                     >
                       <GreyPlaceholder
-                        aspectClassName="aspect-[16/10] lg:h-full"
+                        aspectClassName="aspect-[16/10]"
                         title={unit.placeholderTitle}
-                        subtitle={unit.placeholderSubtitle}
                       />
                     </div>
 
@@ -304,52 +226,22 @@ export function ServicesView() {
                           : "cm-specialty-content lg:col-span-6"
                       }
                     >
-                      <div>
-                        <span className="cm-treatment-mini-tag">
-                          {unit.badge}
-                        </span>
-                      </div>
-
-                      <h3 className="mt-4 mb-0 text-2xl leading-snug text-foreground sm:text-3xl">
+                      <h3 className="m-0 text-2xl leading-snug text-foreground sm:text-3xl">
                         {unit.title}
                       </h3>
 
-                      <p className="mt-3 mb-0 text-base leading-relaxed text-muted-foreground">
+                      <p className="mt-3.5 mb-0 max-w-lg text-base leading-relaxed text-muted-foreground">
                         {unit.description}
                       </p>
 
-                      <p className="mt-4 mb-0 flex items-center gap-2 text-xs font-medium text-foreground">
-                        <ShieldCheckIcon className="cm-accent-sapphire size-4 shrink-0" />
-                        <span>{unit.specialistLead}</span>
-                      </p>
-
-                      <ul className="mt-5 m-0 flex list-none flex-wrap gap-2 p-0">
-                        {unit.procedureNames.map((procName) => (
-                          <li key={procName} className="cm-treatment-mini-tag">
-                            {procName}
-                          </li>
-                        ))}
-                      </ul>
-
-                      <div className="mt-7 flex flex-wrap items-center gap-3">
+                      <div className="mt-7">
                         <Button
                           type="button"
                           onClick={() => jumpToSpecialtyCatalog(unit.id)}
-                          className="cm-btn-cavadas"
+                          className="cm-btn-sapphire h-11 rounded-full px-6 text-sm"
                         >
                           <span>{unit.exploreCta}</span>
-                          <span className="cm-btn-cavadas-box" aria-hidden="true">
-                            <ArrowRightIcon className="cm-btn-cavadas-arrow" />
-                          </span>
-                        </Button>
-
-                        <Button
-                          type="button"
-                          variant="outline"
-                          onClick={() => openWhatsAppModal(unit.title)}
-                          className="cm-btn-outline-clean h-12 rounded-xl px-5 text-sm"
-                        >
-                          {unit.consultCta}
+                          <ArrowRightIcon className="icon-cap" />
                         </Button>
                       </div>
                     </div>
@@ -361,77 +253,56 @@ export function ServicesView() {
         </div>
       </section>
 
-      {/* ─── SECCIÓN 3: PORTAFOLIO DETALLADO DE LOS 16 PROCEDIMIENTOS ─── */}
+      {/* ─── SECCIÓN 3: TRATAMIENTOS POR ESPECIALIDAD (GRILLA LIMPIA DE 16 SERVICIOS) ─── */}
       <section
         id="catalogo-tratamientos"
         className="cm-section cm-section-bordered"
       >
         <div className="cm-container">
-          <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
-            <div className="max-w-2xl">
-              <span className="cm-pill-tag">
-                <span className="cm-pill-dot" aria-hidden="true" />
-                <span>{dict.catalogSection.pill}</span>
-              </span>
+          <div className="flex flex-col items-center text-center">
+            <h2 className="m-0 text-3xl leading-tight tracking-tight text-foreground sm:text-4xl">
+              {dict.catalogSection.title}
+            </h2>
 
-              <h2 className="mt-4 mb-0 text-3xl leading-tight tracking-tight text-foreground sm:text-4xl">
-                {dict.catalogSection.titleLead}
-                <span className="cm-accent-sapphire">
-                  {dict.catalogSection.titleAccent}
-                </span>
-              </h2>
-
-              <p className="mt-3 mb-0 text-base text-muted-foreground">
-                {dict.catalogSection.subtitle}
-              </p>
+            <div
+              role="group"
+              aria-label={dict.catalogSection.title}
+              className="mt-7 flex flex-wrap items-center justify-center gap-2"
+            >
+              {(
+                [
+                  { id: "all", label: dict.catalogSection.filterAll },
+                  {
+                    id: "armonizacion-inyectables",
+                    label: dict.catalogSection.filterHarmonization,
+                  },
+                  {
+                    id: "cirugia-maxilofacial",
+                    label: dict.catalogSection.filterMaxillofacial,
+                  },
+                  { id: "calidad-piel", label: dict.catalogSection.filterSkin },
+                  {
+                    id: "cirugia-corporal",
+                    label: dict.catalogSection.filterBody,
+                  },
+                ] as const
+              ).map((tab) => (
+                <Button
+                  key={tab.id}
+                  type="button"
+                  variant="outline"
+                  aria-pressed={catalogFilter === tab.id}
+                  data-active={catalogFilter === tab.id ? "true" : "false"}
+                  onClick={() => setCatalogFilter(tab.id)}
+                  className="cm-filter-pill"
+                >
+                  {tab.label}
+                </Button>
+              ))}
             </div>
-
-            <p className="m-0 text-sm font-medium text-foreground">
-              {dict.catalogSection.countTopPrefix} {filteredCatalog.length}{" "}
-              {dict.catalogSection.countOfWord} {allFichas.length}
-            </p>
           </div>
 
-          {/* Filtros de especialidad */}
-          <div
-            role="group"
-            aria-label={dict.catalogSection.pill}
-            className="mt-7 flex flex-wrap gap-2"
-          >
-            {(
-              [
-                { id: "all", label: dict.catalogSection.filterAll },
-                {
-                  id: "armonizacion-inyectables",
-                  label: dict.catalogSection.filterHarmonization,
-                },
-                {
-                  id: "cirugia-maxilofacial",
-                  label: dict.catalogSection.filterMaxillofacial,
-                },
-                { id: "calidad-piel", label: dict.catalogSection.filterSkin },
-                {
-                  id: "cirugia-corporal",
-                  label: dict.catalogSection.filterBody,
-                },
-              ] as const
-            ).map((tab) => (
-              <Button
-                key={tab.id}
-                type="button"
-                variant="outline"
-                aria-pressed={catalogFilter === tab.id}
-                data-active={catalogFilter === tab.id ? "true" : "false"}
-                onClick={() => setCatalogFilter(tab.id)}
-                className="cm-filter-pill"
-              >
-                {tab.label}
-              </Button>
-            ))}
-          </div>
-
-          {/* Grilla espaciosa de fichas clínicas */}
-          <div className="mt-9 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {filteredCatalog.map((ficha) => (
               <article
                 key={ficha.slug}
@@ -443,86 +314,43 @@ export function ServicesView() {
                   title={ficha.placeholderLabel}
                 />
 
-                <div className="mt-5 flex flex-1 flex-col px-1">
-                  <div className="flex items-start justify-between gap-2">
-                    <h3 className="m-0 text-xl leading-snug text-foreground">
-                      {ficha.title}
-                    </h3>
-                  </div>
+                <div className="mt-4 flex flex-1 flex-col px-1">
+                  <h3 className="m-0 text-lg leading-snug text-foreground">
+                    {ficha.title}
+                  </h3>
 
-                  <p className="mt-2.5 mb-0 text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-2 mb-0 text-sm leading-relaxed text-muted-foreground">
                     {ficha.summary}
                   </p>
 
-                  <dl className="mt-4 flex flex-col gap-2 border-t border-border pt-4 text-xs">
-                    <div>
-                      <dt className="inline font-medium text-foreground">
-                        {dict.catalogSection.idealForLabel}{" "}
-                      </dt>
-                      <dd className="m-0 inline text-muted-foreground">
-                        {ficha.idealFor}
-                      </dd>
-                    </div>
-                    <div>
-                      <dt className="inline font-medium text-foreground">
-                        {dict.catalogSection.modalityLabel}{" "}
-                      </dt>
-                      <dd className="m-0 inline text-muted-foreground">
-                        {ficha.modality}
-                      </dd>
-                    </div>
-                    <div>
-                      <dt className="inline font-medium text-foreground">
-                        {dict.catalogSection.recoveryLabel}{" "}
-                      </dt>
-                      <dd className="m-0 inline text-muted-foreground">
-                        {ficha.recoveryNote}
-                      </dd>
-                    </div>
-                  </dl>
-
-                  <div className="mt-auto flex items-center justify-between gap-3 border-t border-border pt-5">
-                    <span className="text-xs text-muted-foreground">
-                      {ficha.specialistTag}
-                    </span>
+                  <div className="mt-auto pt-5">
                     <Button
                       type="button"
+                      variant="outline"
                       onClick={() => openWhatsAppModal(ficha.title)}
-                      className="cm-btn-sapphire h-11 rounded-full px-5 text-xs"
+                      className="cm-btn-outline-clean h-11 w-full rounded-full text-xs font-medium"
                     >
-                      {dict.catalogSection.consultBtn}
+                      <span>{dict.catalogSection.consultBtn}</span>
+                      <ArrowRightIcon className="icon-cap" />
                     </Button>
                   </div>
                 </div>
               </article>
             ))}
           </div>
-
-          <div className="mt-8 flex flex-col justify-between gap-2 border-t border-border pt-5 text-xs text-muted-foreground sm:flex-row sm:items-center">
-            <span>
-              {dict.catalogSection.countTopPrefix} {filteredCatalog.length}{" "}
-              {dict.catalogSection.countOfWord} {allFichas.length}
-            </span>
-            <span>{dict.catalogSection.countBottomNote}</span>
-          </div>
         </div>
       </section>
 
-      {/* ─── SECCIÓN 4: BANNER DE ORIENTACIÓN MÉDICA FINAL (REF: DIANA DUSSAN /TREATMENTS/) ─── */}
+      {/* ─── SECCIÓN 4: CIERRE LIMPIO DE ORIENTACIÓN MÉDICA ─── */}
       <section id="orientacion-medica" className="cm-section pt-0">
         <div className="cm-container">
           <div className="cm-guidance-banner">
-            <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-              <span className="cm-pill-tag">
-                <span className="cm-pill-dot" aria-hidden="true" />
-                <span>{dict.guidanceBanner.pill}</span>
-              </span>
-
-              <h2 className="mt-4 mb-0 text-3xl leading-tight tracking-tight text-foreground sm:text-4xl">
+            <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
+              <h2 className="m-0 text-2xl leading-tight tracking-tight text-foreground sm:text-4xl">
                 {dict.guidanceBanner.title}
               </h2>
 
-              <p className="mt-3 mb-0 max-w-2xl text-base leading-relaxed text-muted-foreground">
+              <p className="mt-3 mb-0 max-w-xl text-base leading-relaxed text-muted-foreground">
                 {dict.guidanceBanner.description}
               </p>
 
@@ -530,7 +358,7 @@ export function ServicesView() {
                 <Button
                   type="button"
                   onClick={() => openWhatsAppModal()}
-                  className="cm-btn-sapphire h-12 w-full rounded-full px-7 text-base sm:w-auto"
+                  className="cm-btn-sapphire h-12 w-full rounded-full px-7 text-sm sm:w-auto"
                 >
                   <span>{dict.guidanceBanner.primaryCta}</span>
                   <ArrowRightIcon className="icon-cap" />
@@ -539,7 +367,7 @@ export function ServicesView() {
                 <Button
                   asChild
                   variant="outline"
-                  className="cm-btn-outline-clean h-12 w-full rounded-full px-7 text-base sm:w-auto"
+                  className="cm-btn-outline-clean h-12 w-full rounded-full px-7 text-sm sm:w-auto"
                 >
                   <a
                     href={buildWhatsAppUrl()}
@@ -551,10 +379,6 @@ export function ServicesView() {
                   </a>
                 </Button>
               </div>
-
-              <p className="mt-6 mb-0 text-xs text-muted-foreground">
-                {dict.guidanceBanner.eeatNote}
-              </p>
             </div>
           </div>
         </div>
