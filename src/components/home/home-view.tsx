@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -311,7 +312,15 @@ export function HomeView() {
 
               <div className="mt-7 flex items-center gap-4">
                 <div className="flex items-center" aria-hidden="true">
-                  <span className="cm-avatar-circle">GD</span>
+                  <span className="cm-avatar-circle bg-card p-1">
+                    <Image
+                      src="/brand/isotipo-dra-gabriela.png"
+                      alt=""
+                      width={64}
+                      height={64}
+                      className="size-9 object-contain"
+                    />
+                  </span>
                   <span className="cm-avatar-circle">CM</span>
                   <span className="cm-avatar-circle">COP</span>
                 </div>

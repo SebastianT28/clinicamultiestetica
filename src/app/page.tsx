@@ -13,6 +13,7 @@ export default async function HomePage() {
         name: SITE_CONFIG.founderName,
         alternateName: SITE_CONFIG.brandName,
         url: SITE_CONFIG.url,
+        image: `${SITE_CONFIG.url}/brand/logo-og-dra-gabriela.jpg`,
         jobTitle: SITE_CONFIG.founderRoleEs,
         telephone: SITE_CONFIG.whatsappDisplay,
         email: SITE_CONFIG.contactEmail,
@@ -33,6 +34,8 @@ export default async function HomePage() {
         "@id": `${SITE_CONFIG.url}/#clinic`,
         name: SITE_CONFIG.secondaryBrandName,
         url: SITE_CONFIG.url,
+        logo: `${SITE_CONFIG.url}/brand/logo-horizontal-dra-gabriela.png`,
+        image: `${SITE_CONFIG.url}/brand/logo-og-dra-gabriela.jpg`,
         telephone: SITE_CONFIG.whatsappDisplay,
         email: SITE_CONFIG.contactEmail,
         founder: {

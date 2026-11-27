@@ -45,7 +45,7 @@ export function SiteHeader() {
     >
       <div className="cm-container">
         <div className="cm-header-bar">
-          <BrandLogo className="min-w-0" />
+          <BrandLogo priority className="min-w-0" />
 
           <nav
             aria-label={locale === "es" ? "Navegación principal" : "Primary navigation"}

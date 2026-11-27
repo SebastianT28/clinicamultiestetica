@@ -17,7 +17,7 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-10">
           {/* Columna 1: Marca Personal Dra. Gabriela Delgado, Slogan y Cita */}
           <div className="sm:col-span-2 lg:col-span-4">
-            <BrandLogo />
+            <BrandLogo size="footer" />
             <p className="mt-4 max-w-sm font-heading text-lg font-medium leading-snug text-foreground">
               {dict.footer.tagline}
             </p>

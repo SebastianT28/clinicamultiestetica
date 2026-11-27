@@ -18,7 +18,8 @@ El diseño del Home combina estratégicamente dos referentes internacionales ada
 
 1. **Encabezado (`SiteHeader`) y Pie de Página (`SiteFooter`):**
    * **Referencia UI/UX:** `https://www.clinicadianadussan.com/`
-   * Barra superior fija con transición limpia en scroll, logotipo de marca personal (`Dra. Gabriela Delgado` + subtítulo `Clínica Multiestética`), enlaces de navegación (`Inicio`, `Servicios`, `Testimonios`, `¿Quién soy?`, `Blog`), botón CTA destacado (`Contáctame`) y selector bilingüe `ES | EN`.
+   * **Logotipo Oficial Instalado (Propuesta 2 Aprobada):** Isotipo lineal de silueta facial femenina + arco de proporción áurea y estrella de precisión en Azul Noche (`#10233E`) y Dorado Bruñido (`#8E661E`), integrado en fondo transparente Retina (`public/brand/logo-horizontal-dra-gabriela.png`, `public/brand/isotipo-dra-gabriela.png` y favicon vectorial `src/app/icon.svg`).
+   * Barra superior fija con transición limpia en scroll, enlaces de navegación (`Inicio`, `Servicios`, `Testimonios`, `¿Quién soy?`, `Blog`), botón CTA destacado (`Contáctame`) y selector bilingüe `ES | EN`.
    * Pie de página estructurado en 4 columnas editoriales con una única acción primaria rellena y enlaces legales peruanos.
 
 2. **Cuerpo de la Página Home (7 Apartados Estratégicos):**

@@ -57,6 +57,24 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  openGraph: {
+    title:
+      "Dra. Gabriela Delgado | Cirujana Maxilofacial y Armonización Facial en Arequipa",
+    description:
+      "Dra. Gabriela Delgado Silva (+18 años de experiencia profesional), Cirujana Maxilofacial y Especialista en Armonización Facial en Arequipa. Directora de Clínica Multiestética.",
+    url: SITE_CONFIG.url,
+    siteName: "Dra. Gabriela Delgado · Clínica Multiestética",
+    locale: "es_PE",
+    type: "website",
+    images: [
+      {
+        url: "/brand/logo-og-dra-gabriela.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Dra. Gabriela Delgado · Clínica Multiestética",
+      },
+    ],
+  },
   robots: {
     index: true,
     follow: true,
