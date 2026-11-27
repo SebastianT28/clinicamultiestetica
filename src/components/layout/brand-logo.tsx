@@ -24,7 +24,7 @@ export function BrandLogo({
       )}
     >
       <Image
-        src="/brand/logo-horizontal-dra-gabriela.png"
+        src="/brand/logo-horizontal-dra-gabriela-blanco-dorado.png"
         alt="Dra. Gabriela Delgado · Clínica Multiestética"
         width={1060}
         height={275}

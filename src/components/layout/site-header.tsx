@@ -90,7 +90,7 @@ export function SiteHeader() {
 
             <Button
               asChild
-              className="cm-btn-sapphire h-11 rounded-full px-6 text-sm no-underline"
+              className="cm-btn-gold h-11 rounded-full px-6 text-sm no-underline"
             >
               <a
                 href={directContactWaUrl}
@@ -173,7 +173,7 @@ export function SiteHeader() {
               aria-controls="cm-mobile-nav-panel"
               aria-label={mobileMenuOpen ? dict.closeMenuLabel : dict.menuLabel}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="cm-btn-outline-clean size-11 rounded-full"
+              className="cm-header-menu-btn size-11 rounded-full"
             >
               {mobileMenuOpen ? (
                 <CloseIcon className="size-5" />
@@ -209,9 +209,9 @@ export function SiteHeader() {
             <div
               role="group"
               aria-label={locale === "es" ? "Selector de idioma" : "Language selector"}
-              className="mt-3 flex items-center justify-between border-t border-border pt-3 sm:hidden"
+              className="cm-mobile-lang-row mt-3 flex items-center justify-between pt-3 sm:hidden"
             >
-              <span className="text-xs text-muted-foreground">
+              <span className="cm-mobile-lang-label text-xs">
                 {locale === "es" ? "Idioma" : "Language"}
               </span>
               <div className="flex items-center gap-1">
@@ -245,7 +245,7 @@ export function SiteHeader() {
             <div className="mt-4">
               <Button
                 asChild
-                className="cm-btn-sapphire h-12 w-full rounded-full text-base no-underline"
+                className="cm-btn-gold h-12 w-full rounded-full text-base no-underline"
               >
                 <a
                   href={directContactWaUrl}

@@ -202,7 +202,7 @@ export function WhatsAppAssistant() {
 
             <Button
               type="submit"
-              className="cm-btn-sapphire h-12 w-full rounded-xl text-base"
+              className="cm-btn-gold h-12 w-full rounded-xl text-base"
             >
               {dict.submitBtn}
             </Button>

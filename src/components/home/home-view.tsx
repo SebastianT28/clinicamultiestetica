@@ -124,7 +124,11 @@ export function HomeView() {
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
               <div className="flex flex-col items-start lg:col-span-6">
                 <h1 className="m-0 text-3xl leading-tight tracking-tight text-foreground sm:text-5xl xl:text-[3.375rem] xl:leading-[1.12]">
-                  {activeHero.title}
+                  {activeHero.titleLead}
+                  <span className="cm-accent-sapphire">
+                    {activeHero.titleAccent}
+                  </span>
+                  {activeHero.titleTrail}
                 </h1>
 
                 <div className="mt-8 flex items-center gap-3">
@@ -423,11 +427,11 @@ export function HomeView() {
                     ))}
                   </div>
 
-                  <blockquote className="mt-7 mb-0 rounded-2xl bg-secondary p-5">
-                    <p className="m-0 font-heading text-base font-medium leading-relaxed text-foreground">
+                  <blockquote className="cm-home-story-quote mt-7 mb-0 rounded-2xl p-5">
+                    <p className="m-0 font-heading text-base font-medium leading-relaxed">
                       {dict.storySection.personalQuote}
                     </p>
-                    <footer className="mt-2 text-xs text-muted-foreground">
+                    <footer className="cm-home-story-quote-author mt-2 text-xs">
                       {dict.storySection.quoteSignature}
                     </footer>
                   </blockquote>
@@ -624,7 +628,7 @@ export function HomeView() {
 
               <dl className="mt-8 flex flex-col gap-5">
                 <div className="flex items-start gap-3.5">
-                  <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-full bg-secondary text-foreground">
+                  <span className="cm-contact-icon-circle mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-full">
                     <MapPinIcon className="size-5" />
                   </span>
                   <div>
@@ -638,7 +642,7 @@ export function HomeView() {
                 </div>
 
                 <div className="flex items-start gap-3.5">
-                  <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-full bg-secondary text-foreground">
+                  <span className="cm-contact-icon-circle mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-full">
                     <WhatsAppIcon className="size-5" />
                   </span>
                   <div>
@@ -661,7 +665,7 @@ export function HomeView() {
                 </div>
 
                 <div className="flex items-start gap-3.5">
-                  <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-full bg-secondary text-foreground">
+                  <span className="cm-contact-icon-circle mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-full">
                     <CalendarCheckIcon className="size-5" />
                   </span>
                   <div>
@@ -799,7 +803,7 @@ export function HomeView() {
 
                   <Button
                     type="submit"
-                    className="cm-btn-sapphire h-12 w-full rounded-xl text-base"
+                    className="cm-btn-gold h-12 w-full rounded-xl text-base"
                   >
                     <span>{dict.bookingSection.submitBtn}</span>
                     <ArrowRightIcon className="icon-cap" />

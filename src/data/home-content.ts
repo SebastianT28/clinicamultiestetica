@@ -5,7 +5,9 @@ export type WhyIconKind = "globe" | "harmony" | "heart" | "shield";
 
 export interface HeroSlideContent {
   id: string;
-  title: string;
+  titleLead: string;
+  titleAccent: string;
+  titleTrail: string;
   cardDescription: string;
   ctaLabel: string;
   ctaTarget: "booking" | "services";
@@ -170,8 +172,9 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
       slides: [
         {
           id: "hero-personal",
-          title:
-            "Armonización facial y cirugía estética que realzan tu belleza natural",
+          titleLead: "Armonización facial y ",
+          titleAccent: "cirugía estética",
+          titleTrail: " que realzan tu belleza natural",
           cardDescription:
             "Más de 18 años acompañándote con criterio anatómico, preparación internacional y calidez humana en Arequipa.",
           ctaLabel: "Agendar cita",
@@ -181,8 +184,9 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
         },
         {
           id: "hero-clinica",
-          title:
-            "Ciencia médica y acompañamiento cercano para una transformación segura",
+          titleLead: "Ciencia médica y ",
+          titleAccent: "acompañamiento cercano",
+          titleTrail: " para una transformación segura",
           cardDescription:
             "Liderada por la Dra. Gabriela Delgado junto a médicos especialistas en Clínica Multiestética.",
           ctaLabel: "Explorar servicios",
@@ -470,8 +474,9 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
       slides: [
         {
           id: "hero-personal",
-          title:
-            "Facial harmonization and aesthetic surgery that enhance your natural essence",
+          titleLead: "Facial harmonization and ",
+          titleAccent: "aesthetic surgery",
+          titleTrail: " that enhance your natural essence",
           cardDescription:
             "Over 18 years guiding patients with anatomical precision, international training, and warm care in Arequipa.",
           ctaLabel: "Book appointment",
@@ -481,8 +486,9 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
         },
         {
           id: "hero-clinica",
-          title:
-            "Medical excellence and compassionate care for safe transformations",
+          titleLead: "Medical excellence and ",
+          titleAccent: "compassionate care",
+          titleTrail: " for safe transformations",
           cardDescription:
             "Led by Dr. Gabriela Delgado alongside specialist physicians at Clínica Multiestética.",
           ctaLabel: "Explore services",

@@ -21,11 +21,11 @@ export function SiteFooter() {
           {/* Columna 1: Marca Personal Dra. Gabriela Delgado, Slogan y Cita */}
           <div className="sm:col-span-2 lg:col-span-4">
             <BrandLogo size="footer" />
-            <p className="mt-4 max-w-sm font-heading text-lg font-medium leading-snug text-foreground">
+            <p className="cm-footer-slogan mt-4 max-w-sm font-heading text-lg font-medium leading-snug">
               {dict.footer.tagline}
             </p>
             <div className="cm-footer-rule my-5" aria-hidden="true" />
-            <div className="flex flex-col gap-1.5 text-sm text-foreground">
+            <div className="cm-footer-contact flex flex-col gap-1.5 text-sm">
               <p className="m-0">
                 {SITE_CONFIG.address.street}, {SITE_CONFIG.address.district},{" "}
                 {SITE_CONFIG.address.city}
@@ -37,7 +37,7 @@ export function SiteFooter() {
               <Button
                 type="button"
                 onClick={() => openWhatsAppModal()}
-                className="cm-btn-sapphire h-11 rounded-full px-6 text-sm"
+                className="cm-btn-gold h-11 rounded-full px-6 text-sm"
               >
                 {dict.footer.bookBtn}
               </Button>

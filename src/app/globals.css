@@ -31,7 +31,23 @@
   --ring: oklch(0.35 0.095 256);
   --radius: 0.875rem;
 
-  /* Tokens cromáticos Propuesta 1 */
+  /* Tokens cromáticos Propuesta 1 (Cavadas Azul Imperial + Blanco + Oro Real) */
+  --cm-cavadas-navy: oklch(0.208 0.068 262);
+  --cm-cavadas-navy-glass: oklch(0.208 0.068 262 / 0.94);
+  --cm-cavadas-footer: oklch(0.178 0.058 262);
+  --cm-nav-pill-active: oklch(1 0 0 / 0.12);
+  --cm-navy-line: oklch(1 0 0 / 0.14);
+  --cm-navy-muted-text: oklch(0.845 0.02 256);
+  --cm-ink-black: oklch(0.185 0.02 260);
+  --cm-ink-on-gold: oklch(0.17 0.038 260);
+  --cm-gold: oklch(0.762 0.124 83);
+  --cm-gold-hover: oklch(0.712 0.126 82);
+  --cm-gold-rich: oklch(0.708 0.128 82);
+  --cm-gold-icon: oklch(0.585 0.118 80);
+  --cm-gold-border: oklch(0.815 0.086 83);
+  --cm-gold-border-soft: oklch(0.885 0.052 84);
+  --cm-gold-surface: oklch(0.964 0.032 85);
+
   --cm-champagne-header: #EADBC0;
   --cm-champagne-header-glass: oklch(0.89 0.042 84 / 0.94);
   --cm-champagne-footer: #E4D2B0;
@@ -201,15 +217,18 @@ p {
 
 #inicio {
   scroll-margin-top: 6rem;
+  --foreground: var(--cm-ink-black);
+  --cm-navy-deep: var(--cm-ink-black);
+  --cm-line: var(--cm-gold-border-soft);
 }
 
-/* ─── Header Champagne Seda (Referencia UI: clinicadianadussan.com) ─── */
+/* ─── Header Azul Marino Imperial (Referencia color: Clínica Cavadas) ─── */
 .cm-header-wrap {
   position: sticky;
   top: 0;
   z-index: 40;
-  background-color: var(--cm-champagne-header);
-  border-bottom: 0.0625rem solid var(--cm-champagne-border);
+  background-color: var(--cm-cavadas-navy);
+  border-bottom: 0.0625rem solid var(--cm-navy-line);
   transition:
     background-color 220ms var(--ease-out),
     border-color 220ms var(--ease-out),
@@ -239,11 +258,11 @@ p {
 .cm-header-wrap[data-scrolled="true"] .cm-header-bar {
   padding-inline: 0.75rem 0.625rem;
   border-radius: 9999rem;
-  background-color: var(--cm-champagne-header-glass);
+  background-color: var(--cm-cavadas-navy-glass);
   backdrop-filter: blur(1rem) saturate(150%);
   -webkit-backdrop-filter: blur(1rem) saturate(150%);
-  border: 0.0625rem solid var(--cm-champagne-border);
-  box-shadow: 0 0.5rem 1.5rem oklch(0.24 0.048 254 / 0.08);
+  border: 0.0625rem solid var(--cm-navy-line);
+  box-shadow: 0 0.625rem 1.75rem oklch(0.14 0.04 262 / 0.28);
 }
 
 @media (min-width: 640px) {
@@ -334,7 +353,7 @@ p {
   min-height: 2.5rem;
   padding-inline: 0.75rem;
   border-radius: 9999rem;
-  color: var(--cm-navy-deep);
+  color: var(--cm-white);
   font-family: var(--font-outfit), system-ui, sans-serif;
   font-size: 0.9375rem;
   font-weight: 500;
@@ -343,8 +362,8 @@ p {
 }
 
 .cm-nav-link[data-active="true"] {
-  background-color: oklch(0.35 0.095 256 / 0.11);
-  color: var(--cm-sapphire);
+  background-color: var(--cm-nav-pill-active);
+  color: var(--cm-white);
   font-weight: 600;
 }
 
@@ -355,7 +374,7 @@ p {
   right: 0.75rem;
   bottom: 0.375rem;
   height: 0.125rem;
-  background-color: var(--cm-sapphire);
+  background-color: var(--cm-gold);
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 260ms var(--ease-out);
@@ -363,11 +382,11 @@ p {
 
 @media (hover: hover) and (pointer: fine) {
   .cm-nav-list:hover .cm-nav-link {
-    opacity: 0.62;
+    opacity: 0.72;
   }
   .cm-nav-list:hover .cm-nav-link:hover {
     opacity: 1;
-    color: var(--cm-sapphire);
+    color: var(--cm-gold);
   }
   .cm-nav-link:not([data-active="true"]):hover::after {
     transform: scaleX(1);
@@ -379,7 +398,7 @@ p {
 }
 
 .cm-header-divider {
-  border-left: 0.0625rem solid var(--cm-champagne-border);
+  border-left: 0.0625rem solid var(--cm-navy-line);
 }
 
 .cm-lang-btn {
@@ -390,12 +409,12 @@ p {
   font-family: var(--font-outfit), system-ui, sans-serif;
   font-size: 0.8125rem;
   font-weight: 500;
-  color: var(--cm-footer-muted);
+  color: var(--cm-navy-muted-text);
   background: transparent;
 }
 
 .cm-lang-btn[data-active="true"] {
-  color: var(--cm-navy-deep);
+  color: var(--cm-white);
   font-weight: 600;
 }
 
@@ -406,7 +425,32 @@ p {
   right: 0.625rem;
   bottom: 0.5rem;
   height: 0.125rem;
-  background-color: var(--cm-sapphire);
+  background-color: var(--cm-gold);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cm-lang-btn:hover {
+    color: var(--cm-white);
+    background: transparent;
+  }
+}
+
+.cm-header-menu-btn {
+  background-color: var(--cm-nav-pill-active);
+  color: var(--cm-white);
+  border: 0.0625rem solid var(--cm-navy-line);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cm-header-menu-btn:hover {
+    background-color: var(--cm-gold);
+    border-color: var(--cm-gold);
+    color: var(--cm-ink-on-gold);
+    box-shadow: none;
+  }
 }
 
 .cm-mobile-dropdown {
@@ -414,9 +458,9 @@ p {
   margin-bottom: 0.75rem;
   padding: 1.25rem;
   border-radius: 1.25rem;
-  background-color: var(--cm-white);
-  border: 0.0625rem solid var(--cm-champagne-border);
-  box-shadow: 0 0.75rem 2rem oklch(0.24 0.048 254 / 0.1);
+  background-color: var(--cm-cavadas-navy);
+  border: 0.0625rem solid var(--cm-navy-line);
+  box-shadow: 0 0.875rem 2.25rem oklch(0.14 0.04 262 / 0.32);
 }
 
 .cm-mobile-nav-link {
@@ -426,7 +470,7 @@ p {
   min-height: 2.875rem;
   padding-inline: 0.75rem;
   border-radius: 0.75rem;
-  color: var(--cm-navy-deep);
+  color: var(--cm-white);
   font-family: var(--font-outfit), system-ui, sans-serif;
   font-size: 1rem;
   font-weight: 500;
@@ -434,19 +478,47 @@ p {
 }
 
 .cm-mobile-nav-link[data-active="true"] {
-  background-color: var(--cm-champagne-soft);
-  color: var(--cm-sapphire);
+  background-color: var(--cm-nav-pill-active);
+  color: var(--cm-gold);
   font-weight: 600;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .cm-mobile-nav-link:hover {
-    background-color: var(--cm-champagne-soft);
-    color: var(--cm-sapphire);
+    background-color: var(--cm-nav-pill-active);
+    color: var(--cm-gold);
   }
 }
 
-/* ─── Botones Oficiales (Azul Zafiro Real #1B3B6F, Outfit 600 en CTAs) ─── */
+.cm-mobile-lang-row {
+  border-top: 0.0625rem solid var(--cm-navy-line);
+}
+
+.cm-mobile-lang-label {
+  color: var(--cm-navy-muted-text);
+}
+
+/* ─── Botones Oficiales (Oro Real Propuesta 1 + Azul Zafiro en vistas internas) ─── */
+.cm-btn-gold {
+  background-color: var(--cm-gold);
+  color: var(--cm-ink-on-gold);
+  border: 0.0625rem solid var(--cm-gold);
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-weight: 600;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cm-btn-gold:hover {
+    background-color: var(--cm-gold-hover);
+    border-color: var(--cm-gold-hover);
+    color: var(--cm-ink-on-gold);
+    box-shadow: none;
+  }
+}
+
 .cm-btn-sapphire {
   background-color: var(--cm-sapphire);
   color: var(--cm-white);
@@ -467,7 +539,7 @@ p {
   }
 }
 
-/* Botón estructurado estilo Clínica Cavadas (cuerpo Azul Zafiro + caja blanca derecha con flecha) */
+/* Botón estructurado estilo Clínica Cavadas (cuerpo Oro Real + caja blanca derecha con flecha) */
 .cm-btn-cavadas {
   display: inline-flex;
   align-items: center;
@@ -476,9 +548,9 @@ p {
   min-height: 3.25rem;
   padding: 0.3125rem 0.3125rem 0.3125rem 1.375rem;
   border-radius: 0.625rem;
-  background-color: var(--cm-sapphire);
-  border: 0.0625rem solid var(--cm-sapphire);
-  color: var(--cm-white);
+  background-color: var(--cm-gold);
+  border: 0.0625rem solid var(--cm-gold);
+  color: var(--cm-ink-on-gold);
   font-family: var(--font-outfit), system-ui, sans-serif;
   font-weight: 600;
   font-size: 0.9375rem;
@@ -496,7 +568,7 @@ p {
   height: 2.5rem;
   border-radius: 0.4375rem;
   background-color: var(--cm-white);
-  color: var(--cm-navy-deep);
+  color: var(--cm-ink-black);
   flex-shrink: 0;
   transition: background-color 220ms var(--ease-out), color 220ms var(--ease-out);
 }
@@ -509,9 +581,9 @@ p {
 
 @media (hover: hover) and (pointer: fine) {
   .cm-btn-cavadas:hover {
-    background-color: var(--cm-sapphire-hover);
-    border-color: var(--cm-sapphire-hover);
-    color: var(--cm-white);
+    background-color: var(--cm-gold-hover);
+    border-color: var(--cm-gold-hover);
+    color: var(--cm-ink-on-gold);
     box-shadow: none;
   }
   .cm-btn-cavadas:hover .cm-btn-cavadas-arrow {
@@ -586,7 +658,7 @@ p {
   flex-shrink: 0;
 }
 
-/* ─── APARTADO 1: PORTADA PRINCIPAL (HERO ESTILO CLÍNICA CAVADAS) ─── */
+/* ─── APARTADO 1: PORTADA PRINCIPAL (HERO FONDO BLANCO + ELEMENTOS DORADOS) ─── */
 .cm-hero-outer {
   background-color: var(--cm-white);
   padding-bottom: 1.5rem;
@@ -594,8 +666,8 @@ p {
 
 .cm-hero-stage {
   position: relative;
-  background-color: var(--cm-hero-canvas);
-  border-bottom: 0.0625rem solid var(--cm-line-cool);
+  background-color: var(--cm-white);
+  border-bottom: 0.0625rem solid var(--cm-gold-border-soft);
   border-radius: 0 0 1.875rem 1.875rem;
   padding-block: 2.5rem 3rem;
   overflow: hidden;
@@ -641,6 +713,7 @@ p {
 .cm-chamfer-card {
   position: relative;
   background-color: var(--cm-white);
+  border: 0.0625rem solid var(--cm-gold-border);
   padding: 1.75rem 1.5rem 1.75rem;
   border-radius: 0.875rem 0.875rem 0 0.875rem;
   clip-path: polygon(
@@ -650,7 +723,7 @@ p {
     calc(100% - 2.25rem) 100%,
     0 100%
   );
-  filter: drop-shadow(0 0.75rem 1.75rem oklch(0.24 0.048 254 / 0.08));
+  filter: drop-shadow(0 0.75rem 1.75rem oklch(0.2 0.04 82 / 0.12));
 }
 
 @media (min-width: 768px) {
@@ -666,15 +739,15 @@ p {
   padding: 0.4375rem 0.625rem;
   border-radius: 1rem;
   background-color: var(--cm-white);
-  border: 0.0625rem solid var(--cm-line-cool);
+  border: 0.0625rem solid var(--cm-gold-border);
 }
 
 .cm-hero-arrow-btn {
   width: 2.75rem;
   height: 2.75rem;
   border-radius: 0.75rem;
-  background-color: var(--cm-hero-canvas);
-  color: var(--cm-navy-deep);
+  background-color: var(--cm-gold-surface);
+  color: var(--cm-ink-black);
   border: 0;
   box-shadow: none;
   backdrop-filter: none;
@@ -682,8 +755,8 @@ p {
 
 @media (hover: hover) and (pointer: fine) {
   .cm-hero-arrow-btn:hover {
-    background-color: var(--cm-sapphire);
-    color: var(--cm-white);
+    background-color: var(--cm-gold);
+    color: var(--cm-ink-on-gold);
   }
 }
 
@@ -694,7 +767,7 @@ p {
 
 .cm-quote-bubble {
   position: relative;
-  background-color: var(--cm-sapphire);
+  background-color: var(--cm-cavadas-navy);
   color: var(--cm-white);
   border-radius: 1.375rem;
   padding: 1.5rem;
@@ -703,7 +776,7 @@ p {
 @media (min-width: 768px) {
   .cm-quote-bubble {
     padding: 1.75rem;
-    box-shadow: 0 1rem 2.25rem oklch(0.24 0.048 254 / 0.14);
+    box-shadow: 0 1rem 2.25rem oklch(0.16 0.05 262 / 0.22);
   }
 }
 
@@ -713,7 +786,7 @@ p {
   font-size: clamp(5.25rem, 12vw, 10.5rem);
   line-height: 0.92;
   letter-spacing: -0.045em;
-  color: var(--cm-sapphire);
+  color: var(--cm-gold-rich);
 }
 
 .cm-avatar-circle {
@@ -780,14 +853,14 @@ p {
   background-color: var(--cm-champagne-border);
 }
 
-/* ─── APARTADO 3: SERVICIOS DE EXCELENCIA (TARJETA INTERACTIVA CLÍNICA CAVADAS) ─── */
+/* ─── APARTADO 3: SERVICIOS DE EXCELENCIA (TARJETA INTERACTIVA ENMARCADA EN DORADO) ─── */
 .cm-service-card {
   position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
   background-color: var(--cm-white);
-  border: 0.0625rem solid var(--cm-line-cool);
+  border: 0.0625rem solid var(--cm-gold-border);
   border-radius: 0.875rem;
   padding: 2rem 1.625rem;
   transition:
@@ -809,8 +882,9 @@ p {
   width: 5rem;
   height: 5rem;
   border-radius: 1rem;
-  background-color: var(--cm-sapphire);
-  color: var(--cm-white);
+  background-color: var(--cm-gold-surface);
+  border: 0.0625rem solid var(--cm-gold-border-soft);
+  color: var(--cm-gold-icon);
   flex-shrink: 0;
   z-index: 2;
 }
@@ -853,7 +927,7 @@ p {
 .cm-service-divider {
   height: 0.0625rem;
   width: 100%;
-  background-color: var(--cm-line-cool);
+  background-color: var(--cm-gold-border-soft);
   margin-block: 1.25rem;
 }
 
@@ -865,7 +939,7 @@ p {
   padding: 0;
   background: transparent;
   border: 0;
-  color: var(--cm-navy-deep);
+  color: var(--cm-ink-black);
   font-family: var(--font-outfit), system-ui, sans-serif;
   font-weight: 500;
   font-size: 0.9375rem;
@@ -881,14 +955,14 @@ p {
 
 @media (hover: hover) and (pointer: fine) {
   .cm-service-card:hover {
-    border-color: transparent;
-    box-shadow: 0 1.25rem 3.125rem oklch(0.24 0.048 254 / 0.1);
+    border-color: var(--cm-gold);
+    box-shadow: 0 1.25rem 3.125rem oklch(0.2 0.04 82 / 0.12);
   }
   .cm-service-card:hover .cm-service-photo-reveal {
     width: 8.25rem;
     opacity: 1;
     padding-inline: 0.75rem;
-    border-color: var(--cm-grey-border);
+    border-color: var(--cm-gold-border);
   }
   .cm-service-card:hover .cm-service-title {
     color: var(--cm-sapphire);
@@ -906,15 +980,15 @@ p {
   width: 8.25rem;
   opacity: 1;
   padding-inline: 0.75rem;
-  border-color: var(--cm-grey-border);
+  border-color: var(--cm-gold-border);
 }
 
 .cm-carousel-circle-btn {
   width: 3.125rem;
   height: 3.125rem;
   border-radius: 9999rem;
-  background-color: var(--cm-navy-deep);
-  color: var(--cm-white);
+  background-color: var(--cm-gold);
+  color: var(--cm-ink-on-gold);
   border: 0;
   box-shadow: none;
   backdrop-filter: none;
@@ -923,8 +997,8 @@ p {
 
 @media (hover: hover) and (pointer: fine) {
   .cm-carousel-circle-btn:hover {
-    background-color: var(--cm-sapphire);
-    color: var(--cm-white);
+    background-color: var(--cm-gold-hover);
+    color: var(--cm-ink-on-gold);
   }
 }
 
@@ -973,21 +1047,43 @@ p {
 
 .cm-dot-btn[data-active="true"] .cm-dot-indicator {
   width: 1.625rem;
-  background-color: var(--cm-sapphire);
+  background-color: var(--cm-gold-rich);
 }
 
-/* ─── APARTADO 4: HISTORIA PERSONAL DRA. GABRIELA (ESTILO "DESDE 1994" ADAPTADO A BLANCO/CHAMPAGNE/ZAFIRO) ─── */
+#inicio .cm-btn-outline-clean {
+  border-color: var(--cm-gold-border);
+  color: var(--cm-ink-black);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #inicio .cm-btn-outline-clean:hover {
+    background-color: var(--cm-gold-surface);
+    border-color: var(--cm-gold);
+    color: var(--cm-ink-black);
+  }
+}
+
+/* ─── APARTADO 4: HISTORIA PERSONAL DRA. GABRIELA (BLANCO + AZUL MARINO + DORADO) ─── */
 .cm-story-shell {
   border-radius: 1.5rem;
   overflow: hidden;
   background-color: var(--cm-white);
-  border: 0.0625rem solid var(--cm-line);
+  border: 0.0625rem solid var(--cm-gold-border);
+}
+
+.cm-home-story-quote {
+  background-color: var(--cm-cavadas-navy);
+  color: var(--cm-white);
+}
+
+.cm-home-story-quote-author {
+  color: var(--cm-navy-muted-text);
 }
 
 .cm-story-ribbon {
-  background-color: var(--cm-champagne-header);
-  color: var(--cm-navy-deep);
-  border-top: 0.0625rem solid var(--cm-champagne-border);
+  background-color: var(--cm-cavadas-navy);
+  color: var(--cm-white);
+  border-top: 0.0625rem solid var(--cm-gold);
   padding: 1rem 1.5rem;
 }
 
@@ -996,7 +1092,7 @@ p {
   font-weight: 600;
   font-size: clamp(2.5rem, 4.5vw, 3.5rem);
   line-height: 1;
-  color: var(--cm-sapphire);
+  color: var(--cm-gold-rich);
 }
 
 /* ─── APARTADO 5: ¿POR QUÉ LA DRA. GABRIELA DELGADO? (GRID 2X2 CLÍNICA CAVADAS) ─── */
@@ -1007,13 +1103,14 @@ p {
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 0.875rem;
-  background-color: var(--cm-sapphire-tint);
-  color: var(--cm-sapphire);
+  background-color: var(--cm-gold-surface);
+  border: 0.0625rem solid var(--cm-gold-border-soft);
+  color: var(--cm-gold-icon);
   flex-shrink: 0;
 }
 
 .cm-why-watermark {
-  color: var(--cm-line-cool);
+  color: var(--cm-gold-border-soft);
 }
 
 /* ─── APARTADO 6: ¿QUÉ PIENSAN NUESTROS PACIENTES? (TARJETA DIANA DUSSAN + MARQUEE DERECHA CAVADAS) ─── */
@@ -1069,8 +1166,8 @@ p {
   align-items: center;
   text-align: center;
   background-color: var(--cm-white);
-  border: 0.0625rem solid var(--cm-line);
-  border-bottom: 0.125rem solid var(--cm-sapphire-tint);
+  border: 0.0625rem solid var(--cm-gold-border);
+  border-bottom: 0.125rem solid var(--cm-gold);
   border-radius: 1.25rem;
   padding: 1.875rem 1.5rem;
   white-space: normal;
@@ -1100,28 +1197,34 @@ p {
   width: 1.625rem;
   height: 1.625rem;
   border-radius: 9999rem;
-  background-color: var(--cm-sapphire);
+  background-color: var(--cm-cavadas-navy);
   color: var(--cm-white);
   border: 0.125rem solid var(--cm-white);
 }
 
 .cm-gold-star {
-  color: var(--cm-gold-star);
+  color: var(--cm-gold);
 }
 
 /* ─── APARTADO 7: FORMULARIO LIMPIO DE RESERVA DE CITAS WEB ─── */
 .cm-booking-card {
   background-color: var(--cm-white);
-  border: 0.0625rem solid var(--cm-line);
+  border: 0.0625rem solid var(--cm-gold-border);
   border-radius: 1.5rem;
   padding: 1.5rem;
-  box-shadow: 0 1rem 2.5rem oklch(0.24 0.048 254 / 0.06);
+  box-shadow: 0 1rem 2.5rem oklch(0.2 0.04 82 / 0.08);
 }
 
 @media (min-width: 768px) {
   .cm-booking-card {
     padding: 2.25rem;
   }
+}
+
+.cm-contact-icon-circle {
+  background-color: var(--cm-gold-surface);
+  border: 0.0625rem solid var(--cm-gold-border-soft);
+  color: var(--cm-gold-icon);
 }
 
 .cm-step-badge {
@@ -1131,8 +1234,8 @@ p {
   width: 2.25rem;
   height: 2.25rem;
   border-radius: 9999rem;
-  background-color: var(--cm-champagne-header);
-  color: var(--cm-navy-deep);
+  background-color: var(--cm-gold-surface);
+  color: var(--cm-ink-black);
   font-family: var(--font-outfit), system-ui, sans-serif;
   font-weight: 600;
   font-size: 0.875rem;
@@ -1142,9 +1245,9 @@ p {
 .cm-success-banner {
   border-radius: 1rem;
   padding: 1rem 1.125rem;
-  background-color: var(--cm-sapphire-tint);
-  border: 0.0625rem solid var(--cm-line-cool);
-  color: var(--cm-navy-deep);
+  background-color: var(--cm-gold-surface);
+  border: 0.0625rem solid var(--cm-gold-border);
+  color: var(--cm-ink-black);
 }
 
 /* ─── Recuadro Gris de Reserva Multimedia (Imágenes y Videos pendientes) ─── */
@@ -2017,11 +2120,11 @@ p {
   }
 }
 
-/* ─── Footer Champagne Seda (Referencia UI: clinicadianadussan.com) ─── */
+/* ─── Footer Azul Marino Profundo + Dorado (Referencia color: Clínica Cavadas) ─── */
 .cm-footer {
-  background-color: var(--cm-champagne-footer);
-  color: var(--cm-navy-deep);
-  border-top: 0.0625rem solid var(--cm-champagne-border);
+  background-color: var(--cm-cavadas-footer);
+  color: var(--cm-white);
+  border-top: 0.125rem solid var(--cm-gold);
   padding-block: 4rem 2rem;
 }
 
@@ -2031,14 +2134,22 @@ p {
   }
 }
 
+.cm-footer-slogan {
+  color: var(--cm-white);
+}
+
+.cm-footer-contact {
+  color: var(--cm-navy-muted-text);
+}
+
 .cm-footer-rule {
   width: 2rem;
   height: 0.125rem;
-  background-color: var(--cm-sapphire);
+  background-color: var(--cm-gold);
 }
 
 .cm-footer-heading {
-  color: var(--cm-navy-deep);
+  color: var(--cm-white);
   font-family: var(--font-outfit), system-ui, sans-serif;
   font-size: 0.9375rem;
   font-weight: 600;
@@ -2050,7 +2161,7 @@ p {
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;
-  color: var(--cm-footer-muted);
+  color: var(--cm-navy-muted-text);
   font-family: var(--font-outfit), system-ui, sans-serif;
   font-size: 0.9375rem;
   font-weight: 500;
@@ -2061,17 +2172,17 @@ p {
 
 @media (hover: hover) and (pointer: fine) {
   .cm-footer-link:hover {
-    color: var(--cm-sapphire);
-    border-bottom-color: var(--cm-sapphire);
+    color: var(--cm-gold);
+    border-bottom-color: var(--cm-gold);
   }
 }
 
 .cm-footer-muted {
-  color: var(--cm-footer-muted);
+  color: var(--cm-navy-muted-text);
 }
 
 .cm-footer-divider {
-  border-top: 0.0625rem solid var(--cm-champagne-border);
+  border-top: 0.0625rem solid var(--cm-navy-line);
 }
 
 /* ─── Botón Flotante WhatsApp (FAB — Referencia UI: clinicadianadussan.com) ─── */
