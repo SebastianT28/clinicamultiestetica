@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { CLINIC_SERVICES, SITE_CONFIG } from "@/config/site";
+import { BLOG_SLUGS } from "@/data/blog-content";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
@@ -23,5 +24,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...serviceRoutes];
+  const blogRoutes: MetadataRoute.Sitemap = BLOG_SLUGS.map((slug) => ({
+    url: `${baseUrl}/blog/${slug}`,
+    changeFrequency: "monthly",
+    priority: 0.75,
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...blogRoutes];
 }

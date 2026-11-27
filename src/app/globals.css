@@ -1563,6 +1563,246 @@ p {
   opacity: 1;
 }
 
+/* ─── PÁGINA /BLOG Y ARTÍCULOS /BLOG/[SLUG] (REF: CLÍNICA DIANA DUSSAN /BLOG/) ─── */
+.cm-blog-hero {
+  background-color: var(--cm-white);
+  border-bottom: 0.0625rem solid var(--cm-line);
+  padding-block: 1.75rem 3rem;
+}
+
+@media (min-width: 768px) {
+  .cm-blog-hero {
+    padding-block: 2.25rem 4rem;
+  }
+}
+
+.cm-breadcrumb-link {
+  color: var(--cm-muted);
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cm-breadcrumb-link:hover {
+    color: var(--cm-sapphire);
+    text-decoration: underline;
+    text-underline-offset: 0.25rem;
+  }
+}
+
+.cm-blog-card-link {
+  display: block;
+  height: 100%;
+  text-decoration: none;
+}
+
+.cm-blog-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 1rem;
+  background-color: var(--cm-white);
+  border: 0.0625rem solid var(--cm-line);
+  overflow: hidden;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition:
+    border-color 240ms var(--ease-out),
+    box-shadow 240ms var(--ease-out);
+}
+
+.cm-blog-card-tag {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 2;
+  padding: 0.3125rem 0.625rem;
+  border-radius: 0.625rem;
+  background-color: var(--cm-case-tag-bg);
+  color: var(--cm-navy-deep);
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.cm-blog-read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cm-navy-deep);
+  transition: color 200ms ease;
+}
+
+.cm-blog-read-arrow {
+  transition: transform 220ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cm-blog-card-link:hover .cm-blog-card,
+  .cm-blog-card-link:hover .cm-related-card {
+    border-color: var(--cm-champagne-border);
+    box-shadow: 0 0.875rem 2rem oklch(0.24 0.048 254 / 0.07);
+  }
+
+  .cm-blog-card-link:hover .cm-blog-card-title,
+  .cm-blog-card-link:hover .cm-blog-read-more,
+  .cm-blog-card-link:hover .cm-related-title {
+    color: var(--cm-sapphire);
+  }
+
+  .cm-blog-card-link:hover .cm-blog-read-arrow {
+    transform: translateX(0.25rem);
+  }
+}
+
+.cm-article-hero {
+  background-color: var(--cm-white);
+  border-bottom: 0.0625rem solid var(--cm-line);
+  padding-block: 1.75rem 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .cm-article-hero {
+    padding-block: 2.25rem 3.25rem;
+  }
+}
+
+.cm-article-prose {
+  max-width: 42rem;
+}
+
+.cm-article-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  color: var(--cm-muted);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.cm-article-callout {
+  border-radius: 1rem;
+  background-color: var(--cm-champagne-soft);
+  border: 0.0625rem solid var(--cm-champagne-border);
+  padding: 1.5rem;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+@media (min-width: 640px) {
+  .cm-article-callout {
+    padding: 1.75rem;
+  }
+}
+
+.cm-inline-link {
+  color: var(--cm-sapphire);
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+.cm-article-case-pill {
+  position: absolute;
+  left: 0.625rem;
+  bottom: 0.625rem;
+  z-index: 2;
+  padding: 0.3125rem 0.5625rem;
+  border-radius: 0.5rem;
+  background-color: var(--cm-case-badge-before);
+  color: var(--cm-white);
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.cm-article-case-pill--after {
+  background-color: var(--cm-case-badge-after);
+}
+
+.cm-faq-card {
+  border-radius: 0.875rem;
+  background-color: var(--cm-white);
+  border: 0.0625rem solid var(--cm-line);
+}
+
+.cm-specialist-card {
+  border-radius: 1rem;
+  background-color: var(--cm-white);
+  border: 0.0625rem solid var(--cm-line);
+  overflow: hidden;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.cm-specialist-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.25rem 1.125rem;
+  border-bottom: 0.125rem solid var(--cm-navy-deep);
+}
+
+@media (min-width: 640px) {
+  .cm-specialist-header {
+    padding: 1.375rem 1.5rem 1.25rem;
+  }
+}
+
+.cm-specialist-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.38fr) minmax(0, 0.62fr);
+  gap: 0.75rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: 0.625rem;
+}
+
+.cm-specialist-row[data-striped="true"] {
+  background-color: var(--cm-champagne-soft);
+}
+
+.cm-specialist-dt {
+  margin: 0;
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--cm-navy-deep);
+}
+
+.cm-specialist-dd {
+  margin: 0;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--cm-muted);
+}
+
+.cm-related-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 0.875rem;
+  background-color: var(--cm-white);
+  border: 0.0625rem solid var(--cm-line);
+  overflow: hidden;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition:
+    border-color 240ms var(--ease-out),
+    box-shadow 240ms var(--ease-out);
+}
+
 /* ─── Footer Champagne Seda (Referencia UI: clinicadianadussan.com) ─── */
 .cm-footer {
   background-color: var(--cm-champagne-footer);

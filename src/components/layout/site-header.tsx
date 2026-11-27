@@ -45,7 +45,11 @@ export function SiteHeader() {
         pathname === "/testimonios" || pathname.startsWith("/testimonios/"),
     },
     { href: "/#quien-soy", label: dict.about, active: false },
-    { href: "/#por-que-dra-gabriela", label: dict.blog, active: false },
+    {
+      href: "/blog",
+      label: dict.blog,
+      active: pathname === "/blog" || pathname.startsWith("/blog/"),
+    },
   ];
 
   return (
