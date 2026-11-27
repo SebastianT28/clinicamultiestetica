@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -33,6 +33,16 @@ export function WhatsAppAssistant() {
   const [age, setAge] = useState("");
   const [acceptedPrivacy, setAcceptedPrivacy] = useState(true);
   const [privacyError, setPrivacyError] = useState(false);
+  const [showBubbleHint, setShowBubbleHint] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBubbleHint(window.scrollY < 72);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -68,16 +78,28 @@ export function WhatsAppAssistant() {
       </datalist>
 
       {!mobileMenuOpen && !waModalOpen && (
-        <Button
-          type="button"
-          size="icon"
-          aria-label={dict.fabAriaLabel}
-          onClick={() => openWhatsAppModal()}
-          className="cm-wa-fab"
-        >
-          <WhatsAppIcon className="size-7" />
-          <span className="cm-wa-fab-badge" aria-hidden="true" />
-        </Button>
+        <div className="cm-wa-dock">
+          <span
+            aria-hidden="true"
+            data-visible={showBubbleHint ? "true" : "false"}
+            className="cm-wa-pill"
+          >
+            {locale === "es" ? "Estamos disponibles" : "We are available"}
+          </span>
+
+          <Button
+            type="button"
+            size="icon"
+            aria-label={dict.fabAriaLabel}
+            onClick={() => openWhatsAppModal()}
+            className="cm-wa-fab"
+          >
+            <span className="cm-wa-fab-core" aria-hidden="true">
+              <WhatsAppIcon className="cm-wa-fab-icon" />
+            </span>
+            <span className="cm-wa-fab-badge" aria-hidden="true" />
+          </Button>
+        </div>
       )}
 
       <Dialog open={waModalOpen} onOpenChange={setWaModalOpen}>
