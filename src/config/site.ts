@@ -20,7 +20,11 @@ export const SITE_CONFIG = {
   founderRoleEs: "Cirujana Maxilofacial y Especialista en Armonización Facial",
   founderRoleEn: "Maxillofacial Surgeon & Facial Harmonization Specialist",
   yearsExperience: "+18",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://dragabydelgado.com",
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : "https://dragabydelgado.com"),
   secondaryDomain: "https://clinicamultiestetica.pe",
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "51960928384",
   whatsappDisplay: "+51 960 928 384",
