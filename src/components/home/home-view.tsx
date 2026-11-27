@@ -63,7 +63,7 @@ export function HomeView() {
     locale,
     selectedProcedure,
     setSelectedProcedure,
-    scrollToBookingForm,
+    openWhatsAppModal,
   } = useAppInteraction();
 
   const dict = HOME_CONTENT[locale];
@@ -100,11 +100,7 @@ export function HomeView() {
     const cleanEmail = patientEmail.trim();
     const cleanProc = selectedProcedure.trim();
 
-    if (locale === "es") {
-      return `Hola Dra. Gabriela Delgado y Clínica Multiestética. Solicito reservar una cita desde dragabydelgado.com: Nombre: ${cleanName} · Teléfono: ${cleanPhone} · Correo: ${cleanEmail} · Servicio: ${cleanProc}.`;
-    }
-
-    return `Hello Dr. Gabriela Delgado and Clínica Multiestética. I would like to book an appointment via dragabydelgado.com: Name: ${cleanName} · Phone: ${cleanPhone} · Email: ${cleanEmail} · Service: ${cleanProc}.`;
+    return `Buen día, mi nombre es ${cleanName} y deseo agendar una cita con la Dra. Gabriela Delgado. Motivo o servicio de interés: ${cleanProc}. Datos de contacto: ${cleanPhone} · ${cleanEmail}.`;
   };
 
   const handleBookingSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -115,6 +111,8 @@ export function HomeView() {
     }
     setPrivacyError(false);
     setBookingConfirmed(true);
+    const url = buildWhatsAppUrl(buildBookingWhatsAppMessage());
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -190,7 +188,7 @@ export function HomeView() {
                       {activeHero.ctaTarget === "booking" ? (
                         <Button
                           type="button"
-                          onClick={() => scrollToBookingForm()}
+                          onClick={() => openWhatsAppModal()}
                           className="cm-btn-cavadas"
                         >
                           <span>{activeHero.ctaLabel}</span>
@@ -267,7 +265,7 @@ export function HomeView() {
               <div className="mt-7">
                 <Button
                   type="button"
-                  onClick={() => scrollToBookingForm()}
+                  onClick={() => openWhatsAppModal()}
                   className="cm-btn-cavadas"
                 >
                   <span>{dict.specialization.ctaLabel}</span>
@@ -320,7 +318,7 @@ export function HomeView() {
                   <Button
                     type="button"
                     variant="ghost"
-                    onClick={() => scrollToBookingForm(service.title)}
+                    onClick={() => openWhatsAppModal(service.title)}
                     className="cm-service-action"
                   >
                     <span>{dict.servicesSection.cardActionLabel}</span>
@@ -438,7 +436,7 @@ export function HomeView() {
                 <div className="mt-8 flex flex-col justify-between gap-6 border-t border-border pt-7 sm:flex-row sm:items-center">
                   <Button
                     type="button"
-                    onClick={() => scrollToBookingForm()}
+                    onClick={() => openWhatsAppModal()}
                     className="cm-btn-cavadas self-start"
                   >
                     <span>{dict.storySection.ctaLabel}</span>
@@ -648,7 +646,16 @@ export function HomeView() {
                       {dict.bookingSection.whatsappLabel}
                     </dt>
                     <dd className="m-0 mt-0.5 font-heading text-base font-medium text-foreground">
-                      {SITE_CONFIG.whatsappDisplay}
+                      <a
+                        href={buildWhatsAppUrl(
+                          "Buen día, me gustaría recibir información sobre la consulta de la Dra. Gabriela Delgado."
+                        )}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="cm-inline-link no-underline hover:underline"
+                      >
+                        {SITE_CONFIG.whatsappDisplay}
+                      </a>
                     </dd>
                   </div>
                 </div>

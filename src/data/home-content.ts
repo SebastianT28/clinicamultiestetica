@@ -174,7 +174,7 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
             "Armonización facial y cirugía estética que realzan tu belleza natural",
           cardDescription:
             "Más de 18 años acompañándote con criterio anatómico, preparación internacional y calidez humana en Arequipa.",
-          ctaLabel: "Reservar valoración",
+          ctaLabel: "Agendar cita",
           ctaTarget: "booking",
           portraitTitle: "Espacio para retrato o video principal",
           isVideo: true,
@@ -202,14 +202,14 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
       statCaption: "Años de experiencia profesional",
       description:
         "Para la Dra. Gabriela Delgado, la belleza consiste en sentirte cómoda y segura con quien eres, uniendo precisión facial, insumos certificados y el respaldo de especialistas en Clínica Multiestética.",
-      ctaLabel: "Solicitar cita",
+      ctaLabel: "Agendar cita",
     },
     servicesSection: {
       titleLead: "Servicios de ",
       titleAccent: "excelencia médica",
       subtitle:
         "Especialidades faciales y corporales enfocadas en resultados armónicos y seguros.",
-      cardActionLabel: "Solicitar valoración",
+      cardActionLabel: "Agendar cita",
       viewAllLabel: "Ver todos los servicios",
       prevLabel: "Servicios anteriores",
       nextLabel: "Siguientes servicios",
@@ -293,7 +293,7 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
       personalQuote:
         "«Nunca permitas que una etapa difícil defina tu futuro. Siempre puedes volver a empezar, prepararte, crecer y construir algo extraordinario.»",
       quoteSignature: "Dra. Gabriela Delgado Silva",
-      ctaLabel: "Agendar valoración",
+      ctaLabel: "Agendar cita",
       counters: [
         { value: "+18", label: "Años de experiencia" },
         { value: "16", label: "Procedimientos médicos" },
@@ -392,32 +392,32 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
       ],
     },
     bookingSection: {
-      titleLead: "Reserva tu cita de ",
-      titleAccent: "valoración",
+      titleLead: "Agenda tu ",
+      titleAccent: "cita médica",
       subtitle:
-        "Déjanos tus datos y nuestro equipo coordinará contigo el horario ideal en Arequipa.",
+        "Déjanos tus datos y el servicio de tu interés para coordinar contigo por WhatsApp.",
       addressLabel: "Consultorio",
       addressValue: "Urb. León XIII K-8, Cayma, Arequipa",
       whatsappLabel: "WhatsApp directo",
       modalityInfoLabel: "Atención",
       modalityInfoValue: "Previa cita personalizada (Español e Inglés)",
-      formTitle: "Solicitar cita",
+      formTitle: "Agendar cita",
       nameLabel: "Nombre y apellidos",
       namePlaceholder: "Ej. Valeria Paredes",
       phoneLabel: "WhatsApp o celular",
       phonePlaceholder: "Ej. +51 958 000 000",
       emailLabel: "Correo electrónico",
       emailPlaceholder: "Ej. valeria@correo.com",
-      procedureLabel: "Servicio de interés",
-      procedurePlaceholder: "Selecciona o escribe un procedimiento",
+      procedureLabel: "Motivo o servicio de interés",
+      procedurePlaceholder: "Selecciona un servicio o escribe tu motivo",
       privacyLabel:
         "Acepto el tratamiento de mis datos conforme a la Ley N° 29733.",
       privacyError: "Acepta la política de privacidad para continuar.",
-      submitBtn: "Reservar cita",
-      successTitle: "Solicitud registrada",
+      submitBtn: "Agendar cita",
+      successTitle: "Solicitud lista en WhatsApp",
       successBody:
-        "Hemos preparado los datos de tu cita. También puedes confirmarla ahora mismo por WhatsApp.",
-      whatsappConfirmBtn: "Confirmar por WhatsApp",
+        "Abrimos WhatsApp con tus datos y motivo de interés. Si la ventana no se abrió automáticamente, pulsa el botón inferior.",
+      whatsappConfirmBtn: "Abrir en WhatsApp",
     },
     footer: {
       tagline:
@@ -430,27 +430,27 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
       privacyPolicy: "Política de privacidad (Ley N° 29733)",
       termsConditions: "Términos y condiciones",
       valuationTerms: "Criterios de valoración médica",
-      bookBtn: "Reservar cita",
+      bookBtn: "Agendar cita",
       copyright:
         "© 2026 Dra. Gabriela Delgado Silva · Clínica Multiestética. Todos los derechos reservados.",
     },
     waModal: {
-      fabAriaLabel: "Hablar por WhatsApp con la consulta de la Dra. Gabriela Delgado",
-      title: "Orientación por WhatsApp",
+      fabAriaLabel: "Hablar por WhatsApp con el consultorio de la Dra. Gabriela Delgado",
+      title: "Agendar cita",
       description:
-        "Completa estos datos y abriremos WhatsApp con tu consulta lista.",
+        "Indícanos tu nombre y el motivo o servicio de interés para atenderte por WhatsApp.",
       nameLabel: "Tu nombre",
       namePlaceholder: "Ej. Andrea Rojas",
       ageLabel: "Edad (+18)",
       agePlaceholder: "Ej. 30",
-      procedureLabel: "Procedimiento de interés",
-      procedurePlaceholder: "Ej. Armonización facial",
+      procedureLabel: "Motivo o servicio de interés",
+      procedurePlaceholder: "Selecciona un servicio o escribe tu motivo",
       privacyAccept:
         "Acepto la política de privacidad (Ley N° 29733).",
       privacyError: "Debes aceptar la política de privacidad para continuar.",
-      submitBtn: "Continuar a WhatsApp",
+      submitBtn: "Agendar cita por WhatsApp",
       footnote:
-        "Tus datos se emplean únicamente para coordinar tu valoración médica.",
+        "Tus datos se emplean únicamente para coordinar tu cita médica.",
     },
   },
   en: {
@@ -474,7 +474,7 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
             "Facial harmonization and aesthetic surgery that enhance your natural essence",
           cardDescription:
             "Over 18 years guiding patients with anatomical precision, international training, and warm care in Arequipa.",
-          ctaLabel: "Book consultation",
+          ctaLabel: "Book appointment",
           ctaTarget: "booking",
           portraitTitle: "Hero portrait or video placeholder",
           isVideo: true,
@@ -509,7 +509,7 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
       titleAccent: "medical excellence",
       subtitle:
         "Facial and body specialties focused on balanced, natural-looking results.",
-      cardActionLabel: "Request consultation",
+      cardActionLabel: "Book appointment",
       viewAllLabel: "View all services",
       prevLabel: "Previous services",
       nextLabel: "Next services",
@@ -593,7 +593,7 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
       personalQuote:
         "“Never let a difficult chapter define your future. You can always start again, prepare yourself, grow, and build something extraordinary.”",
       quoteSignature: "Dr. Gabriela Delgado Silva",
-      ctaLabel: "Book consultation",
+      ctaLabel: "Book appointment",
       counters: [
         { value: "+18", label: "Years of experience" },
         { value: "16", label: "Medical procedures" },
@@ -693,31 +693,31 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
     },
     bookingSection: {
       titleLead: "Book your ",
-      titleAccent: "consultation",
+      titleAccent: "medical appointment",
       subtitle:
-        "Leave your details and our team will coordinate your ideal appointment time in Arequipa.",
+        "Share your details and service of interest to coordinate your appointment via WhatsApp.",
       addressLabel: "Clinic address",
       addressValue: "Urb. León XIII K-8, Cayma, Arequipa",
       whatsappLabel: "Direct WhatsApp",
       modalityInfoLabel: "Appointments",
       modalityInfoValue: "By appointment in Spanish & English",
-      formTitle: "Request appointment",
+      formTitle: "Book appointment",
       nameLabel: "Full name",
       namePlaceholder: "e.g. Valeria Paredes",
       phoneLabel: "WhatsApp or mobile phone",
       phonePlaceholder: "e.g. +51 958 000 000",
       emailLabel: "Email address",
       emailPlaceholder: "e.g. valeria@email.com",
-      procedureLabel: "Service of interest",
-      procedurePlaceholder: "Select or type a procedure",
+      procedureLabel: "Reason or service of interest",
+      procedurePlaceholder: "Select a service or type your reason",
       privacyLabel:
         "I accept the processing of my personal data under Law N° 29733.",
       privacyError: "Please accept the privacy policy to continue.",
       submitBtn: "Book appointment",
-      successTitle: "Request registered",
+      successTitle: "Request ready on WhatsApp",
       successBody:
-        "Your appointment details are ready. You can also confirm immediately via WhatsApp.",
-      whatsappConfirmBtn: "Confirm via WhatsApp",
+        "We opened WhatsApp with your details and service of interest. If it did not open automatically, click below.",
+      whatsappConfirmBtn: "Open on WhatsApp",
     },
     footer: {
       tagline:
@@ -736,20 +736,20 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
     },
     waModal: {
       fabAriaLabel: "Chat on WhatsApp with Dr. Gabriela Delgado’s practice",
-      title: "WhatsApp guidance",
+      title: "Book appointment",
       description:
-        "Fill in these brief details and continue directly on WhatsApp.",
+        "Share your name and reason or service of interest to assist you on WhatsApp.",
       nameLabel: "Your name",
       namePlaceholder: "e.g. Andrea Rojas",
       ageLabel: "Age (+18)",
       agePlaceholder: "e.g. 30",
-      procedureLabel: "Procedure of interest",
-      procedurePlaceholder: "e.g. Facial harmonization",
+      procedureLabel: "Reason or service of interest",
+      procedurePlaceholder: "Select a service or type your reason",
       privacyAccept: "I accept the privacy policy (Law N° 29733).",
       privacyError: "Please accept the privacy policy to continue.",
-      submitBtn: "Continue to WhatsApp",
+      submitBtn: "Book appointment on WhatsApp",
       footnote:
-        "Your information is used strictly to coordinate your medical consultation.",
+        "Your information is used strictly to coordinate your medical appointment.",
     },
   },
 };

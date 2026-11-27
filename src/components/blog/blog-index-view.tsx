@@ -121,10 +121,12 @@ export function BlogIndexView() {
                 <Button
                   asChild
                   variant="outline"
-                  className="cm-btn-outline-clean h-12 w-full rounded-full px-7 text-sm sm:w-auto"
+                  className="cm-btn-outline-clean h-12 w-full rounded-full px-7 text-sm no-underline sm:w-auto"
                 >
                   <a
-                    href={buildWhatsAppUrl()}
+                    href={buildWhatsAppUrl(
+                      "Buen día, estuve leyendo el blog de la Dra. Gabriela Delgado y me gustaría recibir orientación."
+                    )}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

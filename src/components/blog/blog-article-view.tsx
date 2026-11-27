@@ -150,7 +150,7 @@ export function BlogArticleView({ slug }: BlogArticleViewProps) {
                     {ui.inlineCalloutOr}{" "}
                     <a
                       href={buildWhatsAppUrl(
-                        `Hola Dra. Gabriela, leí el artículo sobre ${article.topicShort} y deseo consultar una valoración.`
+                        `Buen día, leí el artículo sobre ${article.topicShort} y me gustaría recibir orientación.`
                       )}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -343,11 +343,11 @@ export function BlogArticleView({ slug }: BlogArticleViewProps) {
                 <Button
                   asChild
                   variant="outline"
-                  className="cm-btn-outline-clean h-12 w-full rounded-full px-7 text-sm sm:w-auto"
+                  className="cm-btn-outline-clean h-12 w-full rounded-full px-7 text-sm no-underline sm:w-auto"
                 >
                   <a
                     href={buildWhatsAppUrl(
-                      `Hola Dra. Gabriela, deseo agendar una valoración sobre ${article.topicShort}.`
+                      `Buen día, me gustaría recibir información sobre ${article.topicShort} con la Dra. Gabriela Delgado.`
                     )}
                     target="_blank"
                     rel="noopener noreferrer"

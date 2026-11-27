@@ -70,7 +70,7 @@ export const SERVICES_PAGE_CONTENT: Record<Locale, ServicesPageDictionary> = {
       resultsTitle: "Recomendaciones para tu consulta",
       noResultsText:
         "Conversemos directamente para orientarte según tu caso de forma personalizada.",
-      noResultsCta: "Consultar valoración",
+      noResultsCta: "Agendar cita",
     },
     specialtiesSection: {
       title: "Explora cada especialidad",
@@ -120,13 +120,13 @@ export const SERVICES_PAGE_CONTENT: Record<Locale, ServicesPageDictionary> = {
       filterMaxillofacial: "Cirugía facial",
       filterSkin: "Piel y enzimas",
       filterBody: "Cirugía corporal",
-      consultBtn: "Agendar valoración",
+      consultBtn: "Agendar cita",
     },
     guidanceBanner: {
       title: "¿No sabes cuál es el tratamiento indicado para ti?",
       description:
-        "Agenda una valoración con la Dra. Gabriela Delgado y diseñemos juntos el plan ideal para ti.",
-      primaryCta: "Agendar valoración",
+        "Agenda una cita con la Dra. Gabriela Delgado y diseñemos juntos el plan ideal para ti.",
+      primaryCta: "Agendar cita",
       secondaryCta: "Hablar por WhatsApp",
     },
   },
@@ -142,7 +142,7 @@ export const SERVICES_PAGE_CONTENT: Record<Locale, ServicesPageDictionary> = {
       resultsTitle: "Recommended treatments",
       noResultsText:
         "Let us guide you directly according to your specific goals.",
-      noResultsCta: "Book consultation",
+      noResultsCta: "Book appointment",
     },
     specialtiesSection: {
       title: "Explore each specialty",
@@ -192,13 +192,13 @@ export const SERVICES_PAGE_CONTENT: Record<Locale, ServicesPageDictionary> = {
       filterMaxillofacial: "Facial surgery",
       filterSkin: "Skin & enzymes",
       filterBody: "Body surgery",
-      consultBtn: "Book consultation",
+      consultBtn: "Book appointment",
     },
     guidanceBanner: {
       title: "Not sure which treatment is right for you?",
       description:
-        "Schedule a consultation with Dr. Gabriela Delgado and let us design the ideal plan for you.",
-      primaryCta: "Book consultation",
+        "Schedule an appointment with Dr. Gabriela Delgado and let us design the ideal plan for you.",
+      primaryCta: "Book appointment",
       secondaryCta: "Chat on WhatsApp",
     },
   },

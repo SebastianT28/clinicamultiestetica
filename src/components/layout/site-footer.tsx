@@ -3,13 +3,16 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { BrandLogo } from "@/components/layout/brand-logo";
-import { SITE_CONFIG } from "@/config/site";
+import { buildWhatsAppUrl, SITE_CONFIG } from "@/config/site";
 import { HOME_CONTENT } from "@/data/home-content";
 import { useAppInteraction } from "@/lib/i18n-context";
 
 export function SiteFooter() {
-  const { locale, scrollToBookingForm } = useAppInteraction();
+  const { locale, openWhatsAppModal } = useAppInteraction();
   const dict = HOME_CONTENT[locale];
+  const directContactWaUrl = buildWhatsAppUrl(
+    "Buen día, me gustaría comunicarme con el consultorio de la Dra. Gabriela Delgado."
+  );
 
   return (
     <footer className="cm-footer">
@@ -33,7 +36,7 @@ export function SiteFooter() {
             <div className="mt-6">
               <Button
                 type="button"
-                onClick={() => scrollToBookingForm()}
+                onClick={() => openWhatsAppModal()}
                 className="cm-btn-sapphire h-11 rounded-full px-6 text-sm"
               >
                 {dict.footer.bookBtn}
@@ -71,9 +74,14 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/#reserva-cita" className="cm-footer-link">
+                <a
+                  href={directContactWaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cm-footer-link"
+                >
                   {dict.nav.contactCta}
-                </Link>
+                </a>
               </li>
             </ul>
           </div>

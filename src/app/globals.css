@@ -2149,6 +2149,7 @@ p {
   border-radius: 9999rem;
   background-color: var(--cm-whatsapp-ring);
   color: var(--cm-white);
+  text-decoration: none;
   border: 0.0625rem solid oklch(0.2 0.03 254 / 0.08);
   backdrop-filter: blur(0.75rem);
   -webkit-backdrop-filter: blur(0.75rem);

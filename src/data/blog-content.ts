@@ -99,14 +99,14 @@ export const BLOG_UI_CONTENT: Record<Locale, BlogUiDictionary> = {
     readArticleCta: "Leer artículo",
     indexClosingTitle: "¿Quieres saber qué tratamiento es ideal para ti?",
     indexClosingSubtitle:
-      "Agenda tu valoración personalizada con la Dra. Gabriela Delgado en Arequipa y diseñemos juntos un plan armónico para tu caso.",
-    primaryConsultCta: "Agendar valoración",
+      "Agenda tu cita personalizada con la Dra. Gabriela Delgado en Arequipa y diseñemos juntos un plan armónico para tu caso.",
+    primaryConsultCta: "Agendar cita",
     whatsappCta: "Hablar por WhatsApp",
     bylinePrefix: "Por Dra. Gabriela Delgado Silva · Clínica Multiestética",
     inlineCalloutTitle: "¿Quieres saber qué opción es ideal para ti?",
     inlineCalloutBody:
       "Cada rostro y anatomía son únicos. En consulta evaluamos tus facciones sin prisas y te explicamos con honestidad qué procedimiento tiene sentido para tu objetivo.",
-    inlineCalloutBookLink: "Agenda tu valoración",
+    inlineCalloutBookLink: "Agendar cita",
     inlineCalloutOr: "o escríbenos por",
     inlineCalloutWaLink: "WhatsApp",
     caseFigureCaption:
@@ -152,9 +152,9 @@ export const BLOG_UI_CONTENT: Record<Locale, BlogUiDictionary> = {
             "«Donde la belleza encuentra su propósito y cada historia merece una nueva oportunidad.»",
         },
       ],
-      ctaLabel: "Agendar mi valoración",
+      ctaLabel: "Agendar cita",
     },
-    articleClosingTitlePrefix: "Agenda tu valoración sobre",
+    articleClosingTitlePrefix: "Agenda tu cita sobre",
     articleClosingSubtitle:
       "La Dra. Gabriela Delgado y el equipo especialista de Clínica Multiestética evalúan tu caso en Arequipa para orientarte con transparencia y rigor médico.",
     continueReadingHeading: "Sigue leyendo",
@@ -168,14 +168,14 @@ export const BLOG_UI_CONTENT: Record<Locale, BlogUiDictionary> = {
     readArticleCta: "Read article",
     indexClosingTitle: "Want to know which treatment is right for you?",
     indexClosingSubtitle:
-      "Schedule your personalized consultation with Dr. Gabriela Delgado in Arequipa and discover a balanced medical plan tailored to you.",
-    primaryConsultCta: "Book consultation",
+      "Schedule your personalized appointment with Dr. Gabriela Delgado in Arequipa and discover a balanced medical plan tailored to you.",
+    primaryConsultCta: "Book appointment",
     whatsappCta: "Chat on WhatsApp",
     bylinePrefix: "By Dr. Gabriela Delgado Silva · Clínica Multiestética",
     inlineCalloutTitle: "Want to know which option fits your case?",
     inlineCalloutBody:
       "Every facial structure is unique. During your consultation we assess your anatomy carefully and explain which procedure makes clinical sense for your goals.",
-    inlineCalloutBookLink: "Book your consultation",
+    inlineCalloutBookLink: "Book appointment",
     inlineCalloutOr: "or message us on",
     inlineCalloutWaLink: "WhatsApp",
     caseFigureCaption:
@@ -221,9 +221,9 @@ export const BLOG_UI_CONTENT: Record<Locale, BlogUiDictionary> = {
             "“Where beauty finds its purpose and every story deserves a new opportunity.”",
         },
       ],
-      ctaLabel: "Book my consultation",
+      ctaLabel: "Book appointment",
     },
-    articleClosingTitlePrefix: "Book your consultation for",
+    articleClosingTitlePrefix: "Book your appointment for",
     articleClosingSubtitle:
       "Dr. Gabriela Delgado and the specialist medical team at Clínica Multiestética assess your case in Arequipa with clear, honest guidance.",
     continueReadingHeading: "Continue reading",

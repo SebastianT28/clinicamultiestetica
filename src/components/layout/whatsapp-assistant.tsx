@@ -24,11 +24,13 @@ export function WhatsAppAssistant() {
     setWaModalOpen,
     selectedProcedure,
     setSelectedProcedure,
-    openWhatsAppModal,
     mobileMenuOpen,
   } = useAppInteraction();
 
   const dict = HOME_CONTENT[locale].waModal;
+  const directFabWaUrl = buildWhatsAppUrl(
+    "Buen día, me gustaría recibir orientación sobre la consulta de la Dra. Gabriela Delgado."
+  );
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [acceptedPrivacy, setAcceptedPrivacy] = useState(true);
@@ -58,8 +60,8 @@ export function WhatsAppAssistant() {
 
     const message =
       locale === "es"
-        ? `Hola Dra. Gabriela Delgado y equipo de Clínica Multiestética. Soy ${cleanName || "paciente"} (${cleanAge ? `${cleanAge} años` : "mayor de 18 años"}) y deseo agendar una valoración médica para: ${cleanProc || "evaluación personalizada"}.`
-        : `Hello Dr. Gabriela Delgado and Clínica Multiestética team. My name is ${cleanName || "a prospective patient"} (${cleanAge ? `age ${cleanAge}` : "18+"}) and I would like to book a consultation for: ${cleanProc || "a personalized assessment"}.`;
+        ? `Buen día, mi nombre es ${cleanName || "paciente"} (${cleanAge ? `${cleanAge} años` : "mayor de 18 años"}) y deseo agendar una cita con la Dra. Gabriela Delgado. Motivo o servicio de interés: ${cleanProc || "evaluación personalizada"}.`
+        : `Buen día, mi nombre es ${cleanName || "paciente"} (${cleanAge ? `${cleanAge} años` : "mayor de 18 años"}) y deseo agendar una cita con la Dra. Gabriela Delgado. Motivo o servicio de interés: ${cleanProc || "evaluación personalizada"}.`;
 
     const url = buildWhatsAppUrl(message);
     window.open(url, "_blank", "noopener,noreferrer");
@@ -88,16 +90,22 @@ export function WhatsAppAssistant() {
           </span>
 
           <Button
-            type="button"
+            asChild
             size="icon"
             aria-label={dict.fabAriaLabel}
-            onClick={() => openWhatsAppModal()}
-            className="cm-wa-fab"
+            className="cm-wa-fab no-underline"
           >
-            <span className="cm-wa-fab-core" aria-hidden="true">
-              <WhatsAppIcon className="cm-wa-fab-icon" />
-            </span>
-            <span className="cm-wa-fab-badge" aria-hidden="true" />
+            <a
+              href={directFabWaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={dict.fabAriaLabel}
+            >
+              <span className="cm-wa-fab-core" aria-hidden="true">
+                <WhatsAppIcon className="cm-wa-fab-icon" />
+              </span>
+              <span className="cm-wa-fab-badge" aria-hidden="true" />
+            </a>
           </Button>
         </div>
       )}

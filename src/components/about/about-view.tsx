@@ -284,10 +284,12 @@ export function AboutView() {
                 <Button
                   asChild
                   variant="outline"
-                  className="cm-btn-outline-clean h-12 w-full rounded-full px-7 text-sm sm:w-auto"
+                  className="cm-btn-outline-clean h-12 w-full rounded-full px-7 text-sm no-underline sm:w-auto"
                 >
                   <a
-                    href={buildWhatsAppUrl()}
+                    href={buildWhatsAppUrl(
+                      "Buen día, me gustaría recibir información para atenderme con la Dra. Gabriela Delgado."
+                    )}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

@@ -60,7 +60,7 @@ export const ABOUT_PAGE_CONTENT: Record<Locale, AboutPageDictionary> = {
       title: "Dra. Gabriela Delgado Silva",
       subtitle:
         "Más de 18 años dedicados a la armonización facial y cirugía maxilofacial con precisión anatómica, ética médica y calidez humana.",
-      ctaLabel: "Agendar valoración",
+      ctaLabel: "Agendar cita",
       portraitPlaceholder: "Retrato principal · Dra. Gabriela Delgado Silva",
     },
     story: {
@@ -159,8 +159,8 @@ export const ABOUT_PAGE_CONTENT: Record<Locale, AboutPageDictionary> = {
     closing: {
       title: "¿Lista para conversar sobre tu caso?",
       subtitle:
-        "Agenda una valoración personalizada conmigo y diseñemos juntos el plan ideal para ti con calma y confianza.",
-      primaryCta: "Agendar valoración",
+        "Agenda una cita personalizada conmigo y diseñemos juntos el plan ideal para ti con calma y confianza.",
+      primaryCta: "Agendar cita",
       whatsappCta: "Hablar por WhatsApp",
     },
   },
@@ -169,7 +169,7 @@ export const ABOUT_PAGE_CONTENT: Record<Locale, AboutPageDictionary> = {
       title: "Dr. Gabriela Delgado Silva",
       subtitle:
         "Over 18 years dedicated to facial harmonization and maxillofacial surgery with anatomical precision, medical ethics, and human warmth.",
-      ctaLabel: "Book consultation",
+      ctaLabel: "Book appointment",
       portraitPlaceholder: "Editorial portrait · Dr. Gabriela Delgado Silva",
     },
     story: {
@@ -268,8 +268,8 @@ export const ABOUT_PAGE_CONTENT: Record<Locale, AboutPageDictionary> = {
     closing: {
       title: "Ready to talk about your goals?",
       subtitle:
-        "Schedule a personalized consultation with me and let us design the right plan for you with clarity and care.",
-      primaryCta: "Book consultation",
+        "Schedule a personalized appointment with me and let us design the right plan for you with clarity and care.",
+      primaryCta: "Book appointment",
       whatsappCta: "Chat on WhatsApp",
     },
   },

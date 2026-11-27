@@ -165,7 +165,11 @@ export const CLINIC_SERVICES: ClinicServiceItem[] = [
 
 export function buildWhatsAppUrl(customMessage?: string): string {
   const defaultMsg =
-    "Hola Dra. Gabriela y equipo de Clínica Multiestética, deseo recibir información y agendar una valoración médica.";
-  const encoded = encodeURIComponent(customMessage || defaultMsg);
+    "Buen día, me gustaría recibir información sobre la consulta de la Dra. Gabriela Delgado.";
+  const raw = (customMessage ?? defaultMsg).trim();
+  const normalized = /^buen\s+d[ií]a\b/i.test(raw)
+    ? raw
+    : `Buen día, ${raw.charAt(0).toLowerCase()}${raw.slice(1)}`;
+  const encoded = encodeURIComponent(normalized);
   return `https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encoded}`;
 }

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { BrandLogo } from "@/components/layout/brand-logo";
 import { CloseIcon, MenuBarsIcon } from "@/components/icons/clinic-icons";
+import { buildWhatsAppUrl } from "@/config/site";
 import { HOME_CONTENT } from "@/data/home-content";
 import { useAppInteraction } from "@/lib/i18n-context";
 
@@ -14,13 +15,15 @@ export function SiteHeader() {
   const {
     locale,
     setLocale,
-    scrollToBookingForm,
     mobileMenuOpen,
     setMobileMenuOpen,
   } = useAppInteraction();
   const [scrolled, setScrolled] = useState(false);
 
   const dict = HOME_CONTENT[locale].nav;
+  const directContactWaUrl = buildWhatsAppUrl(
+    "Buen día, me gustaría comunicarme con el consultorio de la Dra. Gabriela Delgado."
+  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -86,11 +89,16 @@ export function SiteHeader() {
             </ul>
 
             <Button
-              type="button"
-              onClick={() => scrollToBookingForm()}
-              className="cm-btn-sapphire h-11 rounded-full px-6 text-sm"
+              asChild
+              className="cm-btn-sapphire h-11 rounded-full px-6 text-sm no-underline"
             >
-              {dict.contactCta}
+              <a
+                href={directContactWaUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {dict.contactCta}
+              </a>
             </Button>
 
             <div
@@ -236,11 +244,17 @@ export function SiteHeader() {
 
             <div className="mt-4">
               <Button
-                type="button"
-                onClick={() => scrollToBookingForm()}
-                className="cm-btn-sapphire h-12 w-full rounded-full text-base"
+                asChild
+                className="cm-btn-sapphire h-12 w-full rounded-full text-base no-underline"
               >
-                {dict.contactCta}
+                <a
+                  href={directContactWaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {dict.contactCta}
+                </a>
               </Button>
             </div>
           </nav>
