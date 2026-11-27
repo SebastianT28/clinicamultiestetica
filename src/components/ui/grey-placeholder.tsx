@@ -9,6 +9,7 @@ interface GreyPlaceholderProps {
   isVideo?: boolean;
   afterState?: boolean;
   circle?: boolean;
+  sharp?: boolean;
 }
 
 export function GreyPlaceholder({
@@ -19,11 +20,13 @@ export function GreyPlaceholder({
   isVideo = false,
   afterState = false,
   circle = false,
+  sharp = false,
 }: GreyPlaceholderProps) {
   return (
     <div
       data-after={afterState ? "true" : "false"}
       data-circle={circle ? "true" : "false"}
+      data-sharp={sharp ? "true" : "false"}
       className={cn("cm-grey-placeholder", aspectClassName, className)}
     >
       {isVideo && (

@@ -37,6 +37,8 @@
   --cm-champagne-footer: #E4D2B0;
   --cm-champagne-border: #D5C09B;
   --cm-champagne-soft: #F7F1E5;
+  --cm-champagne-editorial: oklch(0.946 0.017 82);
+  --cm-champagne-ink: oklch(0.46 0.072 78);
   --cm-white: #FFFFFF;
   --cm-hero-canvas: #F3F5F8;
   --cm-navy-deep: #10233E;
@@ -1165,6 +1167,11 @@ p {
   border-radius: 9999rem;
 }
 
+.cm-grey-placeholder[data-sharp="true"] {
+  border-radius: 0;
+  border-color: var(--cm-line);
+}
+
 /* ─── PÁGINA /SERVICIOS (MINIMALISTA Y LIMPIA — REF: DIANA DUSSAN /TREATMENTS/) ─── */
 .cm-services-hero {
   background-color: var(--cm-hero-canvas);
@@ -1214,29 +1221,91 @@ p {
   }
 }
 
-.cm-specialty-showcase {
-  border-radius: 1.5rem;
-  background-color: var(--cm-white);
-  border: 0.0625rem solid var(--cm-line);
-  overflow: hidden;
+/* Tarjeta editorial superpuesta (Ref: Clínica Diana Dussan /treatments/) */
+.cm-specialty-editorial {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
 }
 
-.cm-specialty-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.cm-specialty-editorial-media {
+  position: relative;
+  z-index: 1;
+  transition: transform 420ms var(--ease-out);
+}
+
+.cm-specialty-editorial-card {
+  position: relative;
+  z-index: 2;
+  margin-top: -1.5rem;
+  margin-inline: 0.75rem;
+  background-color: var(--cm-champagne-editorial);
+  border-radius: 0;
   padding: 1.75rem 1.5rem;
+  box-shadow: 0 1.875rem 4.375rem -1.875rem oklch(0.24 0.048 254 / 0.24);
 }
 
-@media (min-width: 768px) {
-  .cm-specialty-content {
-    padding: 2.75rem 2.75rem;
+.cm-specialty-order {
+  display: block;
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--cm-champagne-ink);
+}
+
+.cm-specialty-rule {
+  display: block;
+  width: 2rem;
+  height: 0.0938rem;
+  margin-top: 0.5rem;
+  background-color: var(--cm-champagne-ink);
+}
+
+.cm-specialty-card-btn {
+  height: 3rem;
+  padding-inline: 1.75rem;
+  border-radius: 0.125rem;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .cm-specialty-editorial-card {
+    margin-top: -2rem;
+    margin-inline: 2rem;
+    padding: 2.25rem 2.25rem;
   }
 }
 
-@media (min-width: 1200px) {
-  .cm-specialty-content {
-    padding: 3.25rem 3.5rem;
+@media (min-width: 1024px) {
+  .cm-specialty-editorial {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    align-items: center;
+  }
+
+  .cm-specialty-editorial-media {
+    grid-column: 1 / 8;
+    grid-row: 1;
+  }
+
+  .cm-specialty-editorial-card {
+    grid-column: 7 / 13;
+    grid-row: 1;
+    margin-top: 0;
+    margin-inline: 0;
+    padding: 3.25rem 3.25rem 3.125rem;
+  }
+
+  .cm-specialty-editorial[data-reversed="true"] .cm-specialty-editorial-media {
+    grid-column: 6 / 13;
+  }
+
+  .cm-specialty-editorial[data-reversed="true"] .cm-specialty-editorial-card {
+    grid-column: 1 / 7;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cm-specialty-editorial:hover .cm-specialty-editorial-media {
+    transform: translateY(-0.1875rem);
   }
 }
 

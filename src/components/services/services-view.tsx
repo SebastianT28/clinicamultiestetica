@@ -188,14 +188,14 @@ export function ServicesView() {
         </div>
       </section>
 
-      {/* ─── SECCIÓN 2: EXPLORA CADA ESPECIALIDAD (LIMPIO Y MINIMALISTA) ─── */}
+      {/* ─── SECCIÓN 2: EXPLORA CADA ESPECIALIDAD (TARJETAS EDITORIALES SUPERPUESTAS — REF: DIANA DUSSAN) ─── */}
       <section id="especialidades" className="cm-section">
         <div className="cm-container">
-          <h2 className="m-0 text-center text-3xl leading-tight tracking-tight text-foreground sm:text-4xl">
+          <h2 className="m-0 text-center text-3xl leading-tight tracking-tight text-foreground sm:text-5xl">
             {dict.specialtiesSection.title}
           </h2>
 
-          <div className="mt-12 flex flex-col gap-10 lg:gap-14">
+          <div className="mt-12 flex flex-col gap-16 lg:mt-16 lg:gap-24">
             {dict.specialtiesSection.units.map((unit, index) => {
               const isReversedDesktop = index % 2 === 1;
 
@@ -203,47 +203,39 @@ export function ServicesView() {
                 <article
                   key={unit.id}
                   id={unit.id}
-                  className="cm-specialty-showcase scroll-mt-28"
+                  data-reversed={isReversedDesktop ? "true" : "false"}
+                  className="cm-specialty-editorial scroll-mt-28"
                 >
-                  <div className="grid grid-cols-1 items-center lg:grid-cols-12">
-                    <div
-                      className={
-                        isReversedDesktop
-                          ? "p-4 pb-0 sm:p-6 sm:pb-0 lg:order-2 lg:col-span-6 lg:p-6"
-                          : "p-4 pb-0 sm:p-6 sm:pb-0 lg:col-span-6 lg:p-6"
-                      }
-                    >
-                      <GreyPlaceholder
-                        aspectClassName="aspect-[16/10]"
-                        title={unit.placeholderTitle}
-                      />
-                    </div>
+                  <div className="cm-specialty-editorial-media">
+                    <GreyPlaceholder
+                      sharp
+                      aspectClassName="aspect-[16/10]"
+                      title={unit.placeholderTitle}
+                    />
+                  </div>
 
-                    <div
-                      className={
-                        isReversedDesktop
-                          ? "cm-specialty-content lg:order-1 lg:col-span-6"
-                          : "cm-specialty-content lg:col-span-6"
-                      }
-                    >
-                      <h3 className="m-0 text-2xl leading-snug text-foreground sm:text-3xl">
-                        {unit.title}
-                      </h3>
+                  <div className="cm-specialty-editorial-card">
+                    <span className="cm-specialty-order">
+                      {unit.orderNumber}
+                    </span>
+                    <span className="cm-specialty-rule" aria-hidden="true" />
 
-                      <p className="mt-3.5 mb-0 max-w-lg text-base leading-relaxed text-muted-foreground">
-                        {unit.description}
-                      </p>
+                    <h3 className="mt-5 mb-0 text-2xl leading-snug text-foreground sm:text-3xl">
+                      {unit.title}
+                    </h3>
 
-                      <div className="mt-7">
-                        <Button
-                          type="button"
-                          onClick={() => jumpToSpecialtyCatalog(unit.id)}
-                          className="cm-btn-sapphire h-11 rounded-full px-6 text-sm"
-                        >
-                          <span>{unit.exploreCta}</span>
-                          <ArrowRightIcon className="icon-cap" />
-                        </Button>
-                      </div>
+                    <p className="mt-3.5 mb-0 max-w-md text-sm leading-relaxed text-muted-foreground sm:text-base">
+                      {unit.description}
+                    </p>
+
+                    <div className="mt-7">
+                      <Button
+                        type="button"
+                        onClick={() => jumpToSpecialtyCatalog(unit.id)}
+                        className="cm-btn-sapphire cm-specialty-card-btn"
+                      >
+                        {unit.exploreCta}
+                      </Button>
                     </div>
                   </div>
                 </article>

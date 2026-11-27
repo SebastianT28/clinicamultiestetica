@@ -8,6 +8,7 @@ export type SpecialtyUnitId =
 
 export interface SpecialtyUnitBlock {
   id: SpecialtyUnitId;
+  orderNumber: string;
   title: string;
   description: string;
   placeholderTitle: string;
@@ -76,33 +77,37 @@ export const SERVICES_PAGE_CONTENT: Record<Locale, ServicesPageDictionary> = {
       units: [
         {
           id: "armonizacion-inyectables",
+          orderNumber: "01",
           title: "Armonización facial e inyectables",
           description:
-            "Ácido hialurónico, toxina botulínica y bioestimuladores de colágeno para devolver soporte, firmeza y frescura con resultados naturales.",
+            "Ácido hialurónico, toxina botulínica y bioestimuladores de colágeno para devolver soporte, firmeza y frescura, con resultados naturales.",
           placeholderTitle: "Espacio para imagen: Armonización facial",
           exploreCta: "Ver tratamientos",
         },
         {
           id: "cirugia-maxilofacial",
+          orderNumber: "02",
           title: "Cirugía facial y perfilamiento",
           description:
-            "Perfilamiento quirúrgico y maxilofacial para rejuvenecer tu mirada, definir el contorno mandibular y equilibrar tus rasgos con precisión.",
+            "Perfilamiento facial y maxilofacial para rejuvenecer tu mirada, definir el contorno mandibular y equilibrar tus rasgos, con precisión y proporción.",
           placeholderTitle: "Espacio para imagen: Cirugía facial",
           exploreCta: "Ver tratamientos",
         },
         {
           id: "calidad-piel",
+          orderNumber: "03",
           title: "Calidad de piel y enzimas",
           description:
-            "Protocolos médicos con enzimas recombinantes, hidratación profunda y manejo de cicatrices para una piel uniforme, firme y luminosa.",
+            "Protocolos médicos con enzimas recombinantes, hidratación profunda y manejo de cicatrices para una piel más uniforme, firme y luminosa.",
           placeholderTitle: "Espacio para imagen: Calidad de piel",
           exploreCta: "Ver tratamientos",
         },
         {
           id: "cirugia-corporal",
+          orderNumber: "04",
           title: "Cirugía estética corporal",
           description:
-            "Moldeamiento corporal 360, lipotransferencia y cirugía mamaria o abdominal realizados con rigor clínico en Clínica Multiestética.",
+            "Moldeamiento corporal 360, lipotransferencia y cirugía mamaria o abdominal de alta precisión, con el mismo rigor clínico.",
           placeholderTitle: "Espacio para imagen: Cirugía corporal",
           exploreCta: "Ver tratamientos",
         },
@@ -144,33 +149,37 @@ export const SERVICES_PAGE_CONTENT: Record<Locale, ServicesPageDictionary> = {
       units: [
         {
           id: "armonizacion-inyectables",
+          orderNumber: "01",
           title: "Facial harmonization & injectables",
           description:
-            "Hyaluronic acid, botulinum toxin, and collagen biostimulators to restore support, firmness, and freshness with natural results.",
+            "Hyaluronic acid, botulinum toxin, and collagen biostimulators to restore support, firmness, and freshness, with natural results.",
           placeholderTitle: "Image placeholder: Facial harmonization",
           exploreCta: "View treatments",
         },
         {
           id: "cirugia-maxilofacial",
+          orderNumber: "02",
           title: "Facial surgery & contouring",
           description:
-            "Maxillofacial and facial contouring procedures to refresh your gaze, define your jawline, and balance facial proportions.",
+            "Maxillofacial and facial contouring procedures to refresh your gaze, define your jawline, and balance your features with precision.",
           placeholderTitle: "Image placeholder: Facial surgery",
           exploreCta: "View treatments",
         },
         {
           id: "calidad-piel",
+          orderNumber: "03",
           title: "Skin quality & enzymes",
           description:
-            "Clinical protocols using recombinant enzymes, deep hydration, and scar care for firmer, smoother, radiant skin.",
+            "Clinical protocols using recombinant enzymes, deep hydration, and scar care for firmer, smoother, and more radiant skin.",
           placeholderTitle: "Image placeholder: Skin quality",
           exploreCta: "View treatments",
         },
         {
           id: "cirugia-corporal",
+          orderNumber: "04",
           title: "Aesthetic body surgery",
           description:
-            "360 body contouring, fat transfer, breast implants, and abdominoplasty performed with strict surgical standards.",
+            "360 body contouring, fat transfer, breast implants, and abdominoplasty performed with strict surgical precision.",
           placeholderTitle: "Image placeholder: Body surgery",
           exploreCta: "View treatments",
         },
