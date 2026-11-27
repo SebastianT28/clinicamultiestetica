@@ -56,7 +56,7 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/#testimonios" className="cm-footer-link">
+                <Link href="/testimonios" className="cm-footer-link">
                   {dict.nav.reviews}
                 </Link>
               </li>

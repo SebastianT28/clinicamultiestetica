@@ -38,7 +38,12 @@ export function SiteHeader() {
       label: dict.services,
       active: pathname === "/servicios" || pathname.startsWith("/servicios/"),
     },
-    { href: "/#testimonios", label: dict.reviews, active: false },
+    {
+      href: "/testimonios",
+      label: dict.reviews,
+      active:
+        pathname === "/testimonios" || pathname.startsWith("/testimonios/"),
+    },
     { href: "/#quien-soy", label: dict.about, active: false },
     { href: "/#por-que-dra-gabriela", label: dict.blog, active: false },
   ];
