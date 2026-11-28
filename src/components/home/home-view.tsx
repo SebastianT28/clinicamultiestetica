@@ -162,28 +162,26 @@ export function HomeView() {
       <section className="cm-hero-outer">
         <div className="cm-hero-stage">
           <div className="cm-container">
-            <div className="relative grid grid-cols-1 items-center gap-5 lg:grid-cols-12 lg:gap-12">
-              {/* 1.º en móvil / Derecha en escritorio: Imagen o video de la Dra. Gabriela + selector móvil al pie */}
-              <div className="order-1 lg:order-2 lg:col-span-6 lg:pb-6">
-                <div className="lg:pr-8">
-                  <GreyPlaceholder
-                    src={activeHero.imageSrc}
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    imgClassName="object-top"
-                    isVideo={Boolean(activeHero.isVideo)}
-                    aspectClassName="aspect-[5/4] sm:aspect-[16/11] lg:aspect-[5/4]"
-                    title={activeHero.portraitTitle}
-                  />
-                </div>
+            <div className="grid grid-cols-1 items-center gap-5 lg:grid-cols-12 lg:gap-x-12 lg:gap-y-7">
+              {/* 1.º en móvil / Columna derecha completa en escritorio: Retrato sin superposiciones + selector */}
+              <div className="order-1 lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1 lg:self-center">
+                <GreyPlaceholder
+                  src={activeHero.imageSrc}
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  imgClassName="object-top"
+                  isVideo={Boolean(activeHero.isVideo)}
+                  aspectClassName="aspect-[5/4] sm:aspect-[16/11] lg:aspect-[5/4]"
+                  title={activeHero.portraitTitle}
+                />
 
-                <div className="mt-3.5 flex items-center justify-center sm:justify-start lg:hidden">
+                <div className="mt-3.5 flex items-center justify-center sm:justify-start lg:mt-4 lg:justify-end">
                   {renderHeroSlideControls()}
                 </div>
               </div>
 
-              {/* 2.º en móvil / Izquierda en escritorio: Titular H1 (+ selector en escritorio) */}
-              <div className="order-2 flex flex-col items-start lg:order-1 lg:col-span-6">
+              {/* 2.º en móvil / Columna izquierda superior en escritorio: Titular H1 */}
+              <div className="order-2 flex flex-col items-start lg:col-span-6 lg:col-start-1 lg:row-start-1 lg:self-end">
                 <h1 className="m-0 text-3xl leading-tight tracking-tight text-foreground sm:text-5xl xl:text-[3.375rem] xl:leading-[1.12]">
                   {activeHero.titleLead}
                   <span className="cm-accent-sapphire">
@@ -191,14 +189,10 @@ export function HomeView() {
                   </span>
                   {activeHero.titleTrail}
                 </h1>
-
-                <div className="mt-8 hidden items-center gap-3 lg:flex">
-                  {renderHeroSlideControls()}
-                </div>
               </div>
 
-              {/* 3.º en móvil / Tarjeta flotante superpuesta inferior derecha en escritorio */}
-              <div className="order-3 sm:max-w-sm lg:absolute lg:right-0 lg:bottom-0 lg:z-10">
+              {/* 3.º en móvil / Columna izquierda inferior en escritorio: Tarjeta descriptiva sin tapar a la doctora */}
+              <div className="order-3 sm:max-w-md lg:col-span-6 lg:col-start-1 lg:row-start-2 lg:max-w-lg lg:self-start">
                 <div className="cm-chamfer-card">
                   <p className="m-0 text-sm leading-relaxed text-muted-foreground sm:text-base">
                     {activeHero.cardDescription}
