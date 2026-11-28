@@ -3,6 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { GreyPlaceholder } from "@/components/ui/grey-placeholder";
@@ -327,7 +333,14 @@ export function HomeView() {
                   </span>
                 </div>
 
-                <h3 className="cm-service-title">{service.title}</h3>
+                <h3 className="cm-service-title">
+                  <Link
+                    href={`/servicios#${service.slug}`}
+                    className="cm-service-title-link"
+                  >
+                    {service.title}
+                  </Link>
+                </h3>
 
                 <p className="mt-3 mb-0 text-sm leading-relaxed text-muted-foreground">
                   {service.summary}
@@ -630,6 +643,59 @@ export function HomeView() {
               ))}
             </div>
           </div>
+
+          <div className="mt-8 flex justify-center">
+            <Button
+              asChild
+              variant="outline"
+              className="cm-btn-outline-clean h-11 rounded-full px-6 text-sm no-underline"
+            >
+              <Link href="/testimonios">
+                <span>{dict.reviewsSection.viewCasesLabel}</span>
+                <ArrowRightIcon className="icon-cap" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── APARTADO 7: PREGUNTAS FRECUENTES SOBRE CIRUGÍA FACIAL EN AREQUIPA (SEO + GEO) ─── */}
+      <section
+        id="preguntas-frecuentes"
+        className="cm-section cm-section-bordered"
+      >
+        <div className="cm-container">
+          <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
+            <h2 className="m-0 text-3xl leading-tight tracking-tight text-foreground sm:text-4xl xl:text-[2.875rem]">
+              {dict.faqSection.titleLead}
+              <span className="cm-accent-sapphire">
+                {dict.faqSection.titleAccent}
+              </span>
+            </h2>
+
+            <p className="mt-3 mb-0 text-base text-muted-foreground">
+              {dict.faqSection.subtitle}
+            </p>
+          </div>
+
+          <div className="mx-auto mt-10 max-w-3xl">
+            <Accordion className="flex flex-col gap-3">
+              {dict.faqSection.items.map((faq) => (
+                <AccordionItem
+                  key={faq.id}
+                  value={faq.id}
+                  className="cm-faq-card"
+                >
+                  <AccordionTrigger className="px-5 py-4 text-left font-heading text-base font-medium text-foreground hover:no-underline">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="px-5 pb-4 text-sm leading-relaxed text-muted-foreground">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
         </div>
       </section>
 
@@ -856,6 +922,83 @@ export function HomeView() {
                     </div>
                   )}
                 </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── APARTADO 9: UBICACIÓN EN CAYMA, AREQUIPA CON GOOGLE MAPS ─── */}
+      <section id="ubicacion" className="cm-section cm-section-bordered">
+        <div className="cm-container">
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-14">
+            <div className="lg:col-span-5">
+              <h2 className="m-0 text-3xl leading-tight tracking-tight text-foreground sm:text-4xl">
+                {dict.locationSection.titleLead}
+                <span className="cm-accent-sapphire">
+                  {dict.locationSection.titleAccent}
+                </span>
+              </h2>
+
+              <p className="mt-3 mb-0 text-base leading-relaxed text-muted-foreground">
+                {dict.locationSection.subtitle}
+              </p>
+
+              <dl className="mt-7 flex flex-col gap-5">
+                <div className="flex items-start gap-3.5">
+                  <span className="cm-contact-icon-circle mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-full">
+                    <MapPinIcon className="size-5" />
+                  </span>
+                  <div>
+                    <dt className="text-xs text-muted-foreground">
+                      {dict.locationSection.addressLabel}
+                    </dt>
+                    <dd className="m-0 mt-0.5 font-heading text-base font-medium text-foreground">
+                      {dict.locationSection.addressValue}
+                    </dd>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3.5">
+                  <span className="cm-contact-icon-circle mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-full">
+                    <GlobeTrainingIcon className="size-5" />
+                  </span>
+                  <div>
+                    <dt className="text-xs text-muted-foreground">
+                      {dict.locationSection.coverageLabel}
+                    </dt>
+                    <dd className="m-0 mt-0.5 text-sm leading-relaxed text-muted-foreground">
+                      {dict.locationSection.coverageValue}
+                    </dd>
+                  </div>
+                </div>
+              </dl>
+
+              <div className="mt-8">
+                <Button asChild className="cm-btn-cavadas">
+                  <a
+                    href={SITE_CONFIG.address.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span>{dict.locationSection.directionsCta}</span>
+                    <span className="cm-btn-cavadas-box" aria-hidden="true">
+                      <ArrowRightIcon className="cm-btn-cavadas-arrow" />
+                    </span>
+                  </a>
+                </Button>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7">
+              <div className="cm-map-card">
+                <iframe
+                  src={SITE_CONFIG.address.googleMapsEmbedUrl}
+                  title={dict.locationSection.mapIframeTitle}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="cm-map-iframe"
+                />
               </div>
             </div>
           </div>

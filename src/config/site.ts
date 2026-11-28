@@ -17,8 +17,10 @@ export const SITE_CONFIG = {
   brandName: "Dra. Gabriela Delgado",
   secondaryBrandName: "Clínica Multiestética",
   founderName: "Dra. Gabriela Delgado Silva",
-  founderRoleEs: "Cirujana Maxilofacial y Especialista en Armonización Facial",
-  founderRoleEn: "Maxillofacial Surgeon & Facial Harmonization Specialist",
+  founderRoleEs:
+    "Cirujana Facial, Maxilofacial y Especialista en Armonización Facial",
+  founderRoleEn:
+    "Facial & Maxillofacial Surgeon and Facial Harmonization Specialist",
   yearsExperience: "+18",
   url:
     process.env.NEXT_PUBLIC_SITE_URL ||
@@ -34,9 +36,26 @@ export const SITE_CONFIG = {
     district: "Cayma",
     city: "Arequipa",
     region: "Arequipa",
+    postalCode: "04014",
     country: "Perú",
     countryCode: "PE",
+    latitude: -16.39118,
+    longitude: -71.54727,
+    googleMapsUrl:
+      "https://www.google.com/maps/search/?api=1&query=Urb.+Le%C3%B3n+XIII+K-8,+Cayma,+Arequipa,+Per%C3%BA",
+    googleMapsEmbedUrl:
+      "https://maps.google.com/maps?q=Urb.%20Le%C3%B3n%20XIII%20K-8%2C%20Cayma%2C%20Arequipa%2C%20Per%C3%BA&t=&z=16&ie=UTF8&iwloc=&output=embed",
   },
+  areasServed: [
+    "Arequipa",
+    "Cayma",
+    "Yanahuara",
+    "Cusco",
+    "Puno",
+    "Tacna",
+    "Moquegua",
+    "Perú",
+  ] as const,
   locales: ["es", "en"] as const,
   defaultLocale: "es" as Locale,
   slogans: {
