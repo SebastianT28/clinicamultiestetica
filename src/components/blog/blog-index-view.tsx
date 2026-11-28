@@ -67,6 +67,8 @@ export function BlogIndexView() {
                 <Card className="cm-blog-card">
                   <div className="relative overflow-hidden">
                     <GreyPlaceholder
+                      src={article.coverSrc}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       sharp
                       aspectClassName="aspect-[6/5]"
                       title={article.coverPlaceholder}

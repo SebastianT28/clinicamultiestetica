@@ -22,6 +22,7 @@ export interface BlogArticleData {
   standfirst: string;
   updatedLabel: string;
   readTimeLabel: string;
+  coverSrc: string;
   coverPlaceholder: string;
   beforeCasePlaceholder: string;
   afterCasePlaceholder: string;
@@ -112,7 +113,7 @@ export const BLOG_UI_CONTENT: Record<Locale, BlogUiDictionary> = {
     inlineCalloutOr: "o escríbenos por",
     inlineCalloutWaLink: "WhatsApp",
     caseFigureCaption:
-      "Espacio reservado para caso clínico comparativo. Los resultados dependen de la evaluación anatómica individual.",
+      "Comparativa clínica de referencia. Los resultados varían según la evaluación anatómica individual de cada paciente.",
     caseFigureLinkLabel: "Ver galería de casos",
     beforePill: "Antes",
     afterPill: "Después",
@@ -249,6 +250,7 @@ export const BLOG_ARTICLES: Record<Locale, BlogArticleData[]> = {
         "La pregunta que más escuchamos en consulta antes de aplicar toxina botulínica es cuándo empieza a notarse y cuánto dura. Aquí tienes la línea de tiempo clínica real, sin exageraciones.",
       updatedLabel: "Actualizado nov 2026",
       readTimeLabel: "Lectura de 5 min",
+      coverSrc: "/images/blog/toxina-botulinica.jpg",
       coverPlaceholder: "Portada editorial · Toxina botulínica en consulta",
       beforeCasePlaceholder: "Registro previo · Líneas dinámicas",
       afterCasePlaceholder: "Resultado clínico · Mirada descansada",
@@ -357,6 +359,7 @@ export const BLOG_ARTICLES: Record<Locale, BlogArticleData[]> = {
         "Definir el borde mandibular transforma la limpieza del perfil y el cuello, pero el primer paso es identificar si el origen es tejido adiposo, soporte óseo o laxitud cutánea.",
       updatedLabel: "Actualizado nov 2026",
       readTimeLabel: "Lectura de 5 min",
+      coverSrc: "/images/blog/lipopapada.jpg",
       coverPlaceholder: "Portada editorial · Perfilamiento mandibular",
       beforeCasePlaceholder: "Registro previo · Ángulo submentoniano",
       afterCasePlaceholder: "Resultado clínico · Contorno mandibular limpio",
@@ -461,6 +464,7 @@ export const BLOG_ARTICLES: Record<Locale, BlogArticleData[]> = {
         "El temor más común frente al ácido hialurónico es lucir un volumen artificial. Te explicamos cómo la armonización facial moderna devuelve estructura respetando tu identidad.",
       updatedLabel: "Actualizado nov 2026",
       readTimeLabel: "Lectura de 5 min",
+      coverSrc: "/images/blog/acido-hialuronico.jpg",
       coverPlaceholder: "Portada editorial · Armonización con ácido hialurónico",
       beforeCasePlaceholder: "Registro previo · Pérdida leve de soporte",
       afterCasePlaceholder: "Resultado clínico · Armonía y frescura natural",
@@ -565,6 +569,7 @@ export const BLOG_ARTICLES: Record<Locale, BlogArticleData[]> = {
         "Si sientes pesadez en los párpados superiores al final del día o notas bolsas permanentes pese a dormir bien, la blefaroplastia ofrece una solución duradera y armónica.",
       updatedLabel: "Actualizado nov 2026",
       readTimeLabel: "Lectura de 6 min",
+      coverSrc: "/images/blog/blefaroplastia.jpg",
       coverPlaceholder: "Portada editorial · Rejuvenecimiento de la mirada",
       beforeCasePlaceholder: "Registro previo · Exceso palpebral",
       afterCasePlaceholder: "Resultado clínico · Mirada despejada y natural",
@@ -669,6 +674,7 @@ export const BLOG_ARTICLES: Record<Locale, BlogArticleData[]> = {
         "Cuidar la calidad y densidad de la piel es el cimiento de cualquier resultado estético armónico. Te explicamos qué logra cada protocolo mínimamente invasivo.",
       updatedLabel: "Actualizado nov 2026",
       readTimeLabel: "Lectura de 5 min",
+      coverSrc: "/images/blog/bioestimuladores.jpg",
       coverPlaceholder: "Portada editorial · Bioestimulación y calidad de piel",
       beforeCasePlaceholder: "Registro previo · Laxitud cutánea leve",
       afterCasePlaceholder: "Resultado clínico · Piel firme y luminosa",
@@ -773,6 +779,7 @@ export const BLOG_ARTICLES: Record<Locale, BlogArticleData[]> = {
         "Elegir entre una liposucción 360 y una abdominoplastia no depende de una moda, sino de la calidad de tu piel y la firmeza de tu pared muscular abdominal.",
       updatedLabel: "Actualizado nov 2026",
       readTimeLabel: "Lectura de 6 min",
+      coverSrc: "/images/blog/contorno-corporal.jpg",
       coverPlaceholder: "Portada editorial · Valoración de contorno corporal",
       beforeCasePlaceholder: "Registro previo · Evaluación de contorno",
       afterCasePlaceholder: "Resultado clínico · Silueta proporcionada",
@@ -879,6 +886,7 @@ export const BLOG_ARTICLES: Record<Locale, BlogArticleData[]> = {
         "Before receiving botulinum toxin, patients always want to know when it kicks in and how long it lasts. Here is the real clinical timeline without exaggerated promises.",
       updatedLabel: "Updated Nov 2026",
       readTimeLabel: "5 min read",
+      coverSrc: "/images/blog/toxina-botulinica.jpg",
       coverPlaceholder: "Editorial cover · Botulinum toxin consultation",
       beforeCasePlaceholder: "Initial record · Dynamic expression lines",
       afterCasePlaceholder: "Clinical result · Rested natural gaze",
@@ -987,6 +995,7 @@ export const BLOG_ARTICLES: Record<Locale, BlogArticleData[]> = {
         "Refining the jawline transforms neck and profile balance, starting with an accurate diagnosis of fat pads, bone projection, and skin elasticity.",
       updatedLabel: "Updated Nov 2026",
       readTimeLabel: "5 min read",
+      coverSrc: "/images/blog/lipopapada.jpg",
       coverPlaceholder: "Editorial cover · Jawline & profile contouring",
       beforeCasePlaceholder: "Initial record · Submental fullness",
       afterCasePlaceholder: "Clinical result · Clean mandibular contour",
@@ -1091,6 +1100,7 @@ export const BLOG_ARTICLES: Record<Locale, BlogArticleData[]> = {
         "The biggest concern around fillers is looking overdone. Here is how modern facial harmonization restores deep support while preserving your natural identity.",
       updatedLabel: "Updated Nov 2026",
       readTimeLabel: "5 min read",
+      coverSrc: "/images/blog/acido-hialuronico.jpg",
       coverPlaceholder: "Editorial cover · Hyaluronic acid harmonization",
       beforeCasePlaceholder: "Initial record · Mild structural volume loss",
       afterCasePlaceholder: "Clinical result · Subtle natural harmony",
@@ -1177,7 +1187,7 @@ export const BLOG_ARTICLES: Record<Locale, BlogArticleData[]> = {
           id: "faq-ah-4",
           question: "Can it be combined with botulinum toxin?",
           answer:
-            "Yes—botulinum toxin relaxes upper expression lines while hyaluronic acid restores structural support.",
+            "Yes: botulinum toxin relaxes upper expression lines while hyaluronic acid restores structural support.",
         },
       ],
     },
@@ -1195,6 +1205,7 @@ export const BLOG_ARTICLES: Record<Locale, BlogArticleData[]> = {
         "If your upper eyelids feel heavy by evening or under-eye bags remain regardless of rest, blepharoplasty provides a lasting, natural surgical solution.",
       updatedLabel: "Updated Nov 2026",
       readTimeLabel: "6 min read",
+      coverSrc: "/images/blog/blefaroplastia.jpg",
       coverPlaceholder: "Editorial cover · Eyelid rejuvenation assessment",
       beforeCasePlaceholder: "Initial record · Upper eyelid hooding",
       afterCasePlaceholder: "Clinical result · Bright, rested gaze",
@@ -1299,11 +1310,12 @@ export const BLOG_ARTICLES: Record<Locale, BlogArticleData[]> = {
         "Healthy dermal density is the foundation of every natural aesthetic outcome. Discover what each minimally invasive protocol achieves.",
       updatedLabel: "Updated Nov 2026",
       readTimeLabel: "5 min read",
+      coverSrc: "/images/blog/bioestimuladores.jpg",
       coverPlaceholder: "Editorial cover · Collagen biostimulation & skin care",
       beforeCasePlaceholder: "Initial record · Mild dermal laxity",
       afterCasePlaceholder: "Clinical result · Firmer, luminous skin",
       intro:
-        "Starting in our late twenties, natural collagen synthesis declines each year, leading to thinner, less firm skin—while certain areas may simultaneously hold localized fullness or fibrosis.",
+        "Starting in our late twenties, natural collagen synthesis declines each year, leading to thinner, less firm skin, while certain areas may simultaneously hold localized fullness or fibrosis.",
       quickAnswerHeading: "Quick answer",
       quickAnswerBullets: [
         {
@@ -1367,7 +1379,7 @@ export const BLOG_ARTICLES: Record<Locale, BlogArticleData[]> = {
           id: "faq-piel-1",
           question: "Will a collagen biostimulator make my face look puffy?",
           answer:
-            "No—when placed for dermal biostimulation, its role is to firm and thicken your own skin without widening facial contours.",
+            "No, when placed for dermal biostimulation, its role is to firm and thicken your own skin without widening facial contours.",
         },
         {
           id: "faq-piel-2",
@@ -1403,6 +1415,7 @@ export const BLOG_ARTICLES: Record<Locale, BlogArticleData[]> = {
         "Choosing between 360 liposuction and abdominoplasty depends on skin retraction capacity and abdominal wall integrity rather than trends.",
       updatedLabel: "Updated Nov 2026",
       readTimeLabel: "6 min read",
+      coverSrc: "/images/blog/contorno-corporal.jpg",
       coverPlaceholder: "Editorial cover · Body contouring evaluation",
       beforeCasePlaceholder: "Initial record · Torso contour assessment",
       afterCasePlaceholder: "Clinical result · Balanced body proportions",
@@ -1450,7 +1463,7 @@ export const BLOG_ARTICLES: Record<Locale, BlogArticleData[]> = {
       factorsBullets: [
         {
           lead: "Skin elasticity and excess:",
-          body: "if loose skin or lower-abdominal folding is present, liposuction alone would worsen laxity—making abdominoplasty the right choice.",
+          body: "if loose skin or lower-abdominal folding is present, liposuction alone would worsen laxity, making abdominoplasty the right choice.",
         },
         {
           lead: "Rectus muscle tone:",

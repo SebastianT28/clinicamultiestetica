@@ -56,6 +56,10 @@ export function AboutView() {
             <div className="lg:col-span-6">
               <div className="mx-auto max-w-md lg:mr-0">
                 <GreyPlaceholder
+                  src={dict.hero.imageSrc}
+                  priority
+                  sizes="(max-width: 1024px) 90vw, 448px"
+                  imgClassName="object-top"
                   aspectClassName="aspect-[4/5]"
                   title={dict.hero.portraitPlaceholder}
                   className="rounded-3xl"
@@ -123,6 +127,8 @@ export function AboutView() {
             <div className="lg:col-span-6">
               <div className="cm-peachy-stage">
                 <GreyPlaceholder
+                  src={activeItem.imageSrc}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   sharp
                   aspectClassName="aspect-square"
                   title={activeItem.placeholderTitle}

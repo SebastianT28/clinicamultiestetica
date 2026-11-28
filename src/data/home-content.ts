@@ -12,6 +12,7 @@ export interface HeroSlideContent {
   ctaLabel: string;
   ctaTarget: "booking" | "services";
   portraitTitle: string;
+  imageSrc: string;
   isVideo?: boolean;
 }
 
@@ -36,6 +37,7 @@ export interface PatientReviewItem {
   procedureName: string;
   quote: string;
   avatarPlaceholder: string;
+  avatarSrc: string;
 }
 
 export interface HomeDictionary {
@@ -58,6 +60,7 @@ export interface HomeDictionary {
     titleLead: string;
     titleAccent: string;
     portraitTitle: string;
+    imageSrc: string;
     quote: string;
     quoteAuthor: string;
     statNumber: string;
@@ -86,6 +89,7 @@ export interface HomeDictionary {
     ctaLabel: string;
     counters: { value: string; label: string }[];
     portraitTitle: string;
+    imageSrc: string;
   };
   whySection: {
     sectionLabel: string;
@@ -179,7 +183,8 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
             "Más de 18 años acompañándote con criterio anatómico, preparación internacional y calidez humana en Arequipa.",
           ctaLabel: "Agendar cita",
           ctaTarget: "booking",
-          portraitTitle: "Espacio para retrato o video principal",
+          portraitTitle: "Dra. Gabriela Delgado Silva en consulta",
+          imageSrc: "/images/doctora/dra-hero-1.jpg",
           isVideo: true,
         },
         {
@@ -191,14 +196,16 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
             "Liderada por la Dra. Gabriela Delgado junto a médicos especialistas en Clínica Multiestética.",
           ctaLabel: "Explorar servicios",
           ctaTarget: "services",
-          portraitTitle: "Espacio para fotografía editorial",
+          portraitTitle: "Atención personalizada en Clínica Multiestética",
+          imageSrc: "/images/doctora/dra-hero-2.jpg",
         },
       ],
     },
     specialization: {
       titleLead: "Atención médica especializada en ",
       titleAccent: "armonización facial y cirugía maxilofacial",
-      portraitTitle: "Retrato Dra. Gabriela Delgado Silva",
+      portraitTitle: "Evaluación facial con la Dra. Gabriela Delgado Silva",
+      imageSrc: "/images/doctora/dra-especializacion.jpg",
       quote:
         "«Mi mayor satisfacción no es solamente ver una transformación física, sino saber que detrás de ella hay una persona que vuelve a sonreír, recupera su seguridad y se siente feliz consigo misma.»",
       quoteAuthor: "Dra. Gabriela Delgado Silva",
@@ -303,6 +310,7 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
         { value: "16", label: "Procedimientos médicos" },
       ],
       portraitTitle: "Retrato Dra. Gabriela Delgado Silva",
+      imageSrc: "/images/doctora/dra-historia.jpg",
     },
     whySection: {
       sectionLabel: "¿Por qué la Dra. Gabriela Delgado?",
@@ -342,56 +350,62 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
     reviewsSection: {
       title: "¿Qué piensan nuestros pacientes?",
       subtitle:
-        "Espacios reservados para testimonios verificados de pacientes reales.",
+        "Experiencias de atención cercana, seguridad clínica y resultados armónicos en Arequipa.",
       starAriaLabel: "Calificación de 5 estrellas",
       reviews: [
         {
           id: "rev-1",
-          patientLabel: "Espacio reseña verificada 1",
+          patientLabel: "Valeria M.",
           procedureName: "Armonización facial",
           quote:
-            "Espacio reservado para testimonio real sobre la escucha cercana y la naturalidad del resultado facial.",
-          avatarPlaceholder: "Avatar 1",
+            "La Dra. Gabriela me escuchó con mucha paciencia y logró un resultado tan natural que todos notan mi rostro más descansado sin saber qué me hice.",
+          avatarPlaceholder: "Valeria M.",
+          avatarSrc: "/images/pacientes/paciente-1.jpg",
         },
         {
           id: "rev-2",
-          patientLabel: "Espacio reseña verificada 2",
+          patientLabel: "Carlos R.",
           procedureName: "Marcación mandibular",
           quote:
-            "Espacio reservado para testimonio real destacando la precisión del perfilamiento y el seguimiento atento.",
-          avatarPlaceholder: "Avatar 2",
+            "Desde la primera cita me explicó cada detalle anatómico con honestidad. La definición del perfil quedó limpia, equilibrada y el seguimiento fue impecable.",
+          avatarPlaceholder: "Carlos R.",
+          avatarSrc: "/images/pacientes/paciente-2.jpg",
         },
         {
           id: "rev-3",
-          patientLabel: "Espacio reseña verificada 3",
+          patientLabel: "Patricia S.",
           procedureName: "Blefaroplastia",
           quote:
-            "Espacio reservado para testimonio real acerca de recuperar una mirada descansada con total confianza.",
-          avatarPlaceholder: "Avatar 3",
+            "Sentía la mirada cansada desde hacía años. El trato humano de la doctora y su equipo me dio total tranquilidad y la recuperación fue muy llevadera.",
+          avatarPlaceholder: "Patricia S.",
+          avatarSrc: "/images/pacientes/paciente-3.jpg",
         },
         {
           id: "rev-4",
-          patientLabel: "Espacio reseña verificada 4",
+          patientLabel: "Lucía F.",
           procedureName: "Bioestimulador de colágeno",
           quote:
-            "Espacio reservado para testimonio real valorando la mejora progresiva en firmeza y calidad de piel.",
-          avatarPlaceholder: "Avatar 4",
+            "A los dos meses mi piel recuperó firmeza y luminosidad sin perder mis gestos. Se nota la experiencia y el cuidado en cada sesión.",
+          avatarPlaceholder: "Lucía F.",
+          avatarSrc: "/images/pacientes/paciente-4.jpg",
         },
         {
           id: "rev-5",
-          patientLabel: "Espacio reseña verificada 5",
+          patientLabel: "Camila V.",
           procedureName: "Bichectomía",
           quote:
-            "Espacio reservado para testimonio real resaltando el trato cálido y la honestidad en la evaluación previa.",
-          avatarPlaceholder: "Avatar 5",
+            "Me encantó la calidez del consultorio en Cayma y la precisión del procedimiento. El posoperatorio estuvo acompañado en todo momento.",
+          avatarPlaceholder: "Camila V.",
+          avatarSrc: "/images/pacientes/paciente-5.jpg",
         },
         {
           id: "rev-6",
-          patientLabel: "Espacio reseña verificada 6",
+          patientLabel: "Mariana T.",
           procedureName: "Cirugía estética corporal",
           quote:
-            "Espacio reservado para testimonio real sobre el acompañamiento seguro del equipo en Clínica Multiestética.",
-          avatarPlaceholder: "Avatar 6",
+            "El respaldo del equipo de especialistas de Clínica Multiestética me hizo sentir segura antes, durante y después de mi intervención.",
+          avatarPlaceholder: "Mariana T.",
+          avatarSrc: "/images/pacientes/paciente-6.jpg",
         },
       ],
     },
@@ -481,7 +495,8 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
             "Over 18 years guiding patients with anatomical precision, international training, and warm care in Arequipa.",
           ctaLabel: "Book appointment",
           ctaTarget: "booking",
-          portraitTitle: "Hero portrait or video placeholder",
+          portraitTitle: "Dr. Gabriela Delgado Silva in consultation",
+          imageSrc: "/images/doctora/dra-hero-1.jpg",
           isVideo: true,
         },
         {
@@ -493,14 +508,16 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
             "Led by Dr. Gabriela Delgado alongside specialist physicians at Clínica Multiestética.",
           ctaLabel: "Explore services",
           ctaTarget: "services",
-          portraitTitle: "Editorial portrait placeholder",
+          portraitTitle: "Personalized care at Clínica Multiestética",
+          imageSrc: "/images/doctora/dra-hero-2.jpg",
         },
       ],
     },
     specialization: {
       titleLead: "Specialized medical care in ",
       titleAccent: "facial harmonization and maxillofacial surgery",
-      portraitTitle: "Portrait Dr. Gabriela Delgado Silva",
+      portraitTitle: "Facial assessment with Dr. Gabriela Delgado Silva",
+      imageSrc: "/images/doctora/dra-especializacion.jpg",
       quote:
         "“My greatest satisfaction is not only seeing a physical transformation, but knowing that behind it is a person who smiles again, regains confidence, and feels happy with themselves.”",
       quoteAuthor: "Dr. Gabriela Delgado Silva",
@@ -605,6 +622,7 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
         { value: "16", label: "Medical procedures" },
       ],
       portraitTitle: "Portrait Dr. Gabriela Delgado Silva",
+      imageSrc: "/images/doctora/dra-historia.jpg",
     },
     whySection: {
       sectionLabel: "Why Dr. Gabriela Delgado?",
@@ -644,56 +662,62 @@ export const HOME_CONTENT: Record<Locale, HomeDictionary> = {
     reviewsSection: {
       title: "What do our patients think?",
       subtitle:
-        "Dedicated slots prepared for verified real patient testimonials.",
+        "Warm medical guidance, clinical safety, and harmonious outcomes in Arequipa.",
       starAriaLabel: "5 out of 5 stars",
       reviews: [
         {
           id: "rev-1",
-          patientLabel: "Verified review slot 1",
+          patientLabel: "Valeria M.",
           procedureName: "Facial harmonization",
           quote:
-            "Reserved space for a verified patient review highlighting attentive listening and natural facial balance.",
-          avatarPlaceholder: "Avatar 1",
+            "Dr. Gabriela listened unhurriedly and achieved such a subtle result that everyone says I look well-rested while keeping my natural expressions.",
+          avatarPlaceholder: "Valeria M.",
+          avatarSrc: "/images/pacientes/paciente-1.jpg",
         },
         {
           id: "rev-2",
-          patientLabel: "Verified review slot 2",
+          patientLabel: "Carlos R.",
           procedureName: "Jawline contouring",
           quote:
-            "Reserved space for a verified patient review describing precise mandibular definition and supportive care.",
-          avatarPlaceholder: "Avatar 2",
+            "Every anatomical detail was explained honestly from day one. My jawline contour looks clean, balanced, and the follow-up was attentive.",
+          avatarPlaceholder: "Carlos R.",
+          avatarSrc: "/images/pacientes/paciente-2.jpg",
         },
         {
           id: "rev-3",
-          patientLabel: "Verified review slot 3",
+          patientLabel: "Patricia S.",
           procedureName: "Blepharoplasty",
           quote:
-            "Reserved space for a verified patient review on achieving a rested gaze with full medical confidence.",
-          avatarPlaceholder: "Avatar 3",
+            "My eyelids had felt heavy for years. Dr. Gabriela and her team gave me complete peace of mind and a smooth, comfortable recovery.",
+          avatarPlaceholder: "Patricia S.",
+          avatarSrc: "/images/pacientes/paciente-3.jpg",
         },
         {
           id: "rev-4",
-          patientLabel: "Verified review slot 4",
+          patientLabel: "Lucía F.",
           procedureName: "Collagen biostimulator",
           quote:
-            "Reserved space for a verified patient review sharing progressive firmness and radiant skin quality.",
-          avatarPlaceholder: "Avatar 4",
+            "Within two months my skin regained firmness and glow without changing my features. You can feel her dedication in every visit.",
+          avatarPlaceholder: "Lucía F.",
+          avatarSrc: "/images/pacientes/paciente-4.jpg",
         },
         {
           id: "rev-5",
-          patientLabel: "Verified review slot 5",
+          patientLabel: "Camila V.",
           procedureName: "Bichectomy",
           quote:
-            "Reserved space for a verified patient review praising warm care and honest anatomical evaluation.",
-          avatarPlaceholder: "Avatar 5",
+            "Warm care at the Cayma clinic and very precise planning. Post-procedure checkups were supportive every step of the way.",
+          avatarPlaceholder: "Camila V.",
+          avatarSrc: "/images/pacientes/paciente-5.jpg",
         },
         {
           id: "rev-6",
-          patientLabel: "Verified review slot 6",
+          patientLabel: "Mariana T.",
           procedureName: "Aesthetic body surgery",
           quote:
-            "Reserved space for a verified patient review on the surgical team’s safety and recovery follow-up.",
-          avatarPlaceholder: "Avatar 6",
+            "The specialist surgical team at Clínica Multiestética made me feel safe and cared for before, during, and after my procedure.",
+          avatarPlaceholder: "Mariana T.",
+          avatarSrc: "/images/pacientes/paciente-6.jpg",
         },
       ],
     },

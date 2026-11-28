@@ -76,6 +76,9 @@ export function BlogArticleView({ slug }: BlogArticleViewProps) {
 
           <div className="mt-7">
             <GreyPlaceholder
+              src={article.coverSrc}
+              priority
+              sizes="(max-width: 1280px) 100vw, 1240px"
               aspectClassName="aspect-[16/10] md:aspect-[2/1]"
               title={article.coverPlaceholder}
             />
@@ -187,6 +190,8 @@ export function BlogArticleView({ slug }: BlogArticleViewProps) {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="relative overflow-hidden rounded-xl">
                     <GreyPlaceholder
+                      src={`/images/casos/${article.relatedServiceSlug}-antes.jpg`}
+                      sizes="(max-width: 1024px) 48vw, 340px"
                       sharp
                       aspectClassName="aspect-[4/5]"
                       title={article.beforeCasePlaceholder}
@@ -197,6 +202,8 @@ export function BlogArticleView({ slug }: BlogArticleViewProps) {
                   </div>
                   <div className="relative overflow-hidden rounded-xl">
                     <GreyPlaceholder
+                      src={`/images/casos/${article.relatedServiceSlug}-despues.jpg`}
+                      sizes="(max-width: 1024px) 48vw, 340px"
                       sharp
                       afterState
                       aspectClassName="aspect-[4/5]"
@@ -276,10 +283,12 @@ export function BlogArticleView({ slug }: BlogArticleViewProps) {
                 <div className="cm-specialist-header">
                   <div className="size-14 shrink-0">
                     <GreyPlaceholder
+                      src="/images/doctora/dra-quien-soy.jpg"
+                      sizes="56px"
+                      imgClassName="object-top"
                       circle
                       aspectClassName="aspect-square"
-                      title={ui.specialistCard.portraitPlaceholder}
-                      className="p-1"
+                      title={ui.specialistCard.name}
                     />
                   </div>
                   <h2 className="m-0 text-xl leading-snug text-foreground sm:text-2xl">
@@ -384,6 +393,8 @@ export function BlogArticleView({ slug }: BlogArticleViewProps) {
               >
                 <Card className="cm-related-card">
                   <GreyPlaceholder
+                    src={related.coverSrc}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     sharp
                     aspectClassName="aspect-[4/3]"
                     title={related.category}

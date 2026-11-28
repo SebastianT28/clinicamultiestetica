@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -166,6 +167,10 @@ export function HomeView() {
               <div className="order-1 lg:order-2 lg:col-span-6 lg:pb-6">
                 <div className="lg:pr-8">
                   <GreyPlaceholder
+                    src={activeHero.imageSrc}
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    imgClassName="object-top"
                     isVideo={Boolean(activeHero.isVideo)}
                     aspectClassName="aspect-[5/4] sm:aspect-[16/11] lg:aspect-[5/4]"
                     title={activeHero.portraitTitle}
@@ -243,6 +248,8 @@ export function HomeView() {
               <div className="cm-portrait-pocket-wrap mt-8 grid grid-cols-1 gap-4 md:grid-cols-12 md:items-end">
                 <div className="md:col-span-8">
                   <GreyPlaceholder
+                    src={dict.specialization.imageSrc}
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     aspectClassName="aspect-[4/3]"
                     title={dict.specialization.portraitTitle}
                   />
@@ -316,7 +323,13 @@ export function HomeView() {
                     {renderServiceIcon(service.iconKind)}
                   </span>
                   <span className="cm-service-photo-reveal" aria-hidden="true">
-                    {service.photoRevealLabel}
+                    <Image
+                      src={`/images/servicios/${service.slug}.jpg`}
+                      alt=""
+                      width={160}
+                      height={100}
+                      className="size-full object-cover"
+                    />
                   </span>
                 </div>
 
@@ -409,6 +422,9 @@ export function HomeView() {
             <div className="grid grid-cols-1 lg:grid-cols-12">
               <div className="p-4 sm:p-6 lg:col-span-5 lg:p-0">
                 <GreyPlaceholder
+                  src={dict.storySection.imageSrc}
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  imgClassName="object-top"
                   aspectClassName="aspect-[4/5] lg:h-full lg:aspect-auto"
                   className="lg:rounded-none lg:border-0"
                   title={dict.storySection.portraitTitle}
@@ -543,9 +559,11 @@ export function HomeView() {
                 <article key={rev.id} className="cm-review-card">
                   <div className="cm-review-avatar-wrap">
                     <GreyPlaceholder
+                      src={rev.avatarSrc}
+                      sizes="96px"
                       circle
                       aspectClassName="aspect-square"
-                      className="size-24 p-2"
+                      className="size-24"
                       title={rev.avatarPlaceholder}
                     />
                     <span className="cm-review-verified-badge" aria-hidden="true">
@@ -585,9 +603,11 @@ export function HomeView() {
                 >
                   <div className="cm-review-avatar-wrap">
                     <GreyPlaceholder
+                      src={rev.avatarSrc}
+                      sizes="96px"
                       circle
                       aspectClassName="aspect-square"
-                      className="size-24 p-2"
+                      className="size-24"
                       title={rev.avatarPlaceholder}
                     />
                     <span className="cm-review-verified-badge">

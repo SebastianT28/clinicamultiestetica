@@ -19,8 +19,6 @@ interface BeforeAfterCaseCardProps {
   prefersReducedMotion: boolean;
   afterBadge: string;
   beforeBadge: string;
-  afterSlotPrefix: string;
-  beforeSlotPrefix: string;
   ariaBefore: string;
   ariaAfter: string;
   registerNode: (id: string, node: HTMLElement | null) => void;
@@ -34,8 +32,6 @@ function BeforeAfterCaseCard({
   prefersReducedMotion,
   afterBadge,
   beforeBadge,
-  afterSlotPrefix,
-  beforeSlotPrefix,
   ariaBefore,
   ariaAfter,
   registerNode,
@@ -112,10 +108,14 @@ function BeforeAfterCaseCard({
           aria-hidden={isBeforeVisible}
           className="cm-case-layer cm-case-layer--after"
         >
-          <span className="cm-case-slot-kicker">{afterSlotPrefix}</span>
-          <span className="cm-case-slot-title">
-            {item.afterPlaceholderTitle}
-          </span>
+          <Image
+            src={`/images/casos/${item.serviceSlug}-despues.jpg`}
+            alt={`${item.tagLabel} - ${afterBadge}`}
+            fill
+            priority={index < 6}
+            sizes="(max-width: 767px) 50vw, 33vw"
+            className="object-cover object-center"
+          />
         </span>
 
         {/* Capa superpuesta en transición suave: ANTES */}
@@ -124,16 +124,19 @@ function BeforeAfterCaseCard({
           data-visible={isBeforeVisible ? "true" : "false"}
           className="cm-case-layer cm-case-layer--before"
         >
-          <span className="cm-case-slot-kicker">{beforeSlotPrefix}</span>
-          <span className="cm-case-slot-title">
-            {item.beforePlaceholderTitle}
-          </span>
+          <Image
+            src={`/images/casos/${item.serviceSlug}-antes.jpg`}
+            alt={`${item.tagLabel} - ${beforeBadge}`}
+            fill
+            sizes="(max-width: 767px) 50vw, 33vw"
+            className="object-cover object-center"
+          />
         </span>
 
         {/* Marca de agua sutil inferior central (como el isotipo DD en la referencia) */}
         <span aria-hidden="true" className="cm-case-watermark">
           <Image
-            src="/brand/isotipo-dra-gabriela.png"
+            src="/brand/isotipo-dra-gabriela-blanco-dorado.png"
             alt=""
             width={36}
             height={36}
@@ -361,8 +364,6 @@ export function TestimonialsView() {
                   prefersReducedMotion={prefersReducedMotion}
                   afterBadge={dict.afterBadge}
                   beforeBadge={dict.beforeBadge}
-                  afterSlotPrefix={dict.afterSlotPrefix}
-                  beforeSlotPrefix={dict.beforeSlotPrefix}
                   ariaBefore={dict.cardAriaActionBefore}
                   ariaAfter={dict.cardAriaActionAfter}
                   registerNode={registerNode}

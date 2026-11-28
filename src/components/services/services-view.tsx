@@ -212,6 +212,8 @@ export function ServicesView() {
                 >
                   <div className="cm-specialty-editorial-media">
                     <GreyPlaceholder
+                      src={unit.imageSrc}
+                      sizes="(max-width: 1024px) 100vw, 58vw"
                       sharp
                       aspectClassName="aspect-[16/10]"
                       title={unit.placeholderTitle}
@@ -309,6 +311,8 @@ export function ServicesView() {
                 className="cm-procedure-detail-card scroll-mt-28"
               >
                 <GreyPlaceholder
+                  src={`/images/servicios/${ficha.slug}.jpg`}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   aspectClassName="aspect-[16/10]"
                   title={ficha.placeholderLabel}
                 />

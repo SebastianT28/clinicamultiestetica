@@ -10,6 +10,7 @@ export interface AboutSpecializationItem {
   linkLabel: string;
   placeholderTitle: string;
   placeholderSubtitle: string;
+  imageSrc: string;
   bracketZone: BracketZone;
 }
 
@@ -31,6 +32,7 @@ export interface AboutPageDictionary {
     subtitle: string;
     ctaLabel: string;
     portraitPlaceholder: string;
+    imageSrc: string;
   };
   story: {
     motto: string;
@@ -64,7 +66,8 @@ export const ABOUT_PAGE_CONTENT: Record<Locale, AboutPageDictionary> = {
       subtitle:
         "Más de 18 años dedicados a la armonización facial y cirugía maxilofacial con precisión anatómica, ética médica y calidez humana.",
       ctaLabel: "Agendar cita",
-      portraitPlaceholder: "Retrato principal · Dra. Gabriela Delgado Silva",
+      portraitPlaceholder: "Dra. Gabriela Delgado Silva",
+      imageSrc: "/images/doctora/dra-quien-soy.jpg",
     },
     story: {
       motto:
@@ -104,6 +107,7 @@ export const ABOUT_PAGE_CONTENT: Record<Locale, AboutPageDictionary> = {
           linkLabel: "Ver tratamientos",
           placeholderTitle: "Enfoque anatómico · Tercio medio y labios",
           placeholderSubtitle: "Armonización facial con proporción natural",
+          imageSrc: "/images/quien-soy/peachy-armonizacion.jpg",
           bracketZone: "midface",
         },
         {
@@ -114,6 +118,7 @@ export const ABOUT_PAGE_CONTENT: Record<Locale, AboutPageDictionary> = {
           linkLabel: "Ver tratamientos",
           placeholderTitle: "Enfoque anatómico · Contorno mandibular",
           placeholderSubtitle: "Cirugía facial y maxilofacial de precisión",
+          imageSrc: "/images/quien-soy/peachy-maxilofacial.jpg",
           bracketZone: "jawline",
         },
         {
@@ -124,6 +129,7 @@ export const ABOUT_PAGE_CONTENT: Record<Locale, AboutPageDictionary> = {
           linkLabel: "Ver tratamientos",
           placeholderTitle: "Enfoque dérmico · Firmeza y textura",
           placeholderSubtitle: "Protocolos de colágeno y calidad de piel",
+          imageSrc: "/images/quien-soy/peachy-calidad-piel.jpg",
           bracketZone: "skin",
         },
         {
@@ -134,6 +140,7 @@ export const ABOUT_PAGE_CONTENT: Record<Locale, AboutPageDictionary> = {
           linkLabel: "Ver tratamientos",
           placeholderTitle: "Respaldo quirúrgico · Contorno corporal",
           placeholderSubtitle: "Staff de médicos especialistas en Arequipa",
+          imageSrc: "/images/quien-soy/peachy-corporal.jpg",
           bracketZone: "body",
         },
       ],
@@ -175,7 +182,8 @@ export const ABOUT_PAGE_CONTENT: Record<Locale, AboutPageDictionary> = {
       subtitle:
         "Over 18 years dedicated to facial harmonization and maxillofacial surgery with anatomical precision, medical ethics, and human warmth.",
       ctaLabel: "Book appointment",
-      portraitPlaceholder: "Editorial portrait · Dr. Gabriela Delgado Silva",
+      portraitPlaceholder: "Dr. Gabriela Delgado Silva",
+      imageSrc: "/images/doctora/dra-quien-soy.jpg",
     },
     story: {
       motto:
@@ -215,6 +223,7 @@ export const ABOUT_PAGE_CONTENT: Record<Locale, AboutPageDictionary> = {
           linkLabel: "View treatments",
           placeholderTitle: "Anatomical focus · Midface & lips",
           placeholderSubtitle: "Balanced facial harmonization",
+          imageSrc: "/images/quien-soy/peachy-armonizacion.jpg",
           bracketZone: "midface",
         },
         {
@@ -225,6 +234,7 @@ export const ABOUT_PAGE_CONTENT: Record<Locale, AboutPageDictionary> = {
           linkLabel: "View treatments",
           placeholderTitle: "Anatomical focus · Jawline contour",
           placeholderSubtitle: "Precision facial & maxillofacial surgery",
+          imageSrc: "/images/quien-soy/peachy-maxilofacial.jpg",
           bracketZone: "jawline",
         },
         {
@@ -235,6 +245,7 @@ export const ABOUT_PAGE_CONTENT: Record<Locale, AboutPageDictionary> = {
           linkLabel: "View treatments",
           placeholderTitle: "Dermal focus · Firmness & texture",
           placeholderSubtitle: "Collagen & skin quality protocols",
+          imageSrc: "/images/quien-soy/peachy-calidad-piel.jpg",
           bracketZone: "skin",
         },
         {
@@ -245,6 +256,7 @@ export const ABOUT_PAGE_CONTENT: Record<Locale, AboutPageDictionary> = {
           linkLabel: "View treatments",
           placeholderTitle: "Surgical support · Body contouring",
           placeholderSubtitle: "Specialist medical staff in Arequipa",
+          imageSrc: "/images/quien-soy/peachy-corporal.jpg",
           bracketZone: "body",
         },
       ],

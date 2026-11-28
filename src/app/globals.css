@@ -71,10 +71,10 @@
   --cm-footer-muted: oklch(0.845 0.02 256);
   --cm-line: oklch(0.885 0.052 84);
   --cm-line-cool: oklch(0.885 0.052 84);
-  --cm-grey-box: #E3E6EC;
-  --cm-grey-box-alt: #D7DCE5;
-  --cm-grey-border: #C5CCD8;
-  --cm-grey-text: #2D3A4E;
+  --cm-grey-box: oklch(0.922 0.008 256);
+  --cm-grey-box-alt: oklch(0.892 0.012 256);
+  --cm-grey-border: oklch(0.845 0.016 256);
+  --cm-grey-text: oklch(0.342 0.032 256);
   --cm-whatsapp: oklch(0.768 0.194 151);
   --cm-whatsapp-hover: oklch(0.72 0.188 151);
   --cm-whatsapp-dot: oklch(0.71 0.182 151);
@@ -961,7 +961,7 @@ p {
   .cm-service-card:hover .cm-service-photo-reveal {
     width: 8.25rem;
     opacity: 1;
-    padding-inline: 0.75rem;
+    padding-inline: 0;
     border-color: var(--cm-gold-border);
   }
   .cm-service-card:hover .cm-service-title {
@@ -979,7 +979,7 @@ p {
 .cm-service-card:focus-within .cm-service-photo-reveal {
   width: 8.25rem;
   opacity: 1;
-  padding-inline: 0.75rem;
+  padding-inline: 0;
   border-color: var(--cm-gold-border);
 }
 
@@ -1532,15 +1532,16 @@ p {
 }
 
 .cm-case-layer {
+  position: relative;
   grid-area: 1 / 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.375rem;
   width: 100%;
   height: 100%;
-  padding: 2.75rem 0.875rem 2.75rem;
+  padding: 0;
+  overflow: hidden;
   text-align: center;
 }
 
@@ -1549,6 +1550,7 @@ p {
 }
 
 .cm-case-layer--before {
+  z-index: 1;
   background-color: var(--cm-case-before-bg);
   opacity: 0;
   pointer-events: none;
@@ -1564,40 +1566,14 @@ p {
   }
 }
 
-.cm-case-slot-kicker {
-  font-family: var(--font-outfit), system-ui, sans-serif;
-  font-size: 0.6875rem;
-  font-weight: 500;
-  color: var(--cm-muted);
-}
-
-.cm-case-slot-title {
-  max-width: 18ch;
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: 0.75rem;
-  font-weight: 500;
-  line-height: 1.4;
-  color: var(--cm-navy-deep);
-}
-
-@media (min-width: 768px) {
-  .cm-case-slot-kicker {
-    font-size: 0.75rem;
-  }
-
-  .cm-case-slot-title {
-    max-width: 22ch;
-    font-size: 0.875rem;
-  }
-}
-
 .cm-case-watermark {
   position: absolute;
   left: 50%;
   bottom: 0.625rem;
   transform: translateX(-50%);
   z-index: 2;
-  opacity: 0.42;
+  opacity: 0.68;
+  filter: drop-shadow(0 0.0625rem 0.25rem oklch(0.14 0.03 260 / 0.55));
   pointer-events: none;
 }
 

@@ -12,6 +12,7 @@ export interface SpecialtyUnitBlock {
   title: string;
   description: string;
   placeholderTitle: string;
+  imageSrc: string;
   exploreCta: string;
 }
 
@@ -86,7 +87,8 @@ export const SERVICES_PAGE_CONTENT: Record<Locale, ServicesPageDictionary> = {
           title: "Armonización facial e inyectables",
           description:
             "Ácido hialurónico, toxina botulínica y bioestimuladores de colágeno para devolver soporte, firmeza y frescura, con resultados naturales.",
-          placeholderTitle: "Espacio para imagen: Armonización facial",
+          placeholderTitle: "Armonización facial e inyectables",
+          imageSrc: "/images/especialidades/esp-armonizacion.jpg",
           exploreCta: "Ver tratamientos",
         },
         {
@@ -95,7 +97,8 @@ export const SERVICES_PAGE_CONTENT: Record<Locale, ServicesPageDictionary> = {
           title: "Cirugía facial y perfilamiento",
           description:
             "Perfilamiento facial y maxilofacial para rejuvenecer tu mirada, definir el contorno mandibular y equilibrar tus rasgos, con precisión y proporción.",
-          placeholderTitle: "Espacio para imagen: Cirugía facial",
+          placeholderTitle: "Cirugía facial y perfilamiento",
+          imageSrc: "/images/especialidades/esp-cirugia-facial.jpg",
           exploreCta: "Ver tratamientos",
         },
         {
@@ -104,7 +107,8 @@ export const SERVICES_PAGE_CONTENT: Record<Locale, ServicesPageDictionary> = {
           title: "Calidad de piel y enzimas",
           description:
             "Protocolos médicos con enzimas recombinantes, hidratación profunda y manejo de cicatrices para una piel más uniforme, firme y luminosa.",
-          placeholderTitle: "Espacio para imagen: Calidad de piel",
+          placeholderTitle: "Calidad de piel y enzimas",
+          imageSrc: "/images/especialidades/esp-calidad-piel.jpg",
           exploreCta: "Ver tratamientos",
         },
         {
@@ -113,7 +117,8 @@ export const SERVICES_PAGE_CONTENT: Record<Locale, ServicesPageDictionary> = {
           title: "Cirugía estética corporal",
           description:
             "Moldeamiento corporal 360, lipotransferencia y cirugía mamaria o abdominal de alta precisión, con el mismo rigor clínico.",
-          placeholderTitle: "Espacio para imagen: Cirugía corporal",
+          placeholderTitle: "Cirugía estética corporal",
+          imageSrc: "/images/especialidades/esp-cirugia-corporal.jpg",
           exploreCta: "Ver tratamientos",
         },
       ],
@@ -161,7 +166,8 @@ export const SERVICES_PAGE_CONTENT: Record<Locale, ServicesPageDictionary> = {
           title: "Facial harmonization & injectables",
           description:
             "Hyaluronic acid, botulinum toxin, and collagen biostimulators to restore support, firmness, and freshness, with natural results.",
-          placeholderTitle: "Image placeholder: Facial harmonization",
+          placeholderTitle: "Facial harmonization & injectables",
+          imageSrc: "/images/especialidades/esp-armonizacion.jpg",
           exploreCta: "View treatments",
         },
         {
@@ -170,7 +176,8 @@ export const SERVICES_PAGE_CONTENT: Record<Locale, ServicesPageDictionary> = {
           title: "Facial surgery & contouring",
           description:
             "Maxillofacial and facial contouring procedures to refresh your gaze, define your jawline, and balance your features with precision.",
-          placeholderTitle: "Image placeholder: Facial surgery",
+          placeholderTitle: "Facial surgery & contouring",
+          imageSrc: "/images/especialidades/esp-cirugia-facial.jpg",
           exploreCta: "View treatments",
         },
         {
@@ -179,7 +186,8 @@ export const SERVICES_PAGE_CONTENT: Record<Locale, ServicesPageDictionary> = {
           title: "Skin quality & enzymes",
           description:
             "Clinical protocols using recombinant enzymes, deep hydration, and scar care for firmer, smoother, and more radiant skin.",
-          placeholderTitle: "Image placeholder: Skin quality",
+          placeholderTitle: "Skin quality & enzymes",
+          imageSrc: "/images/especialidades/esp-calidad-piel.jpg",
           exploreCta: "View treatments",
         },
         {
@@ -188,7 +196,8 @@ export const SERVICES_PAGE_CONTENT: Record<Locale, ServicesPageDictionary> = {
           title: "Aesthetic body surgery",
           description:
             "360 body contouring, fat transfer, breast implants, and abdominoplasty performed with strict surgical precision.",
-          placeholderTitle: "Image placeholder: Body surgery",
+          placeholderTitle: "Aesthetic body surgery",
+          imageSrc: "/images/especialidades/esp-cirugia-corporal.jpg",
           exploreCta: "View treatments",
         },
       ],
