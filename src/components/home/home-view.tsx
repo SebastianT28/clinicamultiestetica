@@ -115,14 +115,70 @@ export function HomeView() {
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
+  const renderHeroSlideControls = () => (
+    <div
+      role="group"
+      aria-label={
+        locale === "es"
+          ? "Control de portada principal"
+          : "Hero slide controls"
+      }
+      className="cm-hero-controls-dock"
+    >
+      <Button
+        type="button"
+        variant="ghost"
+        size="icon"
+        aria-label={dict.hero.prevSlideLabel}
+        onClick={() =>
+          setHeroIndex(
+            (prev) => (prev - 1 + heroSlides.length) % heroSlides.length
+          )
+        }
+        className="cm-hero-arrow-btn"
+      >
+        <ChevronLeftIcon className="size-5" />
+      </Button>
+      <span className="px-2 font-heading text-sm font-medium text-foreground">
+        {heroIndex + 1} / {heroSlides.length}
+      </span>
+      <Button
+        type="button"
+        variant="ghost"
+        size="icon"
+        aria-label={dict.hero.nextSlideLabel}
+        onClick={() => setHeroIndex((prev) => (prev + 1) % heroSlides.length)}
+        className="cm-hero-arrow-btn"
+      >
+        <ChevronRightIcon className="size-5" />
+      </Button>
+    </div>
+  );
+
   return (
     <main id="inicio">
       {/* ─── APARTADO 1: PORTADA PRINCIPAL MINIMALISTA ─── */}
       <section className="cm-hero-outer">
         <div className="cm-hero-stage">
           <div className="cm-container">
-            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
-              <div className="flex flex-col items-start lg:col-span-6">
+            <div className="relative grid grid-cols-1 items-center gap-5 lg:grid-cols-12 lg:gap-12">
+              {/* 1.º en móvil / Derecha en escritorio: Imagen o video de la Dra. Gabriela + selector móvil al pie */}
+              <div className="order-1 lg:order-2 lg:col-span-6 lg:pb-6">
+                <div className="lg:pr-8">
+                  <GreyPlaceholder
+                    isVideo={Boolean(activeHero.isVideo)}
+                    aspectClassName="aspect-[5/4] sm:aspect-[16/11] lg:aspect-[5/4]"
+                    title={activeHero.portraitTitle}
+                  />
+                </div>
+
+                <div className="mt-3.5 flex items-center justify-center sm:justify-start lg:hidden">
+                  {renderHeroSlideControls()}
+                </div>
+              </div>
+
+              {/* 2.º en móvil / Izquierda en escritorio: Titular H1 (+ selector en escritorio) */}
+              <div className="order-2 flex flex-col items-start lg:order-1 lg:col-span-6">
                 <h1 className="m-0 text-3xl leading-tight tracking-tight text-foreground sm:text-5xl xl:text-[3.375rem] xl:leading-[1.12]">
                   {activeHero.titleLead}
                   <span className="cm-accent-sapphire">
@@ -131,86 +187,39 @@ export function HomeView() {
                   {activeHero.titleTrail}
                 </h1>
 
-                <div className="mt-8 flex items-center gap-3">
-                  <div
-                    role="group"
-                    aria-label={
-                      locale === "es"
-                        ? "Control de portada principal"
-                        : "Hero slide controls"
-                    }
-                    className="cm-hero-controls-dock"
-                  >
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="icon"
-                      aria-label={dict.hero.prevSlideLabel}
-                      onClick={() =>
-                        setHeroIndex(
-                          (prev) => (prev - 1 + heroSlides.length) % heroSlides.length
-                        )
-                      }
-                      className="cm-hero-arrow-btn"
-                    >
-                      <ChevronLeftIcon className="size-5" />
-                    </Button>
-                    <span className="px-2 font-heading text-sm font-medium text-foreground">
-                      {heroIndex + 1} / {heroSlides.length}
-                    </span>
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="icon"
-                      aria-label={dict.hero.nextSlideLabel}
-                      onClick={() =>
-                        setHeroIndex((prev) => (prev + 1) % heroSlides.length)
-                      }
-                      className="cm-hero-arrow-btn"
-                    >
-                      <ChevronRightIcon className="size-5" />
-                    </Button>
-                  </div>
+                <div className="mt-8 hidden items-center gap-3 lg:flex">
+                  {renderHeroSlideControls()}
                 </div>
               </div>
 
-              <div className="relative lg:col-span-6 lg:pb-6">
-                <div className="lg:pr-8">
-                  <GreyPlaceholder
-                    isVideo={Boolean(activeHero.isVideo)}
-                    aspectClassName="aspect-[4/5] sm:aspect-[16/11] lg:aspect-[5/4]"
-                    title={activeHero.portraitTitle}
-                  />
-                </div>
-
-                <div className="mt-4 sm:max-w-sm lg:absolute lg:right-0 lg:bottom-0 lg:z-10 lg:mt-0">
-                  <div className="cm-chamfer-card">
-                    <p className="m-0 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                      {activeHero.cardDescription}
-                    </p>
-                    <div className="mt-5">
-                      {activeHero.ctaTarget === "booking" ? (
-                        <Button
-                          type="button"
-                          onClick={() => openWhatsAppModal()}
-                          className="cm-btn-cavadas"
-                        >
+              {/* 3.º en móvil / Tarjeta flotante superpuesta inferior derecha en escritorio */}
+              <div className="order-3 sm:max-w-sm lg:absolute lg:right-0 lg:bottom-0 lg:z-10">
+                <div className="cm-chamfer-card">
+                  <p className="m-0 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                    {activeHero.cardDescription}
+                  </p>
+                  <div className="mt-5">
+                    {activeHero.ctaTarget === "booking" ? (
+                      <Button
+                        type="button"
+                        onClick={() => openWhatsAppModal()}
+                        className="cm-btn-cavadas"
+                      >
+                        <span>{activeHero.ctaLabel}</span>
+                        <span className="cm-btn-cavadas-box" aria-hidden="true">
+                          <ArrowRightIcon className="cm-btn-cavadas-arrow" />
+                        </span>
+                      </Button>
+                    ) : (
+                      <Button asChild className="cm-btn-cavadas">
+                        <Link href="/servicios">
                           <span>{activeHero.ctaLabel}</span>
                           <span className="cm-btn-cavadas-box" aria-hidden="true">
                             <ArrowRightIcon className="cm-btn-cavadas-arrow" />
                           </span>
-                        </Button>
-                      ) : (
-                        <Button asChild className="cm-btn-cavadas">
-                          <Link href="/servicios">
-                            <span>{activeHero.ctaLabel}</span>
-                            <span className="cm-btn-cavadas-box" aria-hidden="true">
-                              <ArrowRightIcon className="cm-btn-cavadas-arrow" />
-                            </span>
-                          </Link>
-                        </Button>
-                      )}
-                    </div>
+                        </Link>
+                      </Button>
+                    )}
                   </div>
                 </div>
               </div>
