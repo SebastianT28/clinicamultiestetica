@@ -128,6 +128,7 @@ function BeforeAfterCaseCard({
             src={`/images/casos/${item.serviceSlug}-antes.jpg`}
             alt={`${item.tagLabel} - ${beforeBadge}`}
             fill
+            loading={index < 6 ? "eager" : "lazy"}
             sizes="(max-width: 767px) 50vw, 33vw"
             className="object-cover object-center"
           />
